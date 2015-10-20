@@ -2,9 +2,12 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
 
 
 
-.controller('DashCtrl', function($scope, ngFB) {
+.controller('DashCtrl', function($scope, $stateParams, ngFB) {
+
+  //$scope.session = Session.get({sessionId: $stateParams.sessionId});
+
   $scope.fbLogin = function () {
-    ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
+    ngFB.login({scope: 'public_profile, email, user_friends'}).then(
         function (response) {
             if (response.status === 'connected') {
                 console.log('Facebook login succeeded');
@@ -35,7 +38,18 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, ngFB) {
+  ngFB.api({
+        path: '/me',
+        params: {fields: 'id,name'}
+    }).then(
+        function (user) {
+            $scope.user = user;
+        },
+        function (error) {
+            alert('Facebook error: ' + error.error_description);
+        });
+
   $scope.settings = {
     enableFriends: true
   };
