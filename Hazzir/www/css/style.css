@@ -1,1 +1,41 @@
 /* Empty. Add your own CSS if you like */
+.h-Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h-Aligner-item {
+  max-width: 50%;
+}
+
+.h-Aligner-item--top {
+  align-self: flex-start;
+}
+
+.h-Aligner-item--bottom {
+  align-self: flex-end;
+}
+/*---- Center Align 
+.scroll-content {
+  display: table !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+.scroll {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}*/
+
+.tabs-hide .tabs {
+    display: none;
+}
+
+.hpaddding-100{
+	padding-top: 200px;
+}
+
+
+ .ex4_container { content-positioning:50% 50%; width:200px; height:200px; background-color:yellow; }
+ .ex4_content { content-positioning-anchor:50% 50%; background-color:gray; color:white; }

@@ -2,10 +2,11 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
 
 
 
-.controller('DashCtrl', function($scope, $stateParams, ngFB) {
+.controller('DashCtrl', function($scope, $stateParams, ngFB, $state) {
 
   //$scope.session = Session.get({sessionId: $stateParams.sessionId});
-
+ //$scope.$root.tabsHidden = "tabs-hide";
+ 
   $scope.fbLogin = function () {
     ngFB.login({scope: 'public_profile, email, user_friends'}).then(
         function (response) {
@@ -18,6 +19,7 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
         });
 };
 })
+
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -38,8 +40,24 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope, ngFB) {
-  ngFB.api({
+.controller('landingCtrl', function($scope, $stateParams, $state) {
+
+  
+
+$scope.gotoState = function() {
+   console.log("login to continue")
+   //$state.go('tab.chats');
+   $state.go('tab.chats', {url: 'templates/tab-chats.html'})
+  
+  };
+  
+
+})
+
+
+
+.controller('AccountCtrl', function($scope) {
+  /*ngFB.api({
         path: '/me',
         params: {fields: 'id,name'}
     }).then(
@@ -49,8 +67,12 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
         function (error) {
             alert('Facebook error: ' + error.error_description);
         });
+*/
 
   $scope.settings = {
     enableFriends: true
   };
 });
+
+
+
