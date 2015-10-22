@@ -1,7 +1,27 @@
 angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
 
+.controller("AppCtrl", function($scope) {
+  
+  
+})
+
+.controller('AppController', function($scope, $ionicSideMenuDelegate) {
+
+  console.log("menu");
+
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+
+
+})
+
+
+
 
 .controller('TabCtrl', function($scope,  $state){
+
+
    
 
    $scope.gotoHome = function() {

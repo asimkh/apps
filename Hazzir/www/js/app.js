@@ -9,6 +9,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
 
 .run(function($ionicPlatform, ngFB) {
 
+  
+
 
   
   ngFB.init({appId: '970200256375080'});
@@ -36,6 +38,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+  .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/menu.html',
+    controller: "AppController"
+  })
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -43,6 +52,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     templateUrl: 'templates/tabs.html',
     controller: "TabCtrl"
   })
+
+
+
 
   // Each tab has its own nav history stack:
 
