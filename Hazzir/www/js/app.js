@@ -9,7 +9,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
 
 .run(function($ionicPlatform, ngFB) {
 
-  
+
 
 
   
