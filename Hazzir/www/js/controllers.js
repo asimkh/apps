@@ -1,11 +1,46 @@
 angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
 
 
+.controller('TabCtrl', function($scope,  $state){
+   
 
-.controller('DashCtrl', function($scope, $stateParams, ngFB, $state) {
+   $scope.gotoHome = function() {
+    console.log('logout');
+     $state.go('home', {url: 'templates/landing.html'})
+  }
+
+  $scope.gotoDash = function() {
+    console.log('tab > Dash');
+     
+  }
+
+  $scope.gotoList = function() {
+    console.log('tab > List');
+     
+  }
+
+  $scope.gotoSettings = function() {
+    console.log('tab > Settings');
+     
+  }
+})
+
+.controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal, $timeout, $state) {
 
   //$scope.session = Session.get({sessionId: $stateParams.sessionId});
  //$scope.$root.tabsHidden = "tabs-hide";
+/*
+ scope.gotoHome = function() {
+   console.log("tab > Home")
+   //$state.go('tab.chats');
+   $state.go('/', {url: 'templates/landing.html'})
+  
+  };
+  */
+
+ 
+
+
  
   $scope.fbLogin = function () {
     ngFB.login({scope: 'public_profile, email, user_friends'}).then(
@@ -42,12 +77,14 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
 
 .controller('landingCtrl', function($scope, $stateParams, $state) {
 
+
+
   
 
 $scope.gotoState = function() {
-   console.log("login to continue")
+   console.log("login")
    //$state.go('tab.chats');
-   $state.go('tab.chats', {url: 'templates/tab-chats.html'})
+   $state.go('tab.dash', {url: 'templates/tab-dash.html'})
   
   };
   
@@ -73,6 +110,8 @@ $scope.gotoState = function() {
     enableFriends: true
   };
 });
+
+
 
 
 

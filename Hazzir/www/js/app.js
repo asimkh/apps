@@ -8,6 +8,8 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngOpenFB'])
 
 .run(function($ionicPlatform, ngFB) {
+
+
   
   ngFB.init({appId: '970200256375080'});
 
@@ -38,13 +40,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    controller: "TabCtrl"
   })
 
   // Each tab has its own nav history stack:
-/*
+
   .state('tab.dash', {
-    url: '/dash',
+    url: '/about',
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
@@ -52,10 +55,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
       }
     }
   })
-*/
+
 
   .state('tab.chats', {
-      url: '/chats',
+      url: '/list',
       views: {
         'tab-chats': {
           templateUrl: 'templates/tab-chats.html',
@@ -64,7 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
       }
     })
     .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+      url: '/list/:chatId',
       views: {
         'tab-chats': {
           templateUrl: 'templates/chat-detail.html',
@@ -74,7 +77,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     })
 
   .state('tab.account', {
-    url: '/account',
+    url: '/settings',
     views: {
       'tab-account': {
         templateUrl: 'templates/tab-account.html',
@@ -84,13 +87,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
   });
 
   $stateProvider
-        .state('landing', {
-            url: '/landing',
+        .state('home', {
+            url: '/',
             controller: 'landingCtrl',
             templateUrl: 'templates/landing.html'
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/landing');
+  $urlRouterProvider.otherwise('/');
 
 });
