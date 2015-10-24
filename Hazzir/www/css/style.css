@@ -1,4 +1,33 @@
 /* Empty. Add your own CSS if you like */
+/*
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/opensans-regular-webfont.eot');
+    src: url('../fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/opensans-regular-webfont.woff') format('woff'),
+    url('../fonts/opensans-regular-webfont.ttf') format('truetype'),
+    url('../fonts/opensans-regular-webfont.svg') format('svg');
+    font-weight: 200;
+}
+body{
+    font-family: 'Open Sans';
+}
+*/
+/* ======== */
+
+.hpaddding-100{padding-top:180px;}
+.bg-pane{background:url(../../img/mob-background.png) no-repeat center center fixed;
+  -webkit-background-size:cover;-moz-background-size:cover;background-size:cover;}
+.logo-login{height:120px;width:120px;display:block;margin:0 auto;}
+.login-text p{color:#00baff;font-size:18px;margin:0 auto;padding-bottom:20px;}
+.login-button{border:solid 1px #00baff !important;color:#00baff !important;  width: 35%;
+  max-width: 35%;}
+
+
+
+/* ======== */
+
+/*
 .h-Aligner {
   display: flex;
   align-items: center;
@@ -16,6 +45,7 @@
 .h-Aligner-item--bottom {
   align-self: flex-end;
 }
+*/
 /*---- Center Align 
 .scroll-content {
   display: table !important;
@@ -28,14 +58,24 @@
   text-align: center;
 }*/
 
+/*
 .tabs-hide .tabs {
     display: none;
 }
-
-.hpaddding-100{
-	padding-top: 200px;
-}
+*/
 
 
+/*
  .ex4_container { content-positioning:50% 50%; width:200px; height:200px; background-color:yellow; }
  .ex4_content { content-positioning-anchor:50% 50%; background-color:gray; color:white; }
+*/
+/*
+ .scroll-content {
+    background: url(../../img/m-background.png) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+
+  }
+  */
+

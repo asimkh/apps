@@ -5,6 +5,25 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
   
 })
 
+
+.controller("LoginCtrl", function($scope) {
+
+  console.log("assets")
+  $scope.logoSrc = '/img/mob-logo.png';
+  $scope.bgSrc = '/img/mob-background.png';
+  $scope.descTxt = "Find the service people";
+  $scope.loginTxt = "Login";
+  
+/*
+  if (window.matchMedia("(min-width: 400px)").matches) {
+    $scope.logoSrc = '/img/mob-logo.png';
+} else {
+    $scope.logoSrc = '/img/mob-logox.png';
+}
+  */
+  
+})
+
 .controller('AppController', function($scope, $ionicSideMenuDelegate) {
 
   console.log("menu");

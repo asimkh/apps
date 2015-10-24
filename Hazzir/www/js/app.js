@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngOpenFB'])
+angular.module('starter', ['ionic',  'starter.services', 'ionic.service.core', 'ionic.service.analytics','ionic.service.push', 'starter.controllers','ngCordova', 'ngOpenFB'])
 
-.run(function($ionicPlatform, ngFB) {
+.run(function($ionicPlatform,  $ionicAnalytics, ngFB) {
 
 
 
@@ -16,6 +16,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
   ngFB.init({appId: '970200256375080'});
 
   $ionicPlatform.ready(function() {
+
+    Ionic.io();
+
+var push = new Ionic.Push({});
+
+push.register(function(token) {
+  // Log out your device token (Save this!)
+  console.log("Got Token:",token.token);
+});
+
+    $ionicAnalytics.register();
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -30,7 +42,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicAppProvider) {
+
+  $ionicAppProvider.identify({
+    // The App ID for the server
+    app_id: '38d3dd54',
+    // The API key all services will use for this app
+    api_key: '8989d127b3c50dec67aff1686297fe5c03caf1601c4e2346',
+    dev_push: true
+    // The GCM project number
+   //gcm_id: 'infinite-cache-92312'
+  });
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
