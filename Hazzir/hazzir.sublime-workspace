@@ -55,7 +55,7 @@
 			"file": "www/js/app.js",
 			"settings":
 			{
-				"buffer_size": 3391,
+				"buffer_size": 3530,
 				"line_ending": "Windows"
 			}
 		},
@@ -63,7 +63,7 @@
 			"file": "www/index.html",
 			"settings":
 			{
-				"buffer_size": 1893,
+				"buffer_size": 1945,
 				"line_ending": "Windows"
 			}
 		},
@@ -79,7 +79,7 @@
 			"file": "www/css/style.css",
 			"settings":
 			{
-				"buffer_size": 1897,
+				"buffer_size": 2448,
 				"line_ending": "Windows"
 			}
 		},
@@ -87,7 +87,7 @@
 			"file": "www/templates/landing.html",
 			"settings":
 			{
-				"buffer_size": 816,
+				"buffer_size": 1201,
 				"line_ending": "Windows"
 			}
 		},
@@ -95,7 +95,7 @@
 			"file": "www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 3092,
+				"buffer_size": 3870,
 				"line_ending": "Windows"
 			}
 		},
@@ -103,7 +103,7 @@
 			"file": "www/js/services.js",
 			"settings":
 			{
-				"buffer_size": 1319,
+				"buffer_size": 1846,
 				"line_ending": "Windows"
 			}
 		}
@@ -141,11 +141,7 @@
 	"expanded_folders":
 	[
 		"/C/Users/A2K/apps/github/apps/Hazzir",
-		"/C/Users/A2K/apps/github/apps/Hazzir/www",
-		"/C/Users/A2K/apps/github/apps/Hazzir/www/css",
-		"/C/Users/A2K/apps/github/apps/Hazzir/www/js",
-		"/C/Users/A2K/apps/github/apps/Hazzir/www/lib",
-		"/C/Users/A2K/apps/github/apps/Hazzir/www/templates"
+		"/C/Users/A2K/apps/github/apps/Hazzir/www"
 	],
 	"file_history":
 	[
@@ -214,15 +210,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3391,
+						"buffer_size": 3530,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								850,
-								850
+								0,
+								0
 							]
 						],
 						"settings":
@@ -244,15 +240,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1893,
+						"buffer_size": 1945,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								633,
-								633
+								0,
+								0
 							]
 						],
 						"settings":
@@ -304,15 +300,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1897,
+						"buffer_size": 2448,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								970,
-								970
+								0,
+								0
 							]
 						],
 						"settings":
@@ -334,15 +330,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 816,
+						"buffer_size": 1201,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								643,
-								643
+								0,
+								0
 							]
 						],
 						"settings":
@@ -364,15 +360,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3092,
+						"buffer_size": 3870,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								32,
-								33
+								0,
+								0
 							]
 						],
 						"settings":
@@ -394,7 +390,7 @@
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1319,
+						"buffer_size": 1846,
 						"regions":
 						{
 						},

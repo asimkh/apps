@@ -9,8 +9,8 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
 .controller("LoginCtrl", function($scope) {
 
   console.log("assets")
-  $scope.logoSrc = '/img/mob-logo.png';
-  $scope.bgSrc = '/img/mob-background.png';
+  $scope.logoSrc = 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/mob-logo.png';
+  $scope.bgSrc = 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/mob-background.png';
   $scope.descTxt = "Find the service people";
   $scope.loginTxt = "Login";
   
