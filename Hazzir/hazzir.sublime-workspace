@@ -100,10 +100,13 @@
 			}
 		},
 		{
+			"contents": "angular.module('starter.services', [])\n\n.factory('Chats', function() {\n  // Might use a resource here that returns a JSON array\n\n  // Some fake testing data\n  var users = [{\n    id: 0,\n    name: 'Jasam Kim',\n    desc: 'Creative/Web Developer',\n    perH: '$230/hour',\n    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',\n    face: 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/thumb-m.png'\n  }, {\n    id: 1,\n    name: 'Dolly Manny',\n    desc: 'Creative Director',\n    perH: '$230/hour',\n    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',\n    face: 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/thumb-f.png'\n  }, {\n    id: 2,\n    name: 'Dominic',\n    desc: 'Art Director',\n    perH: '$230/hour',\n    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',\n    face: 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/thumb-m.png'\n  }, {\n    id: 3,\n    name: 'Ahmad Qureshi',\n    desc: 'FrontEnd Developer',\n    perH: '$230/hour',\n    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',\n    face: 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/thumb-m.png'\n  }, {\n    id: 4,\n    name: 'Rahul K',\n    desc: 'BackEnd Developer',\n    perH: '$230/hour',\n    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',\n    face: 'img/thumb-m.png'\n  }];\n\n  return {\n    all: function() {\n      return users;\n    },\n    remove: function(chat) {\n      users.splice(users.indexOf(chat), 1);\n    },\n    get: function(chatId) {\n      for (var i = 0; i < users.length; i++) {\n        if (users[i].id === parseInt(chatId)) {\n          return users[i];\n        }\n      }\n      return null;\n    }\n  };\n});",
 			"file": "www/js/services.js",
+			"file_size": 2220,
+			"file_write_time": 130903718189447660,
 			"settings":
 			{
-				"buffer_size": 2161,
+				"buffer_size": 2097,
 				"line_ending": "Windows"
 			}
 		}
@@ -391,15 +394,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2161,
+						"buffer_size": 2097,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1795,
-								1795
+								1475,
+								1554
 							]
 						],
 						"settings":
