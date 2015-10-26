@@ -42,16 +42,19 @@ push.register(function(token) {
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicAppProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicAppProvider, $ionicConfigProvider) {
+
+  $ionicConfigProvider.tabs.position('bottom'); // other values: top
+  $ionicConfigProvider.tabs.style("standard"); 
 
   $ionicAppProvider.identify({
     // The App ID for the server
     app_id: '38d3dd54',
     // The API key all services will use for this app
     api_key: '8989d127b3c50dec67aff1686297fe5c03caf1601c4e2346',
-    dev_push: true
+    dev_push: true,
     // The GCM project number
-   //gcm_id: 'infinite-cache-92312'
+   gcm_id: 'infinite-cache-92312'
   });
 
   // Ionic uses AngularUI Router which uses the concept of states

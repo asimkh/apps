@@ -4,44 +4,54 @@ angular.module('starter.services', [])
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  var users = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    name: 'Jasam Kim',
+    desc: 'Creative/Web Developer',
+    perH: '$230/hour',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
+    face: '/img/thumb-m.png'
   }, {
     id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+    name: 'Dolly Manny',
+    desc: 'Creative Director',
+    perH: '$230/hour',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    face: '/img/thumb-f.png'
   }, {
     id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+    name: 'Dominic',
+    desc: 'Art Director',
+    perH: '$230/hour',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    face: '/img/thumb-m.png'
   }, {
     id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
+    name: 'Ahmad Qureshi',
+    desc: 'FrontEnd Developer',
+    perH: '$230/hour',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    face: '/img/thumb-m.png'
   }, {
     id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
+    name: 'Rahul K',
+    desc: 'BackEnd Developer',
+    perH: '$230/hour',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    face: '/img/thumb-m.png'
   }];
 
   return {
     all: function() {
-      return chats;
+      return users;
     },
     remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+      users.splice(users.indexOf(chat), 1);
     },
     get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+      for (var i = 0; i < users.length; i++) {
+        if (users[i].id === parseInt(chatId)) {
+          return users[i];
         }
       }
       return null;

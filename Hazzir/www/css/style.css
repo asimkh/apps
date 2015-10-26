@@ -14,14 +14,26 @@ body{
 }
 */
 /* ======== */
-
+.body{
+  font-family: "Roboto";
+}
 .hpaddding-100{padding-top:180px;}
 .bg-pane{background:url(../../img/mob-background.png) no-repeat center center fixed;
   -webkit-background-size:cover;-moz-background-size:cover;background-size:cover;}
 .logo-login{height:120px;width:120px;display:block;margin:0 auto;}
 .login-text p{color:#00baff;font-size:18px;margin:0 auto;padding-bottom:20px;}
-.login-button{border:solid 1px #00baff !important;color:#00baff !important;  width: 35%;
-  max-width: 35%;}
+.login-button{border:solid 1px #00baff !important;color:#00baff !important;  width: 220px;
+  }
+.update-button{border:solid 1px #00baff !important;color:#00baff !important;  width: 220px;}
+
+div, p, .item p{color:#bcc1c4; font-size: 14px;}
+h2, .item, .item h2{font-size: 23px; font-weight: bold; color:#bcc1c4;}
+.item-complex .item-content, .item {background-color: #3e4454;}
+.item{border-color: #353744; border-width: 2px;}
+.list-bg{background-color: #353744;}
+.perH{color: #be6556; font-weight: bold; font-size: 18px;}
+.ion-tabs.tabs-color-active-positive .tab-item{color:#bcc1c4; }
+.sharing{color: #be6556; font-size: 14px;}
 
 
 

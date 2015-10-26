@@ -25,10 +25,24 @@
           <button class="button button-outline login-button" ng-click="gotoState()">
        {{loginTxt}}
           </button>
+
           </center>
       </div>
     </div>
 
+      <div class="row">
+      <div class="col">
+      <center>
+
+          <button class="button button-primary button-outline update-button " ng-click="checkForUpdates()">
+  Check for updates
+</button>
+<button class="button button-stable button-block button-pulse update-button" ng-if="hasUpdate" ng-click="doUpdate()">
+  download update
+</button>
+  </center>
+      </div>
+    </div>
     </ion-content>
    
 </ion-view>
