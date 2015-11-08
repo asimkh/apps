@@ -1,11 +1,21 @@
 <ion-view view-title="List" class="list-bg">
-  <ion-content>
+   <div class="bar bar-header">
+   <button class="button button ion-navicon "></button>
+  
+</div>
+  <ion-content class="header-content">
     <ion-list>
       <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/list/{{chat.id}}">
         <img ng-src="{{chat.face}}">
         <h2>{{chat.name}}</h2>
         <p>{{chat.desc}}</p>
         <p>{{chat.details}} </p>
+       
+        <span class="item-note left-details"><span class="left-details-cc">{{chat.perH}}</span>, {{chat.addCity}}, {{chat.addCountry}} </span>
+       
+
+        
+
         <i class="icon ion-chevron-right icon-accessory"></i>
 
         <ion-option-button class="button-assertive" ng-click="remove(chat)">

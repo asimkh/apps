@@ -2,43 +2,84 @@ angular.module('starter.services', [])
 
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
-
+ 
   // Some fake testing data
+
+  /* https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www */
+
   var users = [{
     id: 0,
     name: 'Jasam Kim',
     desc: 'Creative/Web Developer',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
-    face: 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/thumb-m.png'
+    face: '/img/thumb-m.png',
+    addTime: '30 mins',
+    addCity: 'Dubai',
+    addCountry: 'United Arab Emirates'
+
   }, {
     id: 1,
     name: 'Dolly Manny',
     desc: 'Creative Director',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/thumb-f.png'
+    face: '/img/thumb-f.png',
+    addTime: '30 mins',
+    addCity: 'Dubai',
+    addCountry: 'United Arab Emirates'
   }, {
     id: 2,
     name: 'Dominic',
     desc: 'Art Director',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/thumb-m.png'
+    face: '/img/thumb-m.png',
+     addTime: '30 mins',
+    addCity: 'Dubai',
+    addCountry: 'United Arab Emirates'
   }, {
     id: 3,
     name: 'Ahmad Qureshi',
     desc: 'FrontEnd Developer',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/thumb-m.png'
+    face: '/img/thumb-m.png',
+     addTime: '30 mins',
+    addCity: 'Dubai',
+    addCountry: 'United Arab Emirates'
   }, {
     id: 4,
     name: 'Rahul K',
     desc: 'BackEnd Developer',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: 'https://raw.githubusercontent.com/asimkh/apps/master/Hazzir/www/img/thumb-m.png'
+    face: '/img/thumb-m.png',
+     addTime: '30 mins',
+    addCity: 'Dubai',
+    addCountry: 'United Arab Emirates'
+  },
+  {
+    id: 5,
+    name: 'Rahul K',
+    desc: 'BackEnd Developer',
+    perH: '$230/hour',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    face: '/img/thumb-m.png',
+     addTime: '30 mins',
+    addCity: 'Dubai',
+    addCountry: 'United Arab Emirates'
+  },
+  {
+    id: 6,
+    name: 'Rahul K',
+    desc: 'BackEnd Developer',
+    perH: '$230/hour',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    face: '/img/thumb-m.png',
+     addTime: '30 mins',
+    addCity: 'Dubai',
+    addCountry: 'United Arab Emirates'
   }];
 
   return {
