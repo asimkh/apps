@@ -13,7 +13,7 @@ angular.module('starter.services', [])
     desc: 'Creative/Web Developer',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
-    face: '/img/thumb-m.png',
+    face: '../img/thumb-m.png',
     addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
@@ -24,7 +24,7 @@ angular.module('starter.services', [])
     desc: 'Creative Director',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: '/img/thumb-f.png',
+    face: '../img/thumb-f.png',
     addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
@@ -34,7 +34,7 @@ angular.module('starter.services', [])
     desc: 'Art Director',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: '/img/thumb-m.png',
+    face: '../img/thumb-m.png',
      addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
@@ -44,7 +44,7 @@ angular.module('starter.services', [])
     desc: 'FrontEnd Developer',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: '/img/thumb-m.png',
+    face: '../img/thumb-m.png',
      addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
@@ -54,7 +54,7 @@ angular.module('starter.services', [])
     desc: 'BackEnd Developer',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: '/img/thumb-m.png',
+    face: '../img/thumb-m.png',
      addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
@@ -65,7 +65,7 @@ angular.module('starter.services', [])
     desc: 'BackEnd Developer',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: '/img/thumb-m.png',
+    face: '../img/thumb-m.png',
      addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
@@ -76,7 +76,7 @@ angular.module('starter.services', [])
     desc: 'BackEnd Developer',
     perH: '$230/hour',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: '/img/thumb-m.png',
+    face: '../img/thumb-m.png',
      addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'

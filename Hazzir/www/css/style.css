@@ -31,12 +31,12 @@ h2, .item, .item h2{/*font-size: 23px;*/ font-weight: bold; color:#bcc1c4;}
 .item-complex .item-content, .item {background-color: #3e4454;}
 .item{border-color: #353744; border-width: 2px;}
 .list-bg{background-color: #353744;}
-.perH{color: #be6556; font-weight: bold; font-size: 18px;}
+.perH{color: #be6556; font-weight: bold; /*font-size: 18px;*/}
 .ion-tabs.tabs-color-active-positive .tab-item{color:#bcc1c4; }
-.sharing{color: #be6556; font-size: 14px;}
+.sharing{color: #be6556; /*font-size: 14px;*/}
 .item-thumbnail-left, .item-thumbnail-left .item-content{min-height: 90px; padding-top: 5px;}
-.left-details{color: #12c4af; font-size: 14px; position: relative;}
-.left-details-cc{color: #be6556;  font-size: 18px; /* padding-right:250px; position: relative;*/}
+.left-details{color: #12c4af; /*font-size: 14px; */position: relative;}
+.left-details-cc{color: #be6556;  /*font-size: 18px;*/ /* padding-right:250px; position: relative;*/}
 .header-content{padding-top: 40px; }
 .tabs, .bar-header{background-color: #3e4454;}
 .ion-ios-information-outline, .ion-ios-list-outline, .ion-ios-settings, .ion-ios-reload{color: #ffffff;}

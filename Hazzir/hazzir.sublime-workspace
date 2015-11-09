@@ -4,12 +4,20 @@
 		"selected_items":
 		[
 			[
-				"p",
-				"padding-bottom"
+				"ionic",
+				"Ionic"
+			],
+			[
+				"bo",
+				"border"
 			],
 			[
 				"b",
-				"background-image"
+				"border-color"
+			],
+			[
+				"p",
+				"padding-bottom"
 			],
 			[
 				"min",
@@ -67,23 +75,15 @@
 			"file": "www/templates/menu.html",
 			"settings":
 			{
-				"buffer_size": 2826,
+				"buffer_size": 4601,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "www/index.html",
+			"file": "www/templates/dashboard.html",
 			"settings":
 			{
-				"buffer_size": 1978,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/templates/tab-dash.html",
-			"settings":
-			{
-				"buffer_size": 1439,
+				"buffer_size": 1066,
 				"line_ending": "Windows"
 			}
 		},
@@ -91,26 +91,31 @@
 			"file": "www/css/style.css",
 			"settings":
 			{
-				"buffer_size": 3034,
-				"line_ending": "Windows"
+				"buffer_size": 3796,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])\n\n.controller(\"AppCtrl\", function($scope) {\n  \n  \n})\n\n\n.controller(\"LoginCtrl\", function($scope) {\n\n  console.log(\"assets\")\n  $scope.logoSrc = '/img/mob-logo.png';\n  $scope.bgSrc = '/img/mob-background.png';\n  $scope.descTxt = \"Find the service people\";\n  $scope.loginTxt = \"Login\";\n  \n/*\n  if (window.matchMedia(\"(min-width: 400px)\").matches) {\n    $scope.logoSrc = '/img/mob-logo.png';\n} else {\n    $scope.logoSrc = '/img/mob-logox.png';\n}\n  */\n  \n})\n\n.controller('AppController', function($scope, $ionicSideMenuDelegate) {\n\n  console.log(\"menu\");\n\n  $scope.toggleLeft = function() {\n    $ionicSideMenuDelegate.toggleLeft();\n  };\n\n\n\n\n})\n\n.controller('NavController', function($scope, $ionicSideMenuDelegate) {\n      $scope.toggleLeft = function() {\n        $ionicSideMenuDelegate.toggleLeft();\n      };\n    })\n\n\n.controller('TabCtrl', function($scope,  $state){\n\n\n   \n\n   $scope.gotoHome = function() {\n    console.log('logout');\n     $state.go('home', {url: 'templates/landing.html'})\n  }\n\n  $scope.gotoDash = function() {\n    console.log('tab > Dash');\n     \n  }\n\n  $scope.gotoList = function() {\n    console.log('tab > List');\n     \n  }\n\n  $scope.gotoSettings = function() {\n    console.log('tab > Settings');\n     \n  }\n})\n\n.controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal, $timeout, $state, $ionicSideMenuDelegate) {\n\n  //$scope.session = Session.get({sessionId: $stateParams.sessionId});\n //$scope.$root.tabsHidden = \"tabs-hide\";\n/*\n scope.gotoHome = function() {\n   console.log(\"tab > Home\")\n   //$state.go('tab.chats');\n   $state.go('/', {url: 'templates/landing.html'})\n  \n  };\n  */\n\n\n\n  $scope.toggleLeftSideMenu = function() {\n    $ionicSideMenuDelegate.toggleLeft();\n  };\n\n// Create the login modal that we will use later\n  $ionicModal.fromTemplateUrl('templates/menu.html', {\n    scope: $scope\n  }).then(function(modal) {\n    $scope.modal = modal;\n  });\n\n  // Triggered in the login modal to close it\n  $scope.closeLogin = function() {\n    $scope.modal.hide();\n  };\n\n  // Open the login modal\n  $scope.login = function() {\n    $scope.modal.show();\n  };\n/* \n$scope.toggleProjects = function() {\n    $ionicSideMenuDelegate.toggleLeft();\n  };*/\n\n  // Perform the login action when the user submits the login form\n  /*\n  $scope.doLogin = function() {\n    console.log('Doing login', $scope.loginData);\n\n    // Simulate a login delay. Remove this and replace with your login\n    // code if using a login system\n    $timeout(function() {\n      $scope.closeLogin();\n    }, 1000);\n  };\n*/\n \n  $scope.fbLogin = function () {\n    ngFB.login({scope: 'public_profile, email, user_friends'}).then(\n        function (response) {\n            if (response.status === 'connected') {\n                console.log('Facebook login succeeded');\n                $scope.closeLogin();\n            } else {\n                alert('Facebook login failed');\n            }\n        });\n};\n})\n\n\n.controller('ChatsCtrl', function($scope, Chats) {\n  // With the new view caching in Ionic, Controllers are only called\n  // when they are recreated or on app start, instead of every page change.\n  // To listen for when this page is active (for example, to refresh data),\n  // listen for the $ionicView.enter event:\n  //\n  //$scope.$on('$ionicView.enter', function(e) {\n  //});\n\n  $scope.chats = Chats.all();\n  $scope.remove = function(chat) {\n    Chats.remove(chat);\n  };\n})\n\n.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {\n  $scope.chat = Chats.get($stateParams.chatId);\n})\n\n.controller('landingCtrl', function($scope, $stateParams, $state) {\n\n// Update app code with new release from Ionic Deploy\n  $scope.doUpdate = function() {\n    deploy.update().then(function(res) {\n      console.log('Ionic Deploy: Update Success! ', res);\n    }, function(err) {\n      console.log('Ionic Deploy: Update error! ', err);\n    }, function(prog) {\n      console.log('Ionic Deploy: Progress... ', prog);\n    });\n  };\n\n\n// Check Ionic Deploy for new code\n  $scope.checkForUpdates = function() {\n    console.log('Ionic Deploy: Checking for updates');\n    deploy.check().then(function(hasUpdate) {\n      console.log('Ionic Deploy: Update available: ' + hasUpdate);\n      $scope.hasUpdate = hasUpdate;\n    }, function(err) {\n      console.error('Ionic Deploy: Unable to check for updates', err);\n    });\n  }\n//var deploy = new Ionic.Deploy();\n\n  \n\n$scope.gotoState = function() {\n   console.log(\"login\")\n   //$state.go('tab.chats');\n   $state.go('tab.dash', {url: 'templates/tab-dash.html'})\n  \n  };\n  \n\n})\n\n\n\n.controller('AccountCtrl', function($scope) {\n  /*ngFB.api({\n        path: '/me',\n        params: {fields: 'id,name'}\n    }).then(\n        function (user) {\n            $scope.user = user;\n        },\n        function (error) {\n            alert('Facebook error: ' + error.error_description);\n        });\n*/\n\n  $scope.settings = {\n    enableFriends: true\n  };\n});\n\n\n\n\n\n",
-			"file": "www/js/controllers.js",
-			"file_size": 5183,
-			"file_write_time": 130914640440000000,
+			"file": "www/templates/tab-chats.html",
 			"settings":
 			{
-				"buffer_size": 4961,
-				"line_ending": "Windows"
+				"buffer_size": 1027,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "www/templates/tabs.html",
+			"file": "www/templates/chat-detail.html",
 			"settings":
 			{
-				"buffer_size": 988,
+				"buffer_size": 1460,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/templates/landing.html",
+			"settings":
+			{
+				"buffer_size": 1205,
 				"line_ending": "Unix"
 			}
 		},
@@ -118,7 +123,23 @@
 			"file": "www/js/app.js",
 			"settings":
 			{
-				"buffer_size": 3537,
+				"buffer_size": 3542,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/js/controllers.js",
+			"settings":
+			{
+				"buffer_size": 4942,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/js/services.js",
+			"settings":
+			{
+				"buffer_size": 2935,
 				"line_ending": "Unix"
 			}
 		}
@@ -157,11 +178,18 @@
 	[
 		"/Users/agha.asim/asimkh/apps/Hazzir",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/css",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/js",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates"
 	],
 	"file_history":
 	[
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/settings.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/css/style.css",
+		"/Users/agha.asim/asimkh/apps/Hazzir/config.xml",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/index.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/controllers.js",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/landing.html",
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/templates/tab-account.html",
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/js/services.js",
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/templates/chat-detail.html",
@@ -174,14 +202,11 @@
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/js/app.js",
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/templates/tabs.html",
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/templates/tab-dash.html",
-		"/Users/agha.asim/asimkh/apps/Hazzir/config.xml",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/ngopenfb.js",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/openfb.js",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/tab-dash.html",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/controllers.js",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/services.js",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/app.js",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/index.html",
 		"/Users/agha.asim/Downloads/html5_configurable_example/configurable_example.html",
 		"/Volumes/Sites/fw-health/v4/_www/js/scripts.js",
 		"/Users/agha.asim/asimkh/go/scr/hazzir/webservice.go",
@@ -203,6 +228,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"orientation",
 			"ionSideMenuConten",
 			"toggleLeft",
 			"ionNavBar",
@@ -224,7 +250,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -233,15 +259,45 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2826,
+						"buffer_size": 4601,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								659,
-								659
+								917,
+								917
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 486.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "www/templates/dashboard.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1066,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								67,
+								150
 							]
 						],
 						"settings":
@@ -254,24 +310,54 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "www/index.html",
+					"buffer": 2,
+					"file": "www/css/style.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1978,
+						"buffer_size": 3796,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1453,
-								1453
+								2024,
+								2028
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "www/templates/tab-chats.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1027,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								29,
+								175
 							]
 						],
 						"settings":
@@ -288,20 +374,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "www/templates/tab-dash.html",
+					"buffer": 4,
+					"file": "www/templates/chat-detail.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1439,
+						"buffer_size": 1460,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								320,
-								320
+								377,
+								377
 							]
 						],
 						"settings":
@@ -311,87 +397,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "www/css/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3034,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2102,
-								2102
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "www/js/controllers.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4961,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2170,
-								2170
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 431.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "www/templates/tabs.html",
-					"semi_transient": true,
+					"file": "www/templates/landing.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 988,
+						"buffer_size": 1205,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								701,
+								701
 							]
 						],
 						"settings":
@@ -404,24 +430,90 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 8,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
 				{
 					"buffer": 6,
 					"file": "www/js/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3537,
+						"buffer_size": 3542,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								857,
-								857
+								2748,
+								2748
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 2.0,
+						"translation.y": 1363.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "www/js/controllers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4942,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								76,
+								76
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 4.0,
+						"translation.y": 2525.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "www/js/services.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2935,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2482,
+								2482
 							]
 						],
 						"settings":
@@ -431,10 +523,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 750.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -442,11 +534,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 25.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -457,11 +549,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -479,7 +578,7 @@
 	"project": "hazzir.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
