@@ -32,12 +32,12 @@ navigation history that also transitions its views in and out.
     <ion-side-menu-content ng-controller="NavController">
 
       <ion-nav-bar class="nav-title-slide-ios7 bar-clear menu-color">
-        <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i></ion-nav-back-button>
+       <!-- <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i></ion-nav-back-button> -->
 
       </ion-nav-bar>
 
       <!-- app view -->
-      <ion-nav-view name="app-dashboard" animation="slide-left-right"></ion-nav-view>
+      <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
 
     </ion-side-menu-content>
     <ion-side-menu side="left" ng-controller="NavController">
@@ -46,14 +46,31 @@ navigation history that also transitions its views in and out.
         <h1 class="title">Menu</h1>
       </ion-header-bar>
       <ion-content has-header="true">
+<!--
+       <ion-list>
+        <ion-item nav-clear menu-close href="#/home/settings">
+            Search
+        </ion-item>
+
+        <ion-item nav-clear menu-close href="#/home/about">
+            Playlists
+        </ion-item>
+    </ion-list>
+
+    -->
+    
         <ul class="list">
+          
           <a  ui-sref="app.dash" nav-clear class="item item-icon-left" ng-click="toggleLeft()"><i class="icon ion-ios-home-outline"></i>Home</a>
 
           <a ui-sref="app.list" nav-clear class="item item-icon-left" ng-click="toggleLeft()"><i class="icon ion-ios-paper-outline"></i>list</a>
+
           <a ui-sref="app.settings" nav-clear class="item item-icon-left" ng-click="toggleLeft()"><i class="icon ion-ios-gear-outline"></i>settings</a>
 
           <a ui-sref="home" nav-clear class="item item-icon-left" ng-click="toggleLeft()"><i class="icon ion-ios-close-empty"></i>Close</a>
         </ul>
+
+       
       </ion-content>
       <!--
       <ion-footer-bar class="bar bar-footer bar-hz bar-balanced" >

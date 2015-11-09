@@ -18,8 +18,7 @@ body{
   font-family: "Roboto";
 }
 .hpaddding-100{padding-top:180px;}
-.bg-pane{background:url(../img/mob-background.png) no-repeat center center fixed;
-  -webkit-background-size:cover;-moz-background-size:cover;background-size:cover;}
+
 .logo-login{height:120px;width:120px;display:block;margin:0 auto; background:url(../img/mob-logo.png) no-repeat;
   -webkit-background-size:cover;-moz-background-size:cover;background-size:cover; border: none;}
 .login-text p{color:#00baff;font-size:18px;margin:0 auto;padding-bottom:20px;}
@@ -60,6 +59,22 @@ h2, .item, .item h2{/*font-size: 23px;*/ font-weight: bold; color:#bcc1c4;}
 }
 
 /* ======== */
+
+.bg-pane{background:url(../img/mob-background.png)no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  /*.bg-pane {
+ -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: none;
+  }
+  */
+}
 
 /*
 .h-Aligner {

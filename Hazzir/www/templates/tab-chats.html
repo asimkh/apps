@@ -1,9 +1,18 @@
-<ion-view view-title="List" class="list-bg">
+<ion-view class="list-bg">
+
+ <ion-nav-buttons side="left">
+
+        <button menu-toggle="left" class="button button-clear icon ion-navicon"></button>
+
+      </ion-nav-buttons>
+
+     <!--
    <div class="bar bar-header">
    <button class="button button ion-navicon "></button>
   
 </div>
-  <ion-content class="header-content">
+-->
+  <ion-content>
     <ion-list>
       <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/list/{{chat.id}}">
         <img ng-src="{{chat.face}}">

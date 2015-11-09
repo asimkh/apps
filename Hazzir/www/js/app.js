@@ -68,7 +68,7 @@ push.register(function(token) {
     url: '/home',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: "AppController"
+    controller: "NavController"
   })
 
   // setup an abstract state for the tabs directive
@@ -87,7 +87,7 @@ push.register(function(token) {
   .state('app.dash', {
     url: '/about',
     views: {
-      'app-dashboard': {
+      'menuContent': {
         templateUrl: 'templates/dashboard.html',
         controller: 'DashCtrl'
       }
@@ -98,12 +98,13 @@ push.register(function(token) {
   .state('app.list', {
       url: '/list',
       views: {
-        'tab-chats': {
+        'menuContent': {
           templateUrl: 'templates/tab-chats.html',
           controller: 'ChatsCtrl'
         }
       }
     })
+
     .state('tab.chat-detail', {
       url: '/list/:chatId',
       views: {
@@ -117,7 +118,7 @@ push.register(function(token) {
   .state('app.settings', {
     url: '/settings',
     views: {
-      'app-settings': {
+      'menuContent': {
         templateUrl: 'templates/settings.html',
         controller: 'AccountCtrl'
       }

@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
+angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic'])
 
 .controller("AppCtrl", function($scope) {
   
@@ -24,23 +24,13 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
   
 })
 
-.controller('AppController', function($scope, $ionicSideMenuDelegate) {
-
-  console.log("menu");
-
-  $scope.toggleLeft = function() {
-    $ionicSideMenuDelegate.toggleLeft();
-  };
-
-
-
-
-})
-
+/* ---- menu controller -- */
 .controller('NavController', function($scope, $ionicSideMenuDelegate) {
       $scope.toggleLeft = function() {
         $ionicSideMenuDelegate.toggleLeft();
       };
+
+
     })
 
 
@@ -73,6 +63,7 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
   }
 })
 
+/* ---- dashboard  -- */
 .controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal, $timeout, $state, $ionicSideMenuDelegate) {
 
   //$scope.session = Session.get({sessionId: $stateParams.sessionId});
@@ -87,10 +78,6 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
   */
 
 
-
-  $scope.toggleLeftSideMenu = function() {
-    $ionicSideMenuDelegate.toggleLeft();
-  };
 
 // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/menu.html', {
@@ -159,6 +146,7 @@ $scope.toggleProjects = function() {
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
+/* ---- landing page controller -- */
 .controller('landingCtrl', function($scope, $stateParams, $state) {
 
 // Update app code with new release from Ionic Deploy
@@ -190,7 +178,7 @@ $scope.toggleProjects = function() {
 $scope.gotoState = function() {
    console.log("login")
    //$state.go('tab.chats');
-   $state.go('tab.dash', {url: 'templates/tab-dash.html'})
+   $state.go('app.settings', {url: 'templates/settings.html'})
   
   };
   
@@ -200,6 +188,12 @@ $scope.gotoState = function() {
 
 
 .controller('AccountCtrl', function($scope, $ionicSideMenuDelegate) {
+
+   console.log("settings")
+   //$state.go('tab.chats');
+   //$state.go('tab.dash', {url: 'templates/tab-dash.html'})
+  
+ 
   /*ngFB.api({
         path: '/me',
         params: {fields: 'id,name'}
