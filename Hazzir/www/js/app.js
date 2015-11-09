@@ -16,15 +16,16 @@ angular.module('starter', ['ionic',  'starter.services', 'ionic.service.core', '
   ngFB.init({appId: '970200256375080'});
 
   $ionicPlatform.ready(function() {
+/*
+   Ionic.io();
 
-    Ionic.io();
-
-var push = new Ionic.Push({});
+   var push = new Ionic.Push({});
 
 push.register(function(token) {
   // Log out your device token (Save this!)
   console.log("Got Token:",token.token);
 });
+*/
 
     $ionicAnalytics.register();
 
@@ -64,7 +65,7 @@ push.register(function(token) {
   $stateProvider
 
   .state('app', {
-    url: '/app',
+    url: '/home',
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: "AppController"
@@ -83,18 +84,18 @@ push.register(function(token) {
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
+  .state('app.dash', {
     url: '/about',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
+      'app-dashboard': {
+        templateUrl: 'templates/dashboard.html',
         controller: 'DashCtrl'
       }
     }
   })
 
 
-  .state('tab.chats', {
+  .state('app.list', {
       url: '/list',
       views: {
         'tab-chats': {
@@ -113,11 +114,11 @@ push.register(function(token) {
       }
     })
 
-  .state('tab.account', {
+  .state('app.settings', {
     url: '/settings',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
+      'app-settings': {
+        templateUrl: 'templates/settings.html',
         controller: 'AccountCtrl'
       }
     }

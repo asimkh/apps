@@ -67,23 +67,23 @@
 			"file": "www/templates/menu.html",
 			"settings":
 			{
-				"buffer_size": 1457,
+				"buffer_size": 2826,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "www/js/app.js",
+			"file": "www/index.html",
 			"settings":
 			{
-				"buffer_size": 3530,
-				"line_ending": "Windows"
+				"buffer_size": 1978,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "www/templates/tab-dash.html",
 			"settings":
 			{
-				"buffer_size": 1269,
+				"buffer_size": 1439,
 				"line_ending": "Windows"
 			}
 		},
@@ -96,11 +96,30 @@
 			}
 		},
 		{
+			"contents": "angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])\n\n.controller(\"AppCtrl\", function($scope) {\n  \n  \n})\n\n\n.controller(\"LoginCtrl\", function($scope) {\n\n  console.log(\"assets\")\n  $scope.logoSrc = '/img/mob-logo.png';\n  $scope.bgSrc = '/img/mob-background.png';\n  $scope.descTxt = \"Find the service people\";\n  $scope.loginTxt = \"Login\";\n  \n/*\n  if (window.matchMedia(\"(min-width: 400px)\").matches) {\n    $scope.logoSrc = '/img/mob-logo.png';\n} else {\n    $scope.logoSrc = '/img/mob-logox.png';\n}\n  */\n  \n})\n\n.controller('AppController', function($scope, $ionicSideMenuDelegate) {\n\n  console.log(\"menu\");\n\n  $scope.toggleLeft = function() {\n    $ionicSideMenuDelegate.toggleLeft();\n  };\n\n\n\n\n})\n\n.controller('NavController', function($scope, $ionicSideMenuDelegate) {\n      $scope.toggleLeft = function() {\n        $ionicSideMenuDelegate.toggleLeft();\n      };\n    })\n\n\n.controller('TabCtrl', function($scope,  $state){\n\n\n   \n\n   $scope.gotoHome = function() {\n    console.log('logout');\n     $state.go('home', {url: 'templates/landing.html'})\n  }\n\n  $scope.gotoDash = function() {\n    console.log('tab > Dash');\n     \n  }\n\n  $scope.gotoList = function() {\n    console.log('tab > List');\n     \n  }\n\n  $scope.gotoSettings = function() {\n    console.log('tab > Settings');\n     \n  }\n})\n\n.controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal, $timeout, $state, $ionicSideMenuDelegate) {\n\n  //$scope.session = Session.get({sessionId: $stateParams.sessionId});\n //$scope.$root.tabsHidden = \"tabs-hide\";\n/*\n scope.gotoHome = function() {\n   console.log(\"tab > Home\")\n   //$state.go('tab.chats');\n   $state.go('/', {url: 'templates/landing.html'})\n  \n  };\n  */\n\n\n\n  $scope.toggleLeftSideMenu = function() {\n    $ionicSideMenuDelegate.toggleLeft();\n  };\n\n// Create the login modal that we will use later\n  $ionicModal.fromTemplateUrl('templates/menu.html', {\n    scope: $scope\n  }).then(function(modal) {\n    $scope.modal = modal;\n  });\n\n  // Triggered in the login modal to close it\n  $scope.closeLogin = function() {\n    $scope.modal.hide();\n  };\n\n  // Open the login modal\n  $scope.login = function() {\n    $scope.modal.show();\n  };\n/* \n$scope.toggleProjects = function() {\n    $ionicSideMenuDelegate.toggleLeft();\n  };*/\n\n  // Perform the login action when the user submits the login form\n  /*\n  $scope.doLogin = function() {\n    console.log('Doing login', $scope.loginData);\n\n    // Simulate a login delay. Remove this and replace with your login\n    // code if using a login system\n    $timeout(function() {\n      $scope.closeLogin();\n    }, 1000);\n  };\n*/\n \n  $scope.fbLogin = function () {\n    ngFB.login({scope: 'public_profile, email, user_friends'}).then(\n        function (response) {\n            if (response.status === 'connected') {\n                console.log('Facebook login succeeded');\n                $scope.closeLogin();\n            } else {\n                alert('Facebook login failed');\n            }\n        });\n};\n})\n\n\n.controller('ChatsCtrl', function($scope, Chats) {\n  // With the new view caching in Ionic, Controllers are only called\n  // when they are recreated or on app start, instead of every page change.\n  // To listen for when this page is active (for example, to refresh data),\n  // listen for the $ionicView.enter event:\n  //\n  //$scope.$on('$ionicView.enter', function(e) {\n  //});\n\n  $scope.chats = Chats.all();\n  $scope.remove = function(chat) {\n    Chats.remove(chat);\n  };\n})\n\n.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {\n  $scope.chat = Chats.get($stateParams.chatId);\n})\n\n.controller('landingCtrl', function($scope, $stateParams, $state) {\n\n// Update app code with new release from Ionic Deploy\n  $scope.doUpdate = function() {\n    deploy.update().then(function(res) {\n      console.log('Ionic Deploy: Update Success! ', res);\n    }, function(err) {\n      console.log('Ionic Deploy: Update error! ', err);\n    }, function(prog) {\n      console.log('Ionic Deploy: Progress... ', prog);\n    });\n  };\n\n\n// Check Ionic Deploy for new code\n  $scope.checkForUpdates = function() {\n    console.log('Ionic Deploy: Checking for updates');\n    deploy.check().then(function(hasUpdate) {\n      console.log('Ionic Deploy: Update available: ' + hasUpdate);\n      $scope.hasUpdate = hasUpdate;\n    }, function(err) {\n      console.error('Ionic Deploy: Unable to check for updates', err);\n    });\n  }\n//var deploy = new Ionic.Deploy();\n\n  \n\n$scope.gotoState = function() {\n   console.log(\"login\")\n   //$state.go('tab.chats');\n   $state.go('tab.dash', {url: 'templates/tab-dash.html'})\n  \n  };\n  \n\n})\n\n\n\n.controller('AccountCtrl', function($scope) {\n  /*ngFB.api({\n        path: '/me',\n        params: {fields: 'id,name'}\n    }).then(\n        function (user) {\n            $scope.user = user;\n        },\n        function (error) {\n            alert('Facebook error: ' + error.error_description);\n        });\n*/\n\n  $scope.settings = {\n    enableFriends: true\n  };\n});\n\n\n\n\n\n",
 			"file": "www/js/controllers.js",
+			"file_size": 5183,
+			"file_write_time": 130914640440000000,
 			"settings":
 			{
-				"buffer_size": 4791,
+				"buffer_size": 4961,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/templates/tabs.html",
+			"settings":
+			{
+				"buffer_size": 988,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/js/app.js",
+			"settings":
+			{
+				"buffer_size": 3537,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -136,11 +155,10 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/A2K/apps/github/apps/Hazzir",
-		"/C/Users/A2K/apps/github/apps/Hazzir/www",
-		"/C/Users/A2K/apps/github/apps/Hazzir/www/css",
-		"/C/Users/A2K/apps/github/apps/Hazzir/www/js",
-		"/C/Users/A2K/apps/github/apps/Hazzir/www/templates"
+		"/Users/agha.asim/asimkh/apps/Hazzir",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/js",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates"
 	],
 	"file_history":
 	[
@@ -171,7 +189,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -185,6 +203,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ionSideMenuConten",
+			"toggleLeft",
 			"ionNavBar",
 			"state"
 		],
@@ -204,7 +224,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -213,15 +233,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1457,
+						"buffer_size": 2826,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								199,
-								199
+								659,
+								659
 							]
 						],
 						"settings":
@@ -234,37 +254,37 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "www/js/app.js",
-					"semi_transient": true,
+					"file": "www/index.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3530,
+						"buffer_size": 1978,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1453,
+								1453
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -273,15 +293,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1269,
+						"buffer_size": 1439,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								119,
-								119
+								320,
+								320
 							]
 						],
 						"settings":
@@ -294,7 +314,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -321,10 +341,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -333,15 +353,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4791,
+						"buffer_size": 4961,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1948,
-								1953
+								2170,
+								2170
 							]
 						],
 						"settings":
@@ -351,10 +371,70 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1099.0,
+						"translation.y": 431.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "www/templates/tabs.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 988,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "www/js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3537,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								857,
+								857
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]

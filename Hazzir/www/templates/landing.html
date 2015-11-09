@@ -1,4 +1,5 @@
-<ion-view class="bg-pane" ng-controller="LoginCtrl"  ng-style="{'background-image':'url({{bgSrc}})'}">
+<ion-view title ="HAZZIR" class="bg-pane" ng-controller="LoginCtrl" >
+<!-- ng-style="{'background-image':'url({{bgSrc}})'}" -=->
    
     <ion-content padding="true" >
     <!--
@@ -13,7 +14,7 @@
     -->
    
 <div class="hpaddding-100"></div>
-<img ng-src="{{logoSrc}}" class="logo-login">
+<img class="logo-login">
 <div class="row login-text" >
 <p>{{descTxt}}</p>
 </div>
@@ -22,10 +23,10 @@
      <div class="row">
       <div class="col">
       <center>
-          <button class="button button-outline login-button" ng-click="gotoState()">
-       {{loginTxt}}
-          </button>
-
+          <button class="button button-outline login-button" ui-sref="app.dash">{{loginTxt}}</button>
+          <!--<button class="button button-primary button-outline update-button " ng-click="checkForUpdates()">
+  Check for updates
+</button>
           </center>
       </div>
     </div>
@@ -34,12 +35,10 @@
       <div class="col">
       <center>
 
-          <button class="button button-primary button-outline update-button " ng-click="checkForUpdates()">
-  Check for updates
-</button>
+         
 <button class="button button-stable button-block button-pulse update-button" ng-if="hasUpdate" ng-click="doUpdate()">
   download update
-</button>
+</button>-->
   </center>
       </div>
     </div>

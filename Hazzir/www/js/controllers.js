@@ -37,6 +37,13 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
 
 })
 
+.controller('NavController', function($scope, $ionicSideMenuDelegate) {
+      $scope.toggleLeft = function() {
+        $ionicSideMenuDelegate.toggleLeft();
+      };
+    })
+
+
 
 
 
@@ -101,7 +108,6 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB'])
   $scope.login = function() {
     $scope.modal.show();
   };
-
 /* 
 $scope.toggleProjects = function() {
     $ionicSideMenuDelegate.toggleLeft();
@@ -193,7 +199,7 @@ $scope.gotoState = function() {
 
 
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, $ionicSideMenuDelegate) {
   /*ngFB.api({
         path: '/me',
         params: {fields: 'id,name'}
