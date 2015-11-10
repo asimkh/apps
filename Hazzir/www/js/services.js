@@ -1,5 +1,17 @@
 angular.module('starter.services', [])
 
+.service('formData', function() {
+ return {
+   form: {},
+   getForm: function() {
+     return this.form;
+   },
+   updateForm: function(form) {
+     this.form = form;
+   }
+ }
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
  
@@ -9,9 +21,9 @@ angular.module('starter.services', [])
 
   var users = [{
     id: 0,
-    name: 'Jasam Kim',
-    desc: 'Creative/Web Developer',
-    perH: '$230/hour',
+    name: 'dolor sit',
+    desc: 'adipiscing elit',
+    perH: 'XXXX',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
     face: '../img/thumb-m.png',
     addTime: '30 mins',
@@ -20,64 +32,64 @@ angular.module('starter.services', [])
 
   }, {
     id: 1,
-    name: 'Dolly Manny',
-    desc: 'Creative Director',
-    perH: '$230/hour',
-    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    face: '../img/thumb-f.png',
+    name: 'dolor sit',
+    desc: 'adipiscing elit',
+    perH: 'XXXX',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
+    face: '../img/thumb-m.png',
     addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
   }, {
     id: 2,
-    name: 'Dominic',
-    desc: 'Art Director',
-    perH: '$230/hour',
-    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'dolor sit',
+    desc: 'adipiscing elit',
+    perH: 'XXXX',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
     face: '../img/thumb-m.png',
-     addTime: '30 mins',
+    addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
   }, {
     id: 3,
-    name: 'Ahmad Qureshi',
-    desc: 'FrontEnd Developer',
-    perH: '$230/hour',
-    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'dolor sit',
+    desc: 'adipiscing elit',
+   perH: 'XXXX',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
     face: '../img/thumb-m.png',
-     addTime: '30 mins',
+    addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
   }, {
     id: 4,
-    name: 'Rahul K',
-    desc: 'BackEnd Developer',
-    perH: '$230/hour',
-    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'dolor sit',
+    desc: 'adipiscing elit',
+    perH: 'XXXX',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
     face: '../img/thumb-m.png',
-     addTime: '30 mins',
+    addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
   },
   {
     id: 5,
-    name: 'Rahul K',
-    desc: 'BackEnd Developer',
-    perH: '$230/hour',
-    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'dolor sit',
+    desc: 'adipiscing elit',
+    perH: 'XXXX',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
     face: '../img/thumb-m.png',
-     addTime: '30 mins',
+    addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
   },
   {
     id: 6,
-    name: 'Rahul K',
-    desc: 'BackEnd Developer',
-    perH: '$230/hour',
-    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    name: 'dolor sit',
+    desc: 'adipiscing elit',
+    perH: 'XXXX',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
     face: '../img/thumb-m.png',
-     addTime: '30 mins',
+    addTime: '30 mins',
     addCity: 'Dubai',
     addCountry: 'United Arab Emirates'
   }];

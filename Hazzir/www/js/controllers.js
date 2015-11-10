@@ -1,18 +1,29 @@
 angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic'])
 
-.controller("AppCtrl", function($scope) {
+
+/* ==== Login ==== */
+.controller("LoginCtrl", function($scope, $state, formData) {
+
   
-  
-})
-
-
-.controller("LoginCtrl", function($scope) {
-
-  console.log("assets")
+  console.log("loading...assets")
   $scope.logoSrc = '/img/mob-logo.png';
   $scope.bgSrc = '/img/mob-background.png';
   $scope.descTxt = "Find the service people";
   $scope.loginTxt = "Login";
+
+  $scope.user = {};
+
+
+  $scope.submitForm = function(user) {
+   if (user.firstName) {
+     console.log("Submitting Form", user);
+     formData.updateForm(user);
+     console.log("Retrieving form from service", formData.getForm());
+     $state.go('app.dash');
+   } else {
+     alert("Please fill out some information for the user");
+   }
+ };
   
 /*
   if (window.matchMedia("(min-width: 400px)").matches) {
@@ -23,6 +34,9 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic'])
   */
   
 })
+
+
+
 
 /* ---- menu controller -- */
 .controller('NavController', function($scope, $ionicSideMenuDelegate) {
@@ -35,7 +49,7 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic'])
 
 
 
-
+/* ---- tabs controller -- */
 
 .controller('TabCtrl', function($scope,  $state){
 
@@ -63,9 +77,14 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic'])
   }
 })
 
-/* ---- dashboard  -- */
-.controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal, $timeout, $state, $ionicSideMenuDelegate) {
 
+
+/* ---- dashboard  -- */
+.controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal, $timeout, $state, $ionicSideMenuDelegate, formData) {
+ $scope.ContinueTxt = "Continue";
+ console.log("loading...Dashboard")
+ $scope.user = formData.getForm();
+ //console.log("Submitting Form", $scope.user);
   //$scope.session = Session.get({sessionId: $stateParams.sessionId});
  //$scope.$root.tabsHidden = "tabs-hide";
 /*
@@ -126,7 +145,7 @@ $scope.toggleProjects = function() {
 };
 })
 
-
+/* ---- List  -- */
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -135,17 +154,20 @@ $scope.toggleProjects = function() {
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-
+  console.log("loading...list")
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
 })
+/* ------ */
+/* ---- List Details controller -- */
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
+/* ------ */
 /* ---- landing page controller -- */
 .controller('landingCtrl', function($scope, $stateParams, $state) {
 
@@ -186,10 +208,11 @@ $scope.gotoState = function() {
 })
 
 
+/* ---- Settings  -- */
+.controller('AccountCtrl', function($scope, $ionicSideMenuDelegate, formData) {
 
-.controller('AccountCtrl', function($scope, $ionicSideMenuDelegate) {
-
-   console.log("settings")
+ console.log("loading....settings")
+ $scope.user = formData.getForm();
    //$state.go('tab.chats');
    //$state.go('tab.dash', {url: 'templates/tab-dash.html'})
   

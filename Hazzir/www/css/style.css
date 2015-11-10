@@ -19,15 +19,7 @@ body{
 }
 .hpaddding-100{padding-top:180px;}
 
-.logo-login{height:120px;width:120px;display:block;margin:0 auto; background:url(../img/mob-logo.png) no-repeat;
-  -webkit-background-size:cover;-moz-background-size:cover;background-size:cover; border: none;}
-.login-text p{color:#00baff;font-size:18px;margin:0 auto;padding-bottom:20px;}
-.login-button{border:solid 1px #00baff !important;color:#00baff !important;  width: 220px;
-  }
-.update-button{border:solid 1px #00baff !important;color:#00baff !important;  width: 220px;}
 
-div, p, .item p{color:#bcc1c4; font-size: 14px;}
-h2, .item, .item h2{/*font-size: 23px;*/ font-weight: bold; color:#bcc1c4;}
 .item-complex .item-content, .item {background-color: #3e4454;}
 .item{border-color: #353744; border-width: 2px;}
 .list-bg{background-color: #353744;}
@@ -58,14 +50,63 @@ h2, .item, .item h2{/*font-size: 23px;*/ font-weight: bold; color:#bcc1c4;}
   width: 100%;background-color: #3e4454;color:#bcc1c4; margin: auto;
 }
 
-/* ======== */
+/* ====dashboard==== */
 
+div, p, .item p{color:#bcc1c4; font-size: 14px;}
+h1, h2, .item, .item h2{/*font-size: 23px;*/ font-weight: bold; color:#bcc1c4;}
+
+ .custom-dark h1{
+  
+    
+ }
+
+/* ====home==== */
+
+.login-form{
+  width: 20%;
+}
+
+.logo-login{height:120px;width:120px;display:block;margin:0 auto; background:url(../img/mob-logo.png) no-repeat;
+  -webkit-background-size:cover;-moz-background-size:cover;background-size:cover; border: none;}
+.login-text p{color:#00baff;font-size:18px;margin:0 auto;padding-bottom:20px;}
+.login-button{border:solid 1px #00baff !important;color:#00baff !important;  width: 220px;
+  }
+.update-button{border:solid 1px #00baff !important;color:#00baff !important;  width: 220px;}
+
+.hz-name input{
+  text-align: center;
+  background: none;
+  color:#00baff;
+  /*font-size: 23px;*/
+}
+
+*::-webkit-input-placeholder {
+  color:#00baff !important;
+}
+*:-moz-placeholder {
+  color:#00baff !important;
+}
+*:-ms-input-placeholder { /* IE10+ */
+  color:#00baff !important;
+}
 .bg-pane{background:url(../img/mob-background.png)no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+.button.button-calm {
+    
+    color: #000;
+}
+/* ======== */
+
+/* Default styles first then media queries */
+@media screen and (min-width: 400px)  {...}
+@media screen and (min-width: 600px)  {...}
+@media screen and (min-width: 1000px) {...}
+@media screen and (min-width: 1400px) {...}
+
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
   /*.bg-pane {
  -webkit-background-size: cover;
@@ -74,6 +115,9 @@ h2, .item, .item h2{/*font-size: 23px;*/ font-weight: bold; color:#bcc1c4;}
   background-size: none;
   }
   */
+  .login-form{
+  width: 80%;
+}
 }
 
 /*
