@@ -105,10 +105,10 @@ push.register(function(token) {
       }
     })
 
-    .state('tab.chat-detail', {
+    .state('app.list-detail', {
       url: '/list/:chatId',
       views: {
-        'tab-chats': {
+        'menuContent': {
           templateUrl: 'templates/chat-detail.html',
           controller: 'ChatDetailCtrl'
         }

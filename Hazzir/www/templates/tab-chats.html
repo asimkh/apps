@@ -14,13 +14,15 @@
 -->
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/list/{{chat.id}}">
+      <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/home/list/{{chat.id}}">
         <img ng-src="{{chat.face}}">
         <h2>{{chat.name}}</h2>
         <p>{{chat.desc}}</p>
         <p>{{chat.details}} </p>
-       
+       <!--
         <span class="item-note left-details"><span class="left-details-cc">{{chat.perH}}</span>, {{chat.addCity}}, {{chat.addCountry}} </span>
+-->
+        <span class="item-note left-details">{{chat.addCity}}, {{chat.addCountry}} </span>
        
 
         

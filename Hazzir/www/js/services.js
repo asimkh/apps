@@ -25,10 +25,10 @@ angular.module('starter.services', [])
     desc: 'adipiscing elit',
     perH: 'XXXX',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
-    face: '../img/thumb-m.png',
+    face: './img/thumb-m.png',
     addTime: '30 mins',
-    addCity: 'Dubai',
-    addCountry: 'United Arab Emirates'
+    addCity: 'Morbi id ',
+    addCountry: 'consectetur adipiscing'
 
   }, {
     id: 1,
@@ -36,40 +36,40 @@ angular.module('starter.services', [])
     desc: 'adipiscing elit',
     perH: 'XXXX',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
-    face: '../img/thumb-m.png',
+    face: './img/thumb-m.png',
     addTime: '30 mins',
-    addCity: 'Dubai',
-    addCountry: 'United Arab Emirates'
+   addCity: 'Morbi id ',
+    addCountry: 'consectetur adipiscing'
   }, {
     id: 2,
     name: 'dolor sit',
     desc: 'adipiscing elit',
     perH: 'XXXX',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
-    face: '../img/thumb-m.png',
+    face: './img/thumb-m.png',
     addTime: '30 mins',
-    addCity: 'Dubai',
-    addCountry: 'United Arab Emirates'
+    addCity: 'Morbi id ',
+    addCountry: 'consectetur adipiscing'
   }, {
     id: 3,
     name: 'dolor sit',
     desc: 'adipiscing elit',
    perH: 'XXXX',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
-    face: '../img/thumb-m.png',
+    face: './img/thumb-m.png',
     addTime: '30 mins',
-    addCity: 'Dubai',
-    addCountry: 'United Arab Emirates'
+    addCity: 'Morbi id ',
+    addCountry: 'consectetur adipiscing'
   }, {
     id: 4,
     name: 'dolor sit',
     desc: 'adipiscing elit',
     perH: 'XXXX',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
-    face: '../img/thumb-m.png',
+    face: './img/thumb-m.png',
     addTime: '30 mins',
-    addCity: 'Dubai',
-    addCountry: 'United Arab Emirates'
+    addCity: 'Morbi id ',
+    addCountry: 'consectetur adipiscing'
   },
   {
     id: 5,
@@ -77,10 +77,10 @@ angular.module('starter.services', [])
     desc: 'adipiscing elit',
     perH: 'XXXX',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
-    face: '../img/thumb-m.png',
+    face: './img/thumb-m.png',
     addTime: '30 mins',
-    addCity: 'Dubai',
-    addCountry: 'United Arab Emirates'
+    addCity: 'Morbi id ',
+    addCountry: 'consectetur adipiscing'
   },
   {
     id: 6,
@@ -88,10 +88,10 @@ angular.module('starter.services', [])
     desc: 'adipiscing elit',
     perH: 'XXXX',
     details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
-    face: '../img/thumb-m.png',
+    face: './img/thumb-m.png',
     addTime: '30 mins',
-    addCity: 'Dubai',
-    addCountry: 'United Arab Emirates'
+    addCity: 'Morbi id ',
+   addCountry: 'consectetur adipiscing'
   }];
 
   return {
