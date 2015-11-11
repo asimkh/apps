@@ -31,13 +31,16 @@
 <center> 
 <!--
 <input type="text" class="text-input text-input--transparent" placeholder="Enter Name">
+
+submitForm(user)
 -->
-<form class="login-form" ng-submit="submitForm(user)">
+<form class="login-form" ng-submit="fbLogin()">
  <ion-list>
+ <!--
    <ion-item class="item-input">
      <input type="text" ng-model="user.firstName" placeholder="Enter Name">
    </ion-item>
-   
+   -->
    
    <input type="submit" class="button button-block button-calm" value="{{loginTxt}}">
  </ion-list>

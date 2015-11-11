@@ -13,14 +13,10 @@ angular.module('starter', ['ionic',  'starter.services', 'ionic.service.core', '
 .run(function($ionicPlatform,  $ionicAnalytics, ngFB) {
 
 
-
-
-  
-  ngFB.init({appId: '970200256375080'});
-
   $ionicPlatform.ready(function() {
 
-    
+    /* Facebook Integration*/
+     ngFB.init({appId: '970200256375080'});
 
 /*
    Ionic.io();
@@ -97,6 +93,16 @@ console.log("ionic"+version);
 
   // Each tab has its own nav history stack:
 
+  .state('app.profile', {
+    url: "/profile",
+    views: {
+        'menuContent': {
+            templateUrl: "templates/profile.html",
+            controller: "ProfileCtrl"
+        }
+    }
+})
+
   .state('app.dash', {
     url: '/about',
     views: {
@@ -143,6 +149,14 @@ console.log("ionic"+version);
             url: '/',
             controller: 'landingCtrl',
             templateUrl: 'templates/landing.html'
+    });
+
+
+  $stateProvider
+        .state('userlogout', {
+            url: '/',
+            controller: 'logoutCtrl',
+            templateUrl: 'logoutcallback.html'
     });
 
   // if none of the above states are matched, use this as the fallback

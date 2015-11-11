@@ -1,42 +1,93 @@
-angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic'])
+angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic','ngCordova'])
 
 
 /* ==== Login ==== */
-.controller("LoginCtrl", function($scope, $state, formData) {
+.controller("LoginCtrl", function($scope, $state, formData, ngFB, $cordovaOauth, $http) {
 
   
   console.log("loading...assets")
+  window.cordovaOauth = $cordovaOauth;
+  window.http = $http;
+
   $scope.logoSrc = '/img/mob-logo.png';
   $scope.bgSrc = '/img/mob-background.png';
   $scope.descTxt = "Find the service people";
-  $scope.loginTxt = "Login";
+  $scope.loginTxt = "Facebook Login";
 
   $scope.user = {};
 
+$scope.fbLogin = function () {
+  console.log("facebook login...")
+    ngFB.login({scope: 'public_profile,email,user_friends,publish_actions'}).then(
+        function (response) {
+            if (response.status === 'connected') {
+                console.log('Facebook login succeeded');
+                //$scope.closeLogin();
+                 $state.go('app.dash');
+            } else {
+                alert('Facebook login failed');
+            }
+        });
+};
+/*
+ $scope.submitForm = function(user) {
 
-  $scope.submitForm = function(user) {
    if (user.firstName) {
      console.log("Submitting Form", user);
      formData.updateForm(user);
      console.log("Retrieving form from service", formData.getForm());
      $state.go('app.dash');
+
+
    } else {
      alert("Please fill out some information for the user");
    }
  };
-  
-/*
-  if (window.matchMedia("(min-width: 400px)").matches) {
-    $scope.logoSrc = '/img/mob-logo.png';
-} else {
-    $scope.logoSrc = '/img/mob-logox.png';
-}
-  */
+ */
   
 })
 
+/* ---- Logout controller -- */
+.controller('logoutCtrl', function($scope, $ionicSideMenuDelegate,ngFB, $state) {
+
+      console.log("facebook logout...")
+      ngFB.logout().then(
+        function (success) {
+                  // success
+
+                   console.log("success...")
+                   $state.go('home');
+                }, function (error) {
+                  // error
+                });
+                   
 
 
+    })
+
+/*
+angular.module("facebookApp", ["ionic", "ngCordova"])
+
+.controller("mainCtrl", ["$scope", "$cordovaOauth", "$http", function($scope, $cordovaOauth, $http) {
+    window.cordovaOauth = $cordovaOauth;
+    window.http = $http;
+}]);
+*/
+/* ---- facebook controller -- */
+.controller('ProfileCtrl', function ($scope, ngFB) {
+    ngFB.api({
+        path: '/me',
+        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
+    }).then(
+        function (user) {
+            $scope.user = user;
+            //$scope.name = email;
+            console.log(user)
+        },
+        function (error) {
+            alert('Facebook error: ' + error.error_description);
+        });
+})
 
 /* ---- menu controller -- */
 .controller('NavController', function($scope, $ionicSideMenuDelegate) {
@@ -156,6 +207,7 @@ $scope.toggleProjects = function() {
   //});
   console.log("loading...list")
   $scope.chats = Chats.all();
+  
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
