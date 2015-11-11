@@ -5,6 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+
+var appVersion = "0.0.0";
+
 angular.module('starter', ['ionic',  'starter.services', 'ionic.service.core', 'ionic.service.analytics','ionic.service.push', 'starter.controllers','ngCordova', 'ngOpenFB'])
 
 .run(function($ionicPlatform,  $ionicAnalytics, ngFB) {
@@ -16,6 +19,9 @@ angular.module('starter', ['ionic',  'starter.services', 'ionic.service.core', '
   ngFB.init({appId: '970200256375080'});
 
   $ionicPlatform.ready(function() {
+
+    
+
 /*
    Ionic.io();
 
@@ -40,6 +46,13 @@ push.register(function(token) {
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+
+/*
+    cordova.getAppVersion(function (version) {
+console.log("ionic"+version);
+});
+*/
+
   });
 })
 
