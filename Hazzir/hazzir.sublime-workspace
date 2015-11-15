@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"user",
+				"user_friends"
+			],
+			[
+				"FONT",
+				"font-size"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
 				"ionic",
 				"Ionic"
 			],
@@ -72,74 +84,26 @@
 	"buffers":
 	[
 		{
-			"file": "www/templates/menu.html",
-			"settings":
-			{
-				"buffer_size": 4601,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "www/templates/dashboard.html",
-			"settings":
-			{
-				"buffer_size": 1066,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "www/css/style.css",
-			"settings":
-			{
-				"buffer_size": 3796,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/templates/tab-chats.html",
-			"settings":
-			{
-				"buffer_size": 1027,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/templates/chat-detail.html",
-			"settings":
-			{
-				"buffer_size": 1460,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/templates/landing.html",
-			"settings":
-			{
-				"buffer_size": 1205,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "www/js/app.js",
-			"settings":
-			{
-				"buffer_size": 3542,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 4942,
+				"buffer_size": 7225,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "www/js/services.js",
+			"file": "www/templates/profile.html",
 			"settings":
 			{
-				"buffer_size": 2935,
+				"buffer_size": 860,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/index.html",
+			"settings":
+			{
+				"buffer_size": 1957,
 				"line_ending": "Unix"
 			}
 		}
@@ -177,6 +141,11 @@
 	"expanded_folders":
 	[
 		"/Users/agha.asim/asimkh/apps/Hazzir",
+		"/Users/agha.asim/asimkh/apps/Hazzir/platforms/android",
+		"/Users/agha.asim/asimkh/apps/Hazzir/platforms/android/res/values",
+		"/Users/agha.asim/asimkh/apps/Hazzir/platforms/android/res/xml",
+		"/Users/agha.asim/asimkh/apps/Hazzir/resources/android",
+		"/Users/agha.asim/asimkh/apps/Hazzir/scss",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/css",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/js",
@@ -184,12 +153,24 @@
 	],
 	"file_history":
 	[
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/settings.html",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/css/style.css",
-		"/Users/agha.asim/asimkh/apps/Hazzir/config.xml",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/index.html",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/controllers.js",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/landing.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/menu.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/app.js",
+		"/Users/agha.asim/asimkh/apps/Hazzir/platforms/android/res/values/facebookconnect.xml",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/controllers.js",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/oauthcallback.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/logoutcallback.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/profile.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/chat-detail.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/index.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/tab-chats.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/services.js",
+		"/Users/agha.asim/asimkh/apps/Hazzir/config.xml",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/openfb.js",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/dashboard.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/css/style.css",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/settings.html",
+		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/ngopenfb.js",
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/templates/tab-account.html",
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/js/services.js",
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/templates/chat-detail.html",
@@ -202,11 +183,7 @@
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/js/app.js",
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/templates/tabs.html",
 		"/C/Users/A2K/apps/github/apps/Hazzir/www/templates/tab-dash.html",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/ngopenfb.js",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/openfb.js",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/tab-dash.html",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/services.js",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/js/app.js",
 		"/Users/agha.asim/Downloads/html5_configurable_example/configurable_example.html",
 		"/Volumes/Sites/fw-health/v4/_www/js/scripts.js",
 		"/Users/agha.asim/asimkh/go/scr/hazzir/webservice.go",
@@ -228,6 +205,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"close",
+			"sdf",
 			"orientation",
 			"ionSideMenuConten",
 			"toggleLeft",
@@ -250,89 +229,59 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "www/templates/menu.html",
+					"file": "www/js/controllers.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4601,
+						"buffer_size": 7225,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								917,
-								917
+								2244,
+								2244
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 486.0,
+						"translation.y": 3761.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "www/templates/dashboard.html",
+					"file": "www/templates/profile.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1066,
+						"buffer_size": 860,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								67,
-								150
+								695,
+								695
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "www/css/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3796,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2024,
-								2028
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -344,20 +293,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "www/templates/tab-chats.html",
+					"buffer": 2,
+					"file": "www/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1027,
+						"buffer_size": 1957,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								29,
-								175
+								1393,
+								1393
 							]
 						],
 						"settings":
@@ -367,166 +316,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 186.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "www/templates/chat-detail.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1460,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								377,
-								377
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "www/templates/landing.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1205,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								701,
-								701
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 2,
-			"sheets":
-			[
-				{
-					"buffer": 6,
-					"file": "www/js/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3542,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2748,
-								2748
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 2.0,
-						"translation.y": 1363.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "www/js/controllers.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4942,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								76,
-								76
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 4.0,
-						"translation.y": 2525.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "www/js/services.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2935,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2482,
-								2482
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 750.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -549,18 +342,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
