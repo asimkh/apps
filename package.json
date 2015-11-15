@@ -1,5 +1,5 @@
 {
-  "name": "hazzir",
+  "name": "haz",
   "version": "1.0.0",
   "description": "Hazzir: An Ionic project",
   "dependencies": {
@@ -30,5 +30,26 @@
   "cordovaPlatforms": [
     "ios",
     "android"
-  ]
+  ],
+  "main": "serve.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asimkh/apps.git"
+  },
+  "keywords": [
+    "Haz",
+    "-",
+    "find",
+    "your",
+    "product"
+  ],
+  "author": "Asim Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asimkh/apps/issues"
+  },
+  "homepage": "https://github.com/asimkh/apps#readme"
 }
