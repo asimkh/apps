@@ -1,0 +1,4 @@
+// GENERATED FILE - DO NOT EDIT
+include ":"
+include ":CordovaLib"
+include ":phonegap-facebook-plugin:hazzir194728-FacebookLib"

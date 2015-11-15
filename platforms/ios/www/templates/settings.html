@@ -1,0 +1,25 @@
+<ion-view  class="list-bg">
+
+ <ion-nav-buttons side="left">
+
+        <button menu-toggle="left" class="button button-clear icon ion-navicon"></button>
+
+      </ion-nav-buttons>
+
+ <!--     
+  <div class="bar bar-header">
+    <button class="button button ion-navicon "></button>
+</div>
+
+-->
+  <ion-content>
+  
+    <ion-list >
+    <ion-item>Logged User: {{user.firstName}}</ion-item>
+    <ion-toggle  ng-model="settings.enableFriends">
+        Enable Friends
+    </ion-toggle>
+    </ion-list>
+    
+  </ion-content>
+</ion-view>

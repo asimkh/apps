@@ -1,0 +1,174 @@
+/* Empty. Add your own CSS if you like */
+/*
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/opensans-regular-webfont.eot');
+    src: url('../fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/opensans-regular-webfont.woff') format('woff'),
+    url('../fonts/opensans-regular-webfont.ttf') format('truetype'),
+    url('../fonts/opensans-regular-webfont.svg') format('svg');
+    font-weight: 200;
+}
+body{
+    font-family: 'Open Sans';
+}
+*/
+/* ======== */
+.body{
+  font-family: "Roboto";
+}
+.hpaddding-100{padding-top:180px;}
+
+
+.item-complex .item-content, .item {background-color: #3e4454;}
+.item{border-color: #353744; border-width: 2px;}
+.list-bg{background-color: #353744;}
+.perH{color: #be6556; font-weight: bold; /*font-size: 18px;*/}
+.ion-tabs.tabs-color-active-positive .tab-item{color:#bcc1c4; }
+.sharing{color: #be6556; /*font-size: 14px;*/}
+.item-thumbnail-left, .item-thumbnail-left .item-content{min-height: 90px; padding-top: 5px;}
+.left-details{color: #12c4af; /*font-size: 14px; */position: relative;}
+.left-details-cc{color: #be6556;  /*font-size: 18px;*/ /* padding-right:250px; position: relative;*/}
+.header-content{padding-top: 40px; }
+.tabs, .bar-header{background-color: #3e4454;}
+.ion-ios-information-outline, .ion-ios-list-outline, .ion-ios-settings, .ion-ios-reload{color: #ffffff;}
+.bar {background-image: none; border: none;}
+.bar .button{font-size: 20px; border: none; min-width: 80px;}
+.p-details{padding-top: 80px;}
+.bar.menu-color .button{color:#bcc1c4;}
+.bar.bar-hz, a{background-color: #3e4454;color:#bcc1c4; margin: auto}
+
+.bar.bar-dark .title{color:#bcc1c4;}
+.menu{background-color: #3e4454;}
+.pull-right{
+  float: right;
+}
+.button-halfwidth{
+  width: 49%;
+}
+.button-fullwidth{
+  width: 100%;background-color: #3e4454;color:#bcc1c4; margin: auto;
+}
+
+/* ====dashboard==== */
+
+div, p, .item p{color:#bcc1c4; font-size: 14px;}
+h1, h2, .item, .item h2{/*font-size: 23px;*/ font-weight: bold; color:#bcc1c4;}
+
+ .custom-dark h1{
+  
+    
+ }
+
+/* ====home==== */
+
+.login-form{
+  width: 20%;
+}
+
+.logo-login{height:120px;width:120px;display:block;margin:0 auto; background:url(../img/mob-logo.png) no-repeat;
+  -webkit-background-size:cover;-moz-background-size:cover;background-size:cover; border: none;}
+.login-text p{color:#00baff;font-size:18px;margin:0 auto;padding-bottom:20px;}
+.login-button{border:solid 1px #00baff !important;color:#00baff !important;  width: 220px;
+  }
+.update-button{border:solid 1px #00baff !important;color:#00baff !important;  width: 220px;}
+
+.hz-name input{
+  text-align: center;
+  background: none;
+  color:#00baff;
+  /*font-size: 23px;*/
+}
+
+*::-webkit-input-placeholder {
+  color:#00baff !important;
+}
+*:-moz-placeholder {
+  color:#00baff !important;
+}
+*:-ms-input-placeholder { /* IE10+ */
+  color:#00baff !important;
+}
+.bg-pane{background:url(../img/mob-background.png)no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.button.button-calm {
+    
+    color: #000;
+}
+/* ======== */
+
+/* Default styles first then media queries */
+@media screen and (min-width: 400px)  {...}
+@media screen and (min-width: 600px)  {...}
+@media screen and (min-width: 1000px) {...}
+@media screen and (min-width: 1400px) {...}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  /*.bg-pane {
+ -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: none;
+  }
+  */
+  .login-form{
+  width: 80%;
+}
+}
+
+/*
+.h-Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h-Aligner-item {
+  max-width: 50%;
+}
+
+.h-Aligner-item--top {
+  align-self: flex-start;
+}
+
+.h-Aligner-item--bottom {
+  align-self: flex-end;
+}
+*/
+/*---- Center Align 
+.scroll-content {
+  display: table !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+.scroll {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}*/
+
+/*
+.tabs-hide .tabs {
+    display: none;
+}
+*/
+
+
+/*
+ .ex4_container { content-positioning:50% 50%; width:200px; height:200px; background-color:yellow; }
+ .ex4_content { content-positioning-anchor:50% 50%; background-color:gray; color:white; }
+*/
+/*
+ .scroll-content {
+    background: url(../../img/m-background.png) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+
+  }
+  */
+
