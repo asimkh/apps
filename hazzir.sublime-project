@@ -3,6 +3,9 @@
 	[
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/agha.asim/asimkh/Github/node-js-getting-started"
 		}
 	]
 }
