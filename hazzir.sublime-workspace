@@ -92,6 +92,14 @@
 			}
 		},
 		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 1187,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "www/templates/profile.html",
 			"settings":
 			{
@@ -140,16 +148,7 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/agha.asim/asimkh/apps/Hazzir",
-		"/Users/agha.asim/asimkh/apps/Hazzir/platforms/android",
-		"/Users/agha.asim/asimkh/apps/Hazzir/platforms/android/res/values",
-		"/Users/agha.asim/asimkh/apps/Hazzir/platforms/android/res/xml",
-		"/Users/agha.asim/asimkh/apps/Hazzir/resources/android",
-		"/Users/agha.asim/asimkh/apps/Hazzir/scss",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/css",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/js",
-		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates"
+		"/Users/agha.asim/asimkh/apps"
 	],
 	"file_history":
 	[
@@ -229,7 +228,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -259,11 +258,41 @@
 						"translation.y": 3761.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "package.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "www/templates/profile.html",
 					"semi_transient": false,
 					"settings":
@@ -289,11 +318,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "www/index.html",
 					"semi_transient": false,
 					"settings":
@@ -319,7 +348,7 @@
 						"translation.y": 186.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
