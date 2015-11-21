@@ -1,5 +1,6 @@
 
 HAZ
+
 Connect with network of professionals via mobile app
 http://haz.herokuapp.com/
 
