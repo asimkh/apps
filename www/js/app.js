@@ -7,16 +7,23 @@
 // 'starter.controllers' is found in controllers.js
 
 var appVersion = "0.0.0";
+var fb_ID ='970200256375080';
+var fb_DV= '130401233990263'
 
 angular.module('starter', ['ionic',  'starter.services', 'ionic.service.core', 'ionic.service.analytics','ionic.service.push', 'starter.controllers','ngCordova', 'ngOpenFB'])
 
 .run(function($ionicPlatform,  $ionicAnalytics, ngFB) {
 
 
+
   $ionicPlatform.ready(function() {
 
     /* Facebook Integration*/
-     ngFB.init({appId: '970200256375080'});
+   /*  if (window.cordova.platformId == "browser") {
+        facebookConnectPlugin.browserInit(fb_ID);
+    }*/
+
+     ngFB.init({appId:fb_ID});
 
 /*
    Ionic.io();

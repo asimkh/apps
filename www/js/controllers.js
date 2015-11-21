@@ -1,3 +1,6 @@
+var fb_ID ='970200256375080';
+var fb_DV= '130401233990263'
+
 angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic','ngCordova'])
 
 
@@ -15,8 +18,14 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic','n
   $scope.loginTxt = "Facebook Login";
 
   $scope.user = {};
-
+/*
+   if (window.cordova.platformId == "browser") {
+        facebookConnectPlugin.browserInit(fb_ID);
+    }
+*/
 $scope.fbLogin = function () {
+
+
   console.log("facebook login...")
     ngFB.login({scope: 'public_profile,email,user_friends,publish_actions'}).then(
         function (response) {

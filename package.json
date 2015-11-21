@@ -1,21 +1,36 @@
 {
   "name": "haz",
   "version": "1.0.0",
-  "description": "Hazzir: An Ionic project",
+  "description": "Connect with network of professionals via mobile app.",
   "private": "true",
   "dependencies": {
-    "express": "^4.13.3"    
+    "express": "^4.13.3"
   },
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "com.ionic.keyboard",
+    {
+      "id": "phonegap-facebook-plugin",
+      "locator": "../plugin/phonegap-facebook-plugin"
+    },
+    "ionic-plugin-deploy"
+  ],
+  "cordovaPlatforms": [
+    "ios",
+    "android"
+  ],
   "main": "serve.js",
   "scripts": {
     "start": "node serve.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-      "node": "4.x",
-      "npm": "3.x"
-    },
-  
+    "node": "4.x",
+    "npm": "3.x"
+  },
   "keywords": [
     "Haz",
     "product"
@@ -25,5 +40,10 @@
   "bugs": {
     "url": "https://github.com/asimkh/apps/issues"
   },
-  "homepage": "https://github.com/asimkh/apps#readme"
+  "homepage": "https://github.com/asimkh/apps#readme",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/asimkh/apps.git"
+  }
 }
