@@ -1,14 +1,27 @@
-FB Login
 
-https://ccoenraets.github.io/ionic-tutorial/ionic-facebook-integration.html
-https://github.com/ccoenraets/ionic-tutorial
+HAZ
+Connect with network of professionals via mobile app
+http://haz.herokuapp.com/
 
-http://ngcordova.com/docs/plugins/facebook/
-https://github.com/Wizcorp/phonegap-facebook-plugin/blob/master/platforms/ios/README.md
+App Features:
+Side Menu
+Facebook Login
+Add and remove details
 
-$ cordova plugin add ../plugin/phonegap-facebook-plugin --variable APP_ID=“xx” --variable APP_NAME=“xx”
+Design Details
+Icon Logo
+Splash screen
+Home Screen
+About/introduction
+Product/List
+Product/List details
+Contact/Settings
 
 git remote add origin git@github.com:asimkh/apps.git
-git push -u origin master
 
-https://ionicthemes.com/tutorials/about/native-facebook-login-with-ionic-framework
+Yotube Video
+https://www.youtube.com/watch?v=tWEr7IweC1s
+
+Available at Ionic Market
+http://market.ionic.io/starters/haz
+
