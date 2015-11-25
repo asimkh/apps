@@ -18,4 +18,6 @@ http://market.ionic.io/starters/haz
 <img src="https://s3.amazonaws.com/ionic-marketplace/haz/screenshot_1.jpg" height=400" 
 alt="HAZ APP" width="240" height="180" border="10" />
 
+[Check Behance for Design Material](https://www.behance.net/gallery/31141077/HAZ-Mobile-application-Connect-with-network-of-people)
+
 Please share your feedback at info[@]hazzir.com

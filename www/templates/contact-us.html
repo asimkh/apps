@@ -1,0 +1,89 @@
+<ion-view  class="list-bg" ng-controller="ContactCtrl"> 
+
+
+
+ <ion-nav-buttons side="left">
+
+        <button menu-toggle="left" class="button button-clear icon ion-navicon"></button>
+
+      </ion-nav-buttons>
+
+ <!--     
+  <div class="bar bar-header">
+    <button class="button button ion-navicon "></button>
+</div>
+
+-->
+ 
+<ion-content class="padding">
+<div id="contact-form" ng-show="!successMsg">
+<h1>Quick Contact</h1>
+<p>Contact us today, and get reply with in 24 hours!</p>
+       
+        <form  class="contact-form" name="ContactForm" novalidate="" ng-submit="SendContactMsg(user)"> 
+         
+          <div class="list">
+            
+            <label class="item item-input">
+              <span class="input-label">Name</span>
+              <input type="text" name="username" ng-model="user.name" disabled>
+            </label>
+
+            <label class="item item-input">
+            <span class="input-label">Email</span>
+            <input type="text" name="email" ng-model="user.email" disabled>
+            </label>
+
+          
+
+            <label class="item item-input">
+            <span class="input-label">Subject</span>
+            <input type="text" name="subject" ng-model="user.subject" placeholder="--- Type your subject ---" required>
+            </label>
+
+<!--
+            <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.subject.$invalid, 'no-errors' : authorizationForm.subject.$valid}">
+              <span class="input-label">Subject</span>
+              <input type="text" name="subject" ng-model="authorization.subject"  required>
+            </label>
+    -->         
+            <div class="error-container" ng-show="authorizationForm.username.$error" ng-messages="authorizationForm.username.$error">
+              <div ng-messages-include="error-list.html"></div>
+            </div>
+
+
+
+             
+            <label class="item item-input">
+            <span class="input-label message-form">Message</span>
+             
+              <textarea placeholder="--- Type your message ---" rows="8" cols="10" ng-model="user.comments" required></textarea>
+             
+            </label>
+             
+          </div>     
+           
+          <button class="button button-full button-positive" type="submit" ng-disabled="ContactForm.$invalid">
+           Send
+          </button>
+             
+        </form>   
+        </div>
+
+        <div id="contact-status" ng-show="successMsg">
+          
+          <p>{{SuccessTxt}}</p>
+           <button class="button button-full button-positive" type="submit" ng-click="refresh();">
+           Refresh
+          </button>
+
+        </div>
+         
+    
+         
+  </ion-content>
+</ion-view>
+
+
+
+

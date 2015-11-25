@@ -110,6 +110,16 @@ console.log("ionic"+version);
     }
 })
 
+.state('app.contact', {
+    url: '/contact',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/contact-us.html',
+        controller: 'ContactCtrl'
+      }
+    }
+  })
+
   .state('app.dash', {
     url: '/about',
     views: {

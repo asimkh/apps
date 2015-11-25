@@ -98,6 +98,80 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
         });
 })
 
+/* ---- Contact us  controller -- */
+.controller('ContactCtrl', function ($scope, ngFB, $http) {
+    ngFB.api({
+        path: '/me',
+        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
+    }).then(
+        function (user) {
+            $scope.user = user;
+            //$scope.name = email;
+            console.log(user)
+        },
+        function (error) {
+            alert('Facebook error: ' + error.error_description);
+        });
+
+    /* --- */
+    
+
+    $scope.refresh = function() {
+      $scope.successMsg = false;
+      //$scope.user.name = "";
+      //$scope.user.email = "";
+      $scope.user.subject = "";
+      $scope.user.comments = "";
+
+
+    }
+
+    $scope.SendContactMsg = function(user) {
+
+      console.log("sending data../?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.subject+"&userComments="+user.comments);
+      $scope.successMsg = true;
+
+      $http.post("http://hazzir.com/haz/postapp.php?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.subject+"&userComments="+user.comments).success(function(data){
+      $scope.tasks = data;
+      });
+
+      /*
+
+      $scope.data = {'userName' : $scope.user.name, 'userEmail' : $scope.user.email,
+                     "userSubject" : $scope.user.subject, 'userComments' : $scope.user.comments};
+
+      var req = {
+           method: 'POST',
+           url: 'http://hazzir.com/haz/postapp.php',
+           headers: {
+             'Content-Type': "application/json; charset=utf-8"
+           },
+           data: $scope.data
+          }
+
+      function successCallback(response) {
+
+        $scope.SuccessTxt= "Thanks for submitting";     
+      }
+
+      function errorCallback(response) { 
+        $scope.SuccessTxt= "Error, message not sent";
+      }
+      
+      $http.post(req).then(successCallback, errorCallback);
+      */
+
+     /* $http.post("http://localhost:8100/postdata.php?first="+input.name+"&email="+input.email+"&message="+input.message).success(function(data){
+      $scope.tasks = data;
+      });*/
+
+
+
+
+}
+
+})
+
 /* ---- menu controller -- */
 .controller('NavController', function($scope, $ionicSideMenuDelegate) {
       $scope.toggleLeft = function() {

@@ -8,3 +8,4 @@ gulpfile.js
 *.sublime-project
 package copy.json
 package - Copy.json
+www/templates/*.php

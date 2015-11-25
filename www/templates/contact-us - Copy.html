@@ -1,0 +1,52 @@
+<ion-view  class="list-bg">
+
+ <ion-nav-buttons side="left">
+
+        <button menu-toggle="left" class="button button-clear icon ion-navicon"></button>
+
+      </ion-nav-buttons>
+
+ <!--     
+  <div class="bar bar-header">
+    <button class="button button ion-navicon "></button>
+</div>
+
+-->
+  <ion-content>
+  
+    <div class="padding">
+
+    <!-- form -->
+<form class="contact-form" ng-submit="SendContactMsg(input)">
+<ion-list>
+  <div class="list">
+  <label class="item item-input">
+  <span class="input-label" ng-model="input.name">Name</span> {{user.name}}
+    <!--<input type="text" placeholder="Name">{{user.name}}
+               --> 
+  </label>
+  <label class="item item-input">
+  
+  <span class="input-label" ng-model="input.email">Email</span> {{user.email}}
+  <!--
+    <input type="text" placeholder="Email">{{user.email}} -->
+  </label>
+  <label class="item item-input">
+   <span class="input-label">Comments</span>
+    <textarea placeholder="Enter your message here" rows="8" cols="10" ng-model="input.comments"></textarea>
+  </label>
+
+   <label class="item item-input">
+   <input type="submit" class="button button-block button-calm" value="Send">
+   </label>
+</div>
+</ion-list>
+</form>
+<!-- form ends -->
+</div>
+  </ion-content>
+</ion-view>
+
+
+
+
