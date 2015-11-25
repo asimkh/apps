@@ -6,6 +6,8 @@ gulpfile.js
 *.project
 *.keystore
 *.sublime-project
+*.sublime-workspace
 package copy.json
 package - Copy.json
-www/templates/*.php
+/www/templates/*.php
+/www/templates/contact-us - Copy.html

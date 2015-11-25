@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"back",
+				"background-color"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
 				"user",
 				"user_friends"
 			],
@@ -87,23 +95,7 @@
 			"file": "www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 7397,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "readme.md",
-			"settings":
-			{
-				"buffer_size": 876,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 128,
+				"buffer_size": 9451,
 				"line_ending": "Windows"
 			}
 		},
@@ -111,8 +103,54 @@
 			"file": "www/js/app.js",
 			"settings":
 			{
-				"buffer_size": 4208,
+				"buffer_size": 4393,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "node_modules\n*.env\n*.env.dev\nbower.json\ngulpfile.js\n*.project\n*.keystore\n*.sublime-project\npackage copy.json\npackage - Copy.json\n/www/templates/*.php\n/www/templates/contact-us - Copy.html",
+			"file": ".gitignore",
+			"file_size": 158,
+			"file_write_time": 130929571292643318,
+			"settings":
+			{
+				"buffer_size": 187,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/work/hazzir/www/includes/config.php",
+			"settings":
+			{
+				"buffer_size": 334,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/work/hazzir/www/includes/connection.php",
+			"settings":
+			{
+				"buffer_size": 394,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": " \n <?php \n\nif(isset($_GET['name'])){\n\n$user_name= $_GET['name'];\n$user_email= $_GET['email'];\n}\n\n  print_r(\"Name: \"+ $user_name + \"Email: \"+ $user_email);\n/*\n $data = json_decode(file_get_contents(\"php://input\"));\n $hospital = mysql_real_escape_string($data->h);\n $specialty = mysql_real_escape_string($data->h);\n $qry = 'INSERT INTO doctors (hospital,specialty) \n values (\"'.$hospital.'\",\"'.$specialty.'\")';\n\n $qry_res = mysql_query($qry);\n if ($qry_res) {\n    $arr = array('msg' => \"User Created Successfully!!!\", 'error' => '');\n    $jsn = json_encode($arr);\n    print_r($jsn);\n} else {\n    $arr = array('msg' => \"\", 'error' => 'Error In inserting');\n    $jsn = json_encode($arr);\n    print_r($jsn);\n}\n*/\n\n ?>",
+			"file": "www/postdata.php",
+			"file_size": 741,
+			"file_write_time": 130929418065649236,
+			"settings":
+			{
+				"buffer_size": 712,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/templates/postapp.php",
+			"settings":
+			{
+				"buffer_size": 2008,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -150,17 +188,27 @@
 	[
 		"/C/Users/A2K/apps/github/app-v2/apps",
 		"/C/Users/A2K/apps/github/app-v2/apps/www",
+		"/C/Users/A2K/apps/github/app-v2/apps/www/css",
 		"/C/Users/A2K/apps/github/app-v2/apps/www/js",
+		"/C/Users/A2K/apps/github/app-v2/apps/www/templates",
 		"/Users/agha.asim/asimkh/Github/node-js-getting-started"
 	],
 	"file_history":
 	[
-		"/C/Users/A2K/Desktop/New Folder/browserconfig.xml",
+		"/C/Users/A2K/apps/github/app-v2/apps/www/templates/contact-us.html",
+		"/D/work/hazzir/www/subscribe.php",
+		"/C/Users/A2K/apps/github/app-v2/apps/www/templates/sendmsg.php",
+		"/D/work/hazzir/www/haz/index.html",
+		"/C/Users/A2K/apps/github/app-v2/apps/www/css/style.css",
+		"/C/Users/A2K/apps/github/app-v2/apps/www/templates/error-list.html",
+		"/C/Users/A2K/apps/github/app-v2/apps/www/templates/menu.html",
+		"/C/Users/A2K/apps/github/app-v2/apps/readme.md",
+		"/C/Users/A2K/apps/github/app-v2/apps/.gitignore",
 		"/C/Users/A2K/apps/github/app-v2/apps/www/js/app.js",
+		"/C/Users/A2K/Desktop/New Folder/browserconfig.xml",
 		"/C/Users/A2K/apps/github/app-v2/apps/www/index.html",
 		"/C/Users/A2K/apps/github/app-v2/apps/www/templates/profile.html",
 		"/C/Users/A2K/apps/github/app-v2/apps/serve.js",
-		"/C/Users/A2K/apps/github/app-v2/apps/.gitignore",
 		"/C/Users/A2K/apps/github/app-v2/apps/Procfile",
 		"/C/Users/A2K/apps/github/app-v2/apps/package.json",
 		"/Users/agha.asim/asimkh/apps/Hazzir/www/templates/landing.html",
@@ -201,7 +249,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -215,6 +263,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"none",
 			"close",
 			"sdf",
 			"orientation",
@@ -239,7 +288,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -248,15 +297,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7397,
+						"buffer_size": 9451,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								34,
-								39
+								3729,
+								3729
 							]
 						],
 						"settings":
@@ -266,7 +315,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1805.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -274,67 +323,11 @@
 				},
 				{
 					"buffer": 1,
-					"file": "readme.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 876,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								826,
-								695
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": ".gitignore",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 128,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								128,
-								128
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "www/js/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4208,
+						"buffer_size": 4393,
 						"regions":
 						{
 						},
@@ -355,7 +348,150 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								187,
+								187
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/D/work/hazzir/www/includes/config.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 334,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/D/work/hazzir/www/includes/connection.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 394,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "www/postdata.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								117,
+								117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "www/templates/postapp.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2008,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1162,
+								1162
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
