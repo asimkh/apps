@@ -1,8 +1,16 @@
+var fb_ID ='970200256375080';
+var fb_DV= '130401233990263'
+
 angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic','ngCordova'])
 
 
-/* ==== Login ==== */
+/* 
+==== Login ==== 
+Running login Controller when app is launched.
+*/
 .controller("LoginCtrl", function($scope, $state, formData, ngFB, $cordovaOauth, $http) {
+
+   
 
   
   console.log("loading...assets")
@@ -12,13 +20,19 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic','n
   $scope.logoSrc = '/img/mob-logo.png';
   $scope.bgSrc = '/img/mob-background.png';
   $scope.descTxt = "Find the service people";
-  $scope.loginTxt = "Login";
+  $scope.loginTxt = "Facebook Login";
 
   $scope.user = {};
-
+/*
+   if (window.cordova.platformId == "browser") {
+        facebookConnectPlugin.browserInit(fb_ID);
+    }
+*/
 $scope.fbLogin = function () {
+
+
   console.log("facebook login...")
-    ngFB.login({scope: 'email,publish_actions'}).then(
+    ngFB.login({scope: 'public_profile,email,user_friends,publish_actions'}).then(
         function (response) {
             if (response.status === 'connected') {
                 console.log('Facebook login succeeded');
@@ -29,9 +43,8 @@ $scope.fbLogin = function () {
             }
         });
 };
-
-
-  $scope.submitForm = function(user) {
+/*
+ $scope.submitForm = function(user) {
 
    if (user.firstName) {
      console.log("Submitting Form", user);
@@ -44,6 +57,7 @@ $scope.fbLogin = function () {
      alert("Please fill out some information for the user");
    }
  };
+ */
   
 })
 
@@ -77,14 +91,90 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
 .controller('ProfileCtrl', function ($scope, ngFB) {
     ngFB.api({
         path: '/me',
-        params: {fields: 'id,name'}
+        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
     }).then(
         function (user) {
             $scope.user = user;
+            //$scope.name = email;
+            console.log(user)
         },
         function (error) {
             alert('Facebook error: ' + error.error_description);
         });
+})
+
+/* ---- Contact us  controller -- */
+.controller('ContactCtrl', function ($scope, ngFB, $http) {
+    ngFB.api({
+        path: '/me',
+        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
+    }).then(
+        function (user) {
+            $scope.user = user;
+            //$scope.name = email;
+            console.log(user)
+        },
+        function (error) {
+            alert('Facebook error: ' + error.error_description);
+        });
+
+    /* --- */
+    
+
+    $scope.refresh = function() {
+      $scope.successMsg = false;
+      //$scope.user.name = "";
+      //$scope.user.email = "";
+      $scope.user.subject = "";
+      $scope.user.comments = "";
+
+
+    }
+
+    $scope.SendContactMsg = function(user) {
+
+      console.log("sending data../?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.subject+"&userComments="+user.comments);
+      $scope.successMsg = true;
+
+      $http.post("http://hazzir.com/haz/postapp.php?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.subject+"&userComments="+user.comments).success(function(data){
+      $scope.tasks = data;
+      });
+
+      /*
+
+      $scope.data = {'userName' : $scope.user.name, 'userEmail' : $scope.user.email,
+                     "userSubject" : $scope.user.subject, 'userComments' : $scope.user.comments};
+
+      var req = {
+           method: 'POST',
+           url: 'http://hazzir.com/haz/postapp.php',
+           headers: {
+             'Content-Type': "application/json; charset=utf-8"
+           },
+           data: $scope.data
+          }
+
+      function successCallback(response) {
+
+        $scope.SuccessTxt= "Thanks for submitting";     
+      }
+
+      function errorCallback(response) { 
+        $scope.SuccessTxt= "Error, message not sent";
+      }
+      
+      $http.post(req).then(successCallback, errorCallback);
+      */
+
+     /* $http.post("http://localhost:8100/postdata.php?first="+input.name+"&email="+input.email+"&message="+input.message).success(function(data){
+      $scope.tasks = data;
+      });*/
+
+
+
+
+}
+
 })
 
 /* ---- menu controller -- */

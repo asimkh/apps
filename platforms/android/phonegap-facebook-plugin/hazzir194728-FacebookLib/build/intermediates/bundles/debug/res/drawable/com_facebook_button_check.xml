@@ -18,4 +18,4 @@
   <item android:state_checked="true" android:drawable="@drawable/com_facebook_button_check_on" />
   <item android:drawable="@drawable/com_facebook_button_check_off" />
 </selector>
-<!-- From: file:/Users/agha.asim/asimkh/apps/Hazzir/platforms/android/phonegap-facebook-plugin/hazzir194728-FacebookLib/res/drawable/com_facebook_button_check.xml -->
+<!-- From: file:/C:/Users/A2K/apps/github/app-v2/apps/platforms/android/phonegap-facebook-plugin/hazzir194728-FacebookLib/res/drawable/com_facebook_button_check.xml -->

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.hazzir.io" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>HAZ</name>
-  <description>&#xD;
-        Hazzir - find service people&#xD;
-    </description>
+  <description>Connect with network of professionals via mobile app.</description>
   <author email="hellohazzir@gmail.com" href="http://hazzir.com/">&#xD;
       Hazzir Team&#xD;
     </author>

@@ -95,7 +95,82 @@
 			"file": "www/js/controllers.js",
 			"settings":
 			{
-				"buffer_size": 9451,
+				"buffer_size": 9505,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/index.html",
+			"settings":
+			{
+				"buffer_size": 4868,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "platforms/android/res/xml/config.xml",
+			"settings":
+			{
+				"buffer_size": 2087,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config.xml",
+			"settings":
+			{
+				"buffer_size": 4020,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 1059,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "platforms/android/res/values/facebookconnect.xml",
+			"settings":
+			{
+				"buffer_size": 167,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "// Ionic Starter App\n\n// angular.module is a global place for creating, registering and retrieving Angular modules\n// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)\n// the 2nd parameter is an array of 'requires'\n// 'starter.services' is found in services.js\n// 'starter.controllers' is found in controllers.js\n\nvar appVersion = \"0.0.0\";\nvar fb_ID ='970200256375080';\nvar fb_DV= '130401233990263'\n\nangular.module('starter', ['ionic',  'starter.services', 'ionic.service.core', 'ionic.service.analytics','ionic.service.push', 'starter.controllers','ngCordova', 'ngOpenFB'])\n\n.run(function($ionicPlatform,  $ionicAnalytics, ngFB) {\n\n\n  ionic.Platform.ready(function(){\n    // will execute when device is ready, or immediately if the device is already ready.\n  });\n\n  var deviceInformation = ionic.Platform.device();\n\n  var isWebView = ionic.Platform.isWebView();\n  var isIPad = ionic.Platform.isIPad();\n  var isIOS = ionic.Platform.isIOS();\n  var isAndroid = ionic.Platform.isAndroid();\n  var isWindowsPhone = ionic.Platform.isWindowsPhone();\n\n  var currentPlatform = ionic.Platform.platform();\n  var currentPlatformVersion = ionic.Platform.version();\n\n  //ionic.Platform.exitApp(); // stops the app\n\n\n\n\n  $ionicPlatform.ready(function() {\n  \n   console.log(\"platform: \"+ currentPlatform +\",  version: \"+currentPlatformVersion +\", Web: \"+ isWebView);\n    /* Facebook Integration*/\n   /*  if (window.cordova.platformId == \"browser\") {\n        facebookConnectPlugin.browserInit(fb_ID);\n    }*/\n\n     ngFB.init({appId:fb_DV});\n\n/*\n   Ionic.io();\n\n   var push = new Ionic.Push({});\n\npush.register(function(token) {\n  // Log out your device token (Save this!)\n  console.log(\"Got Token:\",token.token);\n});\n*/\n\n    $ionicAnalytics.register();\n\n    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard\n    // for form inputs)\n    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {\n      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);\n      cordova.plugins.Keyboard.disableScroll(true);\n\n    }\n    if (window.StatusBar) {\n      // org.apache.cordova.statusbar required\n      StatusBar.styleLightContent();\n    }\n\n/*\n    cordova.getAppVersion(function (version) {\nconsole.log(\"ionic\"+version);\n});\n*/\n\n  });\n})\n\n.config(function($stateProvider, $urlRouterProvider, $ionicAppProvider, $ionicConfigProvider) {\n\n  $ionicConfigProvider.tabs.position('bottom'); // other values: top\n  $ionicConfigProvider.tabs.style(\"standard\"); \n\n  $ionicAppProvider.identify({\n    // The App ID for the server\n    app_id: '38d3dd54',\n    // The API key all services will use for this app\n    api_key: '8989d127b3c50dec67aff1686297fe5c03caf1601c4e2346',\n    dev_push: true,\n    // The GCM project number\n   gcm_id: 'infinite-cache-92312'\n  });\n\n  // Ionic uses AngularUI Router which uses the concept of states\n  // Learn more here: https://github.com/angular-ui/ui-router\n  // Set up the various states which the app can be in.\n  // Each state's controller can be found in controllers.js\n  $stateProvider\n\n  .state('app', {\n    url: '/home',\n    abstract: true,\n    templateUrl: 'templates/menu.html',\n    controller: \"NavController\"\n  })\n\n  // setup an abstract state for the tabs directive\n    .state('tab', {\n    url: '/tab',\n    abstract: true,\n    templateUrl: 'templates/tabs.html',\n    controller: \"TabCtrl\"\n  })\n\n\n\n\n  // Each tab has its own nav history stack:\n\n  .state('app.profile', {\n    url: \"/profile\",\n    views: {\n        'menuContent': {\n            templateUrl: \"templates/profile.html\",\n            controller: \"ProfileCtrl\"\n        }\n    }\n})\n\n.state('app.contact', {\n    url: '/contact',\n    views: {\n      'menuContent': {\n        templateUrl: 'templates/contact-us.html',\n        controller: 'ContactCtrl'\n      }\n    }\n  })\n\n  .state('app.dash', {\n    url: '/about',\n    views: {\n      'menuContent': {\n        templateUrl: 'templates/dashboard.html',\n        controller: 'DashCtrl'\n      }\n    }\n  })\n\n\n  .state('app.list', {\n      url: '/list',\n      views: {\n        'menuContent': {\n          templateUrl: 'templates/tab-chats.html',\n          controller: 'ChatsCtrl'\n        }\n      }\n    })\n\n    .state('app.list-detail', {\n      url: '/list/:chatId',\n      views: {\n        'menuContent': {\n          templateUrl: 'templates/chat-detail.html',\n          controller: 'ChatDetailCtrl'\n        }\n      }\n    })\n\n  .state('app.settings', {\n    url: '/settings',\n    views: {\n      'menuContent': {\n        templateUrl: 'templates/settings.html',\n        controller: 'AccountCtrl'\n      }\n    }\n  });\n\n  $stateProvider\n        .state('home', {\n            url: '/',\n            controller: 'landingCtrl',\n            templateUrl: 'templates/landing.html'\n    });\n\n\n  $stateProvider\n        .state('userlogout', {\n            url: '/',\n            controller: 'logoutCtrl',\n            templateUrl: 'logoutcallback.html'\n    });\n\n  // if none of the above states are matched, use this as the fallback\n  $urlRouterProvider.otherwise('/');\n\n});",
+			"file": "platforms/android/assets/www/js/app.js",
+			"file_size": 5273,
+			"file_write_time": 130931300578640918,
+			"settings":
+			{
+				"buffer_size": 5072,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "platforms/android/secure.properties",
+			"settings":
+			{
+				"buffer_size": 61,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "platforms/platforms.json",
+			"settings":
+			{
+				"buffer_size": 46,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/js/services.js",
+			"settings":
+			{
+				"buffer_size": 5896,
 				"line_ending": "Windows"
 			}
 		},
@@ -103,18 +178,23 @@
 			"file": "www/js/app.js",
 			"settings":
 			{
-				"buffer_size": 4393,
+				"buffer_size": 5072,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "node_modules\n*.env\n*.env.dev\nbower.json\ngulpfile.js\n*.project\n*.keystore\n*.sublime-project\npackage copy.json\npackage - Copy.json\n/www/templates/*.php\n/www/templates/contact-us - Copy.html",
-			"file": ".gitignore",
-			"file_size": 158,
-			"file_write_time": 130929571292643318,
+			"file": "www/css/style.css",
 			"settings":
 			{
-				"buffer_size": 187,
+				"buffer_size": 5394,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 207,
 				"line_ending": "Windows"
 			}
 		},
@@ -187,11 +267,18 @@
 	"expanded_folders":
 	[
 		"/C/Users/A2K/apps/github/app-v2/apps",
-		"/C/Users/A2K/apps/github/app-v2/apps/www",
-		"/C/Users/A2K/apps/github/app-v2/apps/www/css",
-		"/C/Users/A2K/apps/github/app-v2/apps/www/js",
-		"/C/Users/A2K/apps/github/app-v2/apps/www/templates",
-		"/Users/agha.asim/asimkh/Github/node-js-getting-started"
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android/build",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android/build/generated",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android/build/generated/res",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android/build/generated/res/generated",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android/build/generated/res/rs",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android/build/generated/res/rs/debug",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android/build/generated/res/rs/release",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android/build/tmp",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android/res",
+		"/C/Users/A2K/apps/github/app-v2/apps/platforms/android/res/xml"
 	],
 	"file_history":
 	[
@@ -263,6 +350,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fb",
 			"none",
 			"close",
 			"sdf",
@@ -288,7 +376,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -297,45 +385,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9451,
+						"buffer_size": 9505,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3729,
-								3729
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1805.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "www/js/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4393,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								891,
-								891
+								319,
+								319
 							]
 						],
 						"settings":
@@ -348,24 +406,348 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": ".gitignore",
+					"buffer": 1,
+					"file": "www/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 187,
+						"buffer_size": 4868,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								187,
-								187
+								2980,
+								3033
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 945.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "platforms/android/res/xml/config.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6,
+								10
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "config.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4020,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								269,
+								269
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1059,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14,
+								14
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "platforms/android/res/values/facebookconnect.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 167,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								153,
+								153
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "platforms/android/assets/www/js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5072,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "platforms/android/secure.properties",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 61,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/JavaProperties.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "platforms/platforms.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 46,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "www/js/services.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5896,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								420,
+								420
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "www/js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5072,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4722,
+								4726
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "www/css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5394,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2986,
+								2986
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1239.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 207,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								207,
+								207
 							]
 						],
 						"settings":
@@ -376,11 +758,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 13,
 					"file": "/D/work/hazzir/www/includes/config.php",
 					"semi_transient": false,
 					"settings":
@@ -404,11 +786,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 14,
 					"file": "/D/work/hazzir/www/includes/connection.php",
 					"semi_transient": false,
 					"settings":
@@ -432,11 +814,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 15,
 					"file": "www/postdata.php",
 					"semi_transient": false,
 					"settings":
@@ -462,11 +844,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 16,
 					"file": "www/templates/postapp.php",
 					"semi_transient": false,
 					"settings":
@@ -491,7 +873,7 @@
 						"translation.y": 540.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 13,
 					"type": "text"
 				}
 			]

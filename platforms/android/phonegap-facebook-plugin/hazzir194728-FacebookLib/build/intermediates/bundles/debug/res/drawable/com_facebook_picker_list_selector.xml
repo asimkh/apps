@@ -25,4 +25,4 @@
     <item android:state_focused="true"                                                             android:drawable="@drawable/com_facebook_picker_list_focused" />
 
 </selector>
-<!-- From: file:/Users/agha.asim/asimkh/apps/Hazzir/platforms/android/phonegap-facebook-plugin/hazzir194728-FacebookLib/res/drawable/com_facebook_picker_list_selector.xml -->
+<!-- From: file:/C:/Users/A2K/apps/github/app-v2/apps/platforms/android/phonegap-facebook-plugin/hazzir194728-FacebookLib/res/drawable/com_facebook_picker_list_selector.xml -->

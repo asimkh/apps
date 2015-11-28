@@ -4,8 +4,13 @@ var fb_DV= '130401233990263'
 angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic','ngCordova'])
 
 
-/* ==== Login ==== */
+/* 
+==== Login ==== 
+Running login Controller when app is launched.
+*/
 .controller("LoginCtrl", function($scope, $state, formData, ngFB, $cordovaOauth, $http) {
+
+   
 
   
   console.log("loading...assets")

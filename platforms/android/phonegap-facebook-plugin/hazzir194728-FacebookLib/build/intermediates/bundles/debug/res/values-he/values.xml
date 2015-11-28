@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/agha.asim/asimkh/apps/Hazzir/platforms/android/phonegap-facebook-plugin/hazzir194728-FacebookLib/res/values-he/strings.xml -->
+    <!-- From: file:/C:/Users/A2K/apps/github/app-v2/apps/platforms/android/phonegap-facebook-plugin/hazzir194728-FacebookLib/res/values-he/strings.xml -->
     <eat-comment/>
     <string name="com_facebook_choose_friends">בחר חברים</string>
     <string name="com_facebook_dialogloginactivity_ok_button">אישור</string>

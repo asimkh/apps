@@ -64,6 +64,7 @@ h1, h2, .item, .item h2{/*font-size: 23px;*/ font-weight: bold; color:#bcc1c4;}
 
 .login-form{
   width: 20%;
+   color:#000000;
 }
 
 .logo-login{height:120px;width:120px;display:block;margin:0 auto; background:url(../img/mob-logo.png) no-repeat;
@@ -100,7 +101,7 @@ h1, h2, .item, .item h2{/*font-size: 23px;*/ font-weight: bold; color:#bcc1c4;}
   
 }
 
-.contact-form textarea, input{color:#bcc1c4 !important; font-weight: bold; background: transparent; }
+.contact-form textarea, .contact-form input{color:#bcc1c4 !important; font-weight: bold; background: transparent; }
 .contact-form input[disabled]{
     background-color: transparent;
     }

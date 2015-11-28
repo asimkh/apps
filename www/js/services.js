@@ -12,6 +12,34 @@ angular.module('starter.services', [])
  }
 })
 
+// create a simple factory:   
+//http://stackoverflow.com/questions/13799887/how-to-properly-inject-facebook-javascript-sdk-to-angularjs-controllers
+//http://wlepinski.github.io/angularjs-facebook-sdk/
+ 
+/*
+.factory('facebook', ['$window', function($window) {
+
+    //get FB from the global (window) variable.
+    var FB = $window.FB;
+
+    // gripe if it's not there.
+    if(!FB) throw new Error('Facebook not loaded');
+
+    //make sure FB is initialized.
+    FB.init({
+       appId : 'YOUR_APP_ID'
+    });
+
+    return {
+        // a me function
+        me: function(callback) {
+            FB.api('/me', callback);
+        }
+
+        //TODO: Add any other functions you need here, login() for example.
+    }
+}]);
+*/
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
  

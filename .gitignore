@@ -1,13 +1,27 @@
+# On branch master
 node_modules
+
+# Enviornments
 *.env
 *.env.dev
+
+# JSON
 bower.json
 gulpfile.js
-*.project
-*.keystore
-*.sublime-project
-*.sublime-workspace
 package copy.json
 package - Copy.json
+
+
+# Keystores
+*.project
+*.keystore
+/platforms/android/*.keystore
+/platforms/android/build/output/*
+
+# Sublime projects
+*.sublime-project
+*.sublime-workspace
+
+# PHP
 /www/templates/*.php
 /www/templates/contact-us - Copy.html

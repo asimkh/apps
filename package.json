@@ -1,5 +1,5 @@
 {
-  "name": "haz",
+  "name": "Haz",
   "version": "1.0.0",
   "description": "Connect with network of professionals via mobile app.",
   "private": "true",
@@ -19,8 +19,7 @@
     "ionic-plugin-deploy"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "ios"
   ],
   "main": "serve.js",
   "scripts": {

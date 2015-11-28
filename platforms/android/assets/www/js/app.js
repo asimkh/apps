@@ -7,16 +7,43 @@
 // 'starter.controllers' is found in controllers.js
 
 var appVersion = "0.0.0";
+var fb_ID ='970200256375080';
+var fb_DV= '130401233990263'
 
 angular.module('starter', ['ionic',  'starter.services', 'ionic.service.core', 'ionic.service.analytics','ionic.service.push', 'starter.controllers','ngCordova', 'ngOpenFB'])
 
 .run(function($ionicPlatform,  $ionicAnalytics, ngFB) {
 
 
-  $ionicPlatform.ready(function() {
+  ionic.Platform.ready(function(){
+    // will execute when device is ready, or immediately if the device is already ready.
+  });
 
+  var deviceInformation = ionic.Platform.device();
+
+  var isWebView = ionic.Platform.isWebView();
+  var isIPad = ionic.Platform.isIPad();
+  var isIOS = ionic.Platform.isIOS();
+  var isAndroid = ionic.Platform.isAndroid();
+  var isWindowsPhone = ionic.Platform.isWindowsPhone();
+
+  var currentPlatform = ionic.Platform.platform();
+  var currentPlatformVersion = ionic.Platform.version();
+
+  //ionic.Platform.exitApp(); // stops the app
+
+
+
+
+  $ionicPlatform.ready(function() {
+  
+   console.log("platform: "+ currentPlatform +",  version: "+currentPlatformVersion +", Web: "+ isWebView);
     /* Facebook Integration*/
-     ngFB.init({appId: '970200256375080'});
+   /*  if (window.cordova.platformId == "browser") {
+        facebookConnectPlugin.browserInit(fb_ID);
+    }*/
+
+     ngFB.init({appId:fb_DV});
 
 /*
    Ionic.io();
@@ -102,6 +129,16 @@ console.log("ionic"+version);
         }
     }
 })
+
+.state('app.contact', {
+    url: '/contact',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/contact-us.html',
+        controller: 'ContactCtrl'
+      }
+    }
+  })
 
   .state('app.dash', {
     url: '/about',

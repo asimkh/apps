@@ -14,13 +14,17 @@
 -->
   <ion-content>
   
-    <div class="list card">
-            <div class="item">
-                <h2>{{user.name}}</h2>
-                <p>{{user.city}}</p>
-            </div>
-            <div class="item item-body">
-                <img src="http://graph.facebook.com/{{user.id}}/picture?width=270&height=270"/>
+    <div class="padding">
+            <div class="item item--transparent">
+                <h2>Name: {{user.name}}</h2>
+                <p>Email: {{user.email}}</p>
+                <!--<p>{{user.id}}</p>-->
+                <!--
+                 <p>Gender: {{user.gender}}</p>
+                <p>Language: {{user.locale}}</p>
+                 <p>Age: {{user.age_range}}</p>
+           -->
+                <img src="http://graph.facebook.com/{{user.id}}/picture?width=100&height=100"/>
             </div>
         </div>
     

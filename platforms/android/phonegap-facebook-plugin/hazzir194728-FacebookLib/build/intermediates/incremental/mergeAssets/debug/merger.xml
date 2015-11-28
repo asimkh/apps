@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/agha.asim/asimkh/apps/Hazzir/platforms/android/phonegap-facebook-plugin/hazzir194728-FacebookLib/assets"/></dataSet><dataSet config="debug"><source path="/Users/agha.asim/asimkh/apps/Hazzir/platforms/android/phonegap-facebook-plugin/hazzir194728-FacebookLib/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\A2K\apps\github\app-v2\apps\platforms\android\phonegap-facebook-plugin\hazzir194728-FacebookLib\assets"/></dataSet><dataSet config="debug"><source path="C:\Users\A2K\apps\github\app-v2\apps\platforms\android\phonegap-facebook-plugin\hazzir194728-FacebookLib\src\debug\assets"/></dataSet></merger>
