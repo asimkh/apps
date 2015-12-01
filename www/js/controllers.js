@@ -155,7 +155,7 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
       /*console.log(ContactForm.username)*/
        $http({
         method  : 'POST',
-        url     : $scope.url2,
+        url     : $scope.url1,
         data    : config, /*JSON.stringify($scope.ContactForm), */ // pass in data as strings
         headers : {'Access-Control-Allow-Origin':'*'}
         })
