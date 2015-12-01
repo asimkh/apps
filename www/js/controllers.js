@@ -8,14 +8,14 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic','n
 ==== Login ==== 
 Running login Controller when app is launched.
 */
-.controller("LoginCtrl", function($scope, $state, formData, ngFB, $cordovaOauth, $http) {
+.controller("LoginCtrl", function($scope, $state, formData, $cordovaOauth, $http) {
 
    
 
   
   console.log("loading...assets")
-  window.cordovaOauth = $cordovaOauth;
-  window.http = $http;
+ // window.cordovaOauth = $cordovaOauth;
+ // window.http = $http;
 
   $scope.logoSrc = '/img/mob-logo.png';
   $scope.bgSrc = '/img/mob-background.png';
@@ -23,26 +23,8 @@ Running login Controller when app is launched.
   $scope.loginTxt = "Facebook Login";
 
   $scope.user = {};
-/*
-   if (window.cordova.platformId == "browser") {
-        facebookConnectPlugin.browserInit(fb_ID);
-    }
-*/
-$scope.fbLogin = function () {
 
 
-  console.log("facebook login...")
-    ngFB.login({scope: 'public_profile,email,user_friends,publish_actions'}).then(
-        function (response) {
-            if (response.status === 'connected') {
-                console.log('Facebook login succeeded');
-                //$scope.closeLogin();
-                 $state.go('app.dash');
-            } else {
-                alert('Facebook login failed');
-            }
-        });
-};
 /*
  $scope.submitForm = function(user) {
 
@@ -104,7 +86,10 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
 })
 
 /* ---- Contact us  controller -- */
-.controller('ContactCtrl', function ($scope, ngFB, $http) {
+.controller('ContactCtrl',  function ($scope, ngFB, $http) {
+
+
+
     ngFB.api({
         path: '/me',
         params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
@@ -119,34 +104,95 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
         });
 
     /* --- */
-    
-
+  
     $scope.refresh = function() {
       $scope.successMsg = false;
       //$scope.user.name = "";
       //$scope.user.email = "";
-      $scope.user.subject = "";
-      $scope.user.comments = "";
+      $scope.user.usersubject = "";
+      $scope.user.usercomments = "";
 
 
     }
 
+  //$scope.url = 'submit.php';
+  //$scope.url = "http://hazzir.com/haz/postapp.php?userName";
+ // $scope.data = {'userName' : $scope.user.username, 'userEmail' : $scope.user.email,"userSubject" : $scope.user.subject, 'userComments' : $scope.user.comments};
+//console.log("sending data../?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.subject+"&userComments="+user.comments);
+      
+ 
+ /*
+
+https://scotch.io/tutorials/submitting-ajax-forms-the-angularjs-way
+http://shabeebk.com/blog/simple-form-submit-in-angularjs-with-php/
+http://blog.ionic.io/handling-cors-issues-in-ionic/
+http://stackoverflow.com/questions/26165879/ionic-app-and-server-post-acces-control-allow-origin
+http://www.raymondcamden.com/2015/09/01/calling-remote-services-from-ionic-serve
+http://www.nikola-breznjak.com/blog/codeproject/posting-data-from-ionic-app-to-php-server/
+http://stackoverflow.com/questions/15707431/http-post-using-angular-js
+  */
     $scope.SendContactMsg = function(user) {
 
-      console.log("sending data../?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.subject+"&userComments="+user.comments);
-      $scope.successMsg = true;
+      var headers = {
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      };
 
-      $http.post("http://hazzir.com/haz/postapp.php?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.subject+"&userComments="+user.comments).success(function(data){
+    var userData = {};
+    //$scope.userData.subject;
+       $scope.url = "http://hazzir.com/haz/postapp.php";
+       $scope.url1 = "http://hazzir.com/haz/sendmsg.php";
+       $scope.url2 = "http://haz.herokuapp.com/sendmsg.php";
+       var config = {
+        "userName" : $scope.user.name, "userEmail" : $scope.user.email, "userSubject" :  $scope.user.usersubject, 
+         "userComments" : $scope.user.usercomments
+      };
+      
+      $scope.successMsg = true
+      /*$http.post(method:'post',$scope.url, config )*/
+      /*console.log(ContactForm.username)*/
+       $http({
+        method  : 'POST',
+        url     : $scope.url2,
+        data    : config, /*JSON.stringify($scope.ContactForm), */ // pass in data as strings
+        headers : {'Access-Control-Allow-Origin':'*'}
+        })
+      .success(function (data, status, config){
+
+      //$scope.postCallResult = logResult("POST SUCCESS", data, status, headers, config);
+
+      $scope.result = data; 
+      console.log("SUCCESS : " + data);
+      console.log("sending data../?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.usersubject+"&userComments="+user.usercomments);
+      
+     /* $scope.successMsg = true;
+
+      $scope.status = status;
+      $scope.data = data;
+      $scope.result = data; 
       $scope.tasks = data;
-      });
+      */
+      })
+      .error(function (data, status, config)
+        {
 
-      /*
+           $scope.result = data; 
+           console.log("Error : " + data);
+           
+         // $scope.postCallResult = logResult("POST ERROR", data, status, headers, config);
+        });
 
+
+
+      
+/*
       $scope.data = {'userName' : $scope.user.name, 'userEmail' : $scope.user.email,
                      "userSubject" : $scope.user.subject, 'userComments' : $scope.user.comments};
 
       var req = {
-           method: 'POST',
+          
            url: 'http://hazzir.com/haz/postapp.php',
            headers: {
              'Content-Type': "application/json; charset=utf-8"
@@ -166,9 +212,6 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
       $http.post(req).then(successCallback, errorCallback);
       */
 
-     /* $http.post("http://localhost:8100/postdata.php?first="+input.name+"&email="+input.email+"&message="+input.message).success(function(data){
-      $scope.tasks = data;
-      });*/
 
 
 
@@ -309,8 +352,9 @@ $scope.toggleProjects = function() {
 
 /* ------ */
 /* ---- landing page controller -- */
-.controller('landingCtrl', function($scope, $stateParams, $state) {
+.controller('landingCtrl', function($scope, $stateParams, $state, ngFB) {
 
+//var deploy = new Ionic.Deploy();
 // Update app code with new release from Ionic Deploy
   $scope.doUpdate = function() {
     deploy.update().then(function(res) {
@@ -333,9 +377,24 @@ $scope.toggleProjects = function() {
       console.error('Ionic Deploy: Unable to check for updates', err);
     });
   }
-//var deploy = new Ionic.Deploy();
 
-  
+
+
+  $scope.fbLogin = function () {
+
+
+  console.log("facebook login...")
+    ngFB.login({scope: 'public_profile,email,user_friends,publish_actions'}).then(
+        function (response) {
+            if (response.status === 'connected') {
+                console.log('Facebook login succeeded');
+                //$scope.closeLogin();
+                 $state.go('app.dash');
+            } else {
+                alert('Facebook login failed');
+            }
+        });
+};
 
 $scope.gotoState = function() {
    console.log("login")

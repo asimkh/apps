@@ -15,39 +15,26 @@ angular.module('starter', ['ionic',  'starter.services', 'ionic.service.core', '
 .run(function($ionicPlatform,  $ionicAnalytics, ngFB) {
 
 
-  ionic.Platform.ready(function(){
-    // will execute when device is ready, or immediately if the device is already ready.
-  });
-
+ 
   var deviceInformation = ionic.Platform.device();
-
   var isWebView = ionic.Platform.isWebView();
   var isIPad = ionic.Platform.isIPad();
   var isIOS = ionic.Platform.isIOS();
   var isAndroid = ionic.Platform.isAndroid();
   var isWindowsPhone = ionic.Platform.isWindowsPhone();
-
   var currentPlatform = ionic.Platform.platform();
   var currentPlatformVersion = ionic.Platform.version();
-
   //ionic.Platform.exitApp(); // stops the app
-
-
 
 
   $ionicPlatform.ready(function() {
   
    console.log("platform: "+ currentPlatform +",  version: "+currentPlatformVersion +", Web: "+ isWebView);
-    /* Facebook Integration*/
-   /*  if (window.cordova.platformId == "browser") {
-        facebookConnectPlugin.browserInit(fb_ID);
-    }*/
+   ngFB.init({appId:fb_ID});
 
-     ngFB.init({appId:fb_DV});
 
+   //Ionic.io();
 /*
-   Ionic.io();
-
    var push = new Ionic.Push({});
 
 push.register(function(token) {
@@ -55,7 +42,6 @@ push.register(function(token) {
   console.log("Got Token:",token.token);
 });
 */
-
     $ionicAnalytics.register();
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -91,7 +77,7 @@ console.log("ionic"+version);
     api_key: '8989d127b3c50dec67aff1686297fe5c03caf1601c4e2346',
     dev_push: true,
     // The GCM project number
-   gcm_id: 'infinite-cache-92312'
+    gcm_id: 'infinite-cache-92312'
   });
 
   // Ionic uses AngularUI Router which uses the concept of states

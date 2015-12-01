@@ -8,14 +8,14 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic','n
 ==== Login ==== 
 Running login Controller when app is launched.
 */
-.controller("LoginCtrl", function($scope, $state, formData, ngFB, $cordovaOauth, $http) {
+.controller("LoginCtrl", function($scope, $state, formData, $cordovaOauth, $http) {
 
    
 
   
   console.log("loading...assets")
-  window.cordovaOauth = $cordovaOauth;
-  window.http = $http;
+ // window.cordovaOauth = $cordovaOauth;
+ // window.http = $http;
 
   $scope.logoSrc = '/img/mob-logo.png';
   $scope.bgSrc = '/img/mob-background.png';
@@ -23,26 +23,8 @@ Running login Controller when app is launched.
   $scope.loginTxt = "Facebook Login";
 
   $scope.user = {};
-/*
-   if (window.cordova.platformId == "browser") {
-        facebookConnectPlugin.browserInit(fb_ID);
-    }
-*/
-$scope.fbLogin = function () {
 
 
-  console.log("facebook login...")
-    ngFB.login({scope: 'public_profile,email,user_friends,publish_actions'}).then(
-        function (response) {
-            if (response.status === 'connected') {
-                console.log('Facebook login succeeded');
-                //$scope.closeLogin();
-                 $state.go('app.dash');
-            } else {
-                alert('Facebook login failed');
-            }
-        });
-};
 /*
  $scope.submitForm = function(user) {
 
@@ -309,8 +291,9 @@ $scope.toggleProjects = function() {
 
 /* ------ */
 /* ---- landing page controller -- */
-.controller('landingCtrl', function($scope, $stateParams, $state) {
+.controller('landingCtrl', function($scope, $stateParams, $state, ngFB) {
 
+  
 // Update app code with new release from Ionic Deploy
   $scope.doUpdate = function() {
     deploy.update().then(function(res) {
@@ -333,9 +316,24 @@ $scope.toggleProjects = function() {
       console.error('Ionic Deploy: Unable to check for updates', err);
     });
   }
+
 //var deploy = new Ionic.Deploy();
 
-  
+  $scope.fbLogin = function () {
+
+
+  console.log("facebook login...")
+    ngFB.login({scope: 'public_profile,email,user_friends,publish_actions'}).then(
+        function (response) {
+            if (response.status === 'connected') {
+                console.log('Facebook login succeeded');
+                //$scope.closeLogin();
+                 $state.go('app.dash');
+            } else {
+                alert('Facebook login failed');
+            }
+        });
+};
 
 $scope.gotoState = function() {
    console.log("login")
