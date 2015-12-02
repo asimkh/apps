@@ -262,7 +262,7 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
 
 
 /* ---- dashboard  -- */
-.controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal, $timeout, $state, $ionicSideMenuDelegate, formData) {
+.controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal,$http, $timeout, $state, $ionicSideMenuDelegate, formData) {
  $scope.ContinueTxt = "Continue";
  console.log("loading...Dashboard")
  $scope.user = formData.getForm();
@@ -277,6 +277,35 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
   
   };
   */
+  /*========= */
+
+  var config, xName, xEmail ;
+  $scope.url = "http://hazzir.com/haz/savedata.php";
+
+    ngFB.api({
+        path: '/me',
+        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
+    }).then(
+        function (user) {
+            $scope.user = user;
+            console.log("userName : "+ $scope.user.name + ", userEmail : "+ $scope.user.email)
+            $http({
+                method  : 'POST',
+                url     : $scope.url,
+                data    : {'userName' : $scope.user.name, 'userEmail' : $scope.user.email}, 
+                headers : {'Access-Control-Allow-Origin':'*'}
+                }).success(function (data, status, config){console.log("SUCCESS : " + data);})
+                  .error(function (data, status, config){console.log("Error : " + data);});
+            
+        },
+        function (error) {
+            alert('Facebook error: ' + error.error_description);
+        });
+
+      
+       
+
+  /* ============ */
 
 
 
