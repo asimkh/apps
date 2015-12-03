@@ -253,13 +253,13 @@ $scope.menu6="Logout";
   +"<strong style='color:white;'>Haz App</strong> service is entering its first year of business as bootstrapping startup.<br><br>"
   +"The mobile app offers build your own comprehensive database that is both reliable and trustworthy.<br>"
   +"Connect with network of professionals via mobile app.<br>"
-  +"<br><a http='http://www.hazzir.com'>web: http://www.hazzir.com</a>"
-  +"<br><a http='mailto:support@hazzir.com'>email: support@hazzir.com</a>"
+  +"<br><a class='lnk' target='_blank' href='http://www.hazzir.com'>web : http://www.hazzir.com</a>"
+  +"<br><a class='lnk' target='_blank' href='mailto:support@hazzir.com'>email : support@hazzir.com</a>"
   +"<br>"
   +"<h1>Advertise with us</h1>"
   +"Looking to promote your brand & reach new customers?<br>"
   +"Advertising on <strong>Haz App</strong> gives you the platform to reach an audience perfect for your business.<br><br>"
-  +"If you are interested in advertising with us please email us at <a http='mailto:support@hazzir.com'>support@hazzir.com</a>."
+  +"If you are interested in advertising with us please email us at <a target='_blank' class='lnk' style='text-decoration: none' href='mailto:support@hazzir.com'>support@hazzir.com</a>."
   
  console.log("loading...Dashboard")
  
@@ -404,7 +404,7 @@ $scope.toggleProjects = function() {
             if (response.status === 'connected') {
                 console.log('Facebook login succeeded');
                 //$scope.closeLogin();
-                 $state.go('app.list');
+                 $state.go('app.dash');
             } else {
                 alert('Facebook login failed');
             }

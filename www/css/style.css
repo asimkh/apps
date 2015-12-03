@@ -18,6 +18,19 @@ body{
   font-family: "Roboto";
 }
 .hpaddding-100{padding-top:180px;}
+a.lnk:link , a.lnk:visited , a.lnk:active 
+{  
+ text-decoration:none;  
+ color: #be6556;
+ background: transparent;;
+} 
+
+a.lnk:hover, a.lnk:focus
+{  
+ 
+ color: #ffffff;
+ 
+} 
 
 
 .item-complex .item-content, .item {background-color: #3e4454;}
