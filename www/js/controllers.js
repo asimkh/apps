@@ -186,31 +186,7 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
 
 
 
-      
-/*
-      $scope.data = {'userName' : $scope.user.name, 'userEmail' : $scope.user.email,
-                     "userSubject" : $scope.user.subject, 'userComments' : $scope.user.comments};
-
-      var req = {
-          
-           url: 'http://hazzir.com/haz/postapp.php',
-           headers: {
-             'Content-Type': "application/json; charset=utf-8"
-           },
-           data: $scope.data
-          }
-
-      function successCallback(response) {
-
-        $scope.SuccessTxt= "Thanks for submitting";     
-      }
-
-      function errorCallback(response) { 
-        $scope.SuccessTxt= "Error, message not sent";
-      }
-      
-      $http.post(req).then(successCallback, errorCallback);
-      */
+    
 
 
 
@@ -225,6 +201,13 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
       $scope.toggleLeft = function() {
         $ionicSideMenuDelegate.toggleLeft();
       };
+
+$scope.menu1="Introduction";
+$scope.menu2="List";
+$scope.menu3="Settings";
+$scope.menu4="Profile";
+$scope.menu5="Contact";
+$scope.menu6="Logout";
 
 
     })
@@ -263,21 +246,24 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
 
 /* ---- dashboard  -- */
 .controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal,$http, $timeout, $state, $ionicSideMenuDelegate, formData) {
+ 
  $scope.ContinueTxt = "Continue";
- console.log("loading...Dashboard")
- $scope.user = formData.getForm();
- //console.log("Submitting Form", $scope.user);
-  //$scope.session = Session.get({sessionId: $stateParams.sessionId});
- //$scope.$root.tabsHidden = "tabs-hide";
-/*
- scope.gotoHome = function() {
-   console.log("tab > Home")
-   //$state.go('tab.chats');
-   $state.go('/', {url: 'templates/landing.html'})
+ $scope.aboutHeading ="Introduction";
+ $scope.aboutTxt =  "It is new digital technologies which will reach and convert leads into customers. "
+  +"<strong style='color:white;'>Haz App</strong> service is entering its first year of business as bootstrapping startup.<br><br>"
+  +"The mobile app offers build your own comprehensive database that is both reliable and trustworthy.<br>"
+  +"Connect with network of professionals via mobile app.<br>"
+  +"<br><a http='http://www.hazzir.com'>web: http://www.hazzir.com</a>"
+  +"<br><a http='mailto:support@hazzir.com'>email: support@hazzir.com</a>"
+  +"<br>"
+  +"<h1>Advertise with us</h1>"
+  +"Looking to promote your brand & reach new customers?<br>"
+  +"Advertising on <strong>Haz App</strong> gives you the platform to reach an audience perfect for your business.<br><br>"
+  +"If you are interested in advertising with us please email us at <a http='mailto:support@hazzir.com'>support@hazzir.com</a>."
   
-  };
-  */
-  /*========= */
+ console.log("loading...Dashboard")
+ 
+  /*=== Save user Data ====== */
 
   var config, xName, xEmail ;
   $scope.url = "http://hazzir.com/haz/savedata.php";
@@ -418,7 +404,7 @@ $scope.toggleProjects = function() {
             if (response.status === 'connected') {
                 console.log('Facebook login succeeded');
                 //$scope.closeLogin();
-                 $state.go('app.dash');
+                 $state.go('app.list');
             } else {
                 alert('Facebook login failed');
             }
