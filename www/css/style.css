@@ -60,9 +60,50 @@ a.lnk:hover, a.lnk:focus
   width: 49%;
 }
 .button-fullwidth{
+   max-height: 600px;
   width: 100%;background-color: #3e4454;color:#bcc1c4; margin: auto;
 }
 
+/*=== Slide == */
+.slider-pager .slider-pager-page{color: #ffffff;}
+.slider-slides{
+  /*
+  background-repeat: no-repeat;
+  background-size: cover;
+   height: 960px;
+   width: 640px
+   */
+  height: 620px;
+  background-color: #3e4454;
+}
+
+.slider-slide img {
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+    width: 100%;
+
+}
+
+.slider {
+  height: 100%;
+  background: #ccc;
+}
+.box{
+  height: 100%;
+}
+.blue{
+  background: blue;
+}
+.yellow{
+  background: yellow;
+}
+.pink{
+  background: pink;
+}
 /* ====dashboard==== */
 
 div, p, .item p{color:#bcc1c4; font-size: 14px;}

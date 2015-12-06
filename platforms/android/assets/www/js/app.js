@@ -32,9 +32,9 @@ angular.module('starter', ['ionic',  'starter.services', 'ionic.service.core', '
    console.log("platform: "+ currentPlatform +",  version: "+currentPlatformVersion +", Web: "+ isWebView);
    ngFB.init({appId:fb_ID});
 
-/*
-   Ionic.io();
 
+   //Ionic.io();
+/*
    var push = new Ionic.Push({});
 
 push.register(function(token) {
@@ -42,7 +42,6 @@ push.register(function(token) {
   console.log("Got Token:",token.token);
 });
 */
-
     $ionicAnalytics.register();
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -78,7 +77,7 @@ console.log("ionic"+version);
     api_key: '8989d127b3c50dec67aff1686297fe5c03caf1601c4e2346',
     dev_push: true,
     // The GCM project number
-   gcm_id: 'infinite-cache-92312'
+    gcm_id: 'infinite-cache-92312'
   });
 
   // Ionic uses AngularUI Router which uses the concept of states

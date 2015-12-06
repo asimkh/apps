@@ -38,7 +38,7 @@
 
             <label class="item item-input">
             <span class="input-label">Subject</span>
-            <input type="text" name="subject" ng-model="user.subject" placeholder="--- Type your subject ---" required>
+            <input type="text" name="subject" ng-model="user.usersubject" placeholder="--- Type your subject ---" required>
             </label>
 
 <!--
@@ -46,10 +46,11 @@
               <span class="input-label">Subject</span>
               <input type="text" name="subject" ng-model="authorization.subject"  required>
             </label>
-    -->         
+    -->       <!--  
             <div class="error-container" ng-show="authorizationForm.username.$error" ng-messages="authorizationForm.username.$error">
               <div ng-messages-include="error-list.html"></div>
             </div>
+            -->
 
 
 
@@ -57,7 +58,7 @@
             <label class="item item-input">
             <span class="input-label message-form">Message</span>
              
-              <textarea placeholder="--- Type your message ---" rows="8" cols="10" ng-model="user.comments" required></textarea>
+              <textarea name="comments" placeholder="--- Type your message ---" rows="8" cols="10" ng-model="user.usercomments" required></textarea>
              
             </label>
              
@@ -72,7 +73,10 @@
 
         <div id="contact-status" ng-show="successMsg">
           
-          <p>{{SuccessTxt}}</p>
+         
+          <div ng-bind-html="result"></div>
+          <!-- <textarea class="logTextArea">{{postCallResult}}</textarea>-->
+          <!--<p>{{SuccessTxt}}</p>-->
            <button class="button button-full button-positive" type="submit" ng-click="refresh();">
            Refresh
           </button>

@@ -88,7 +88,7 @@ angular.module('starter.services', [])
     addTime: '30 mins',
     addCity: 'Morbi id ',
     addCountry: 'consectetur adipiscing'
-  }, {
+  }/*, {
     id: 4,
     name: 'dolor sit',
     desc: 'adipiscing elit',
@@ -120,7 +120,7 @@ angular.module('starter.services', [])
     addTime: '30 mins',
     addCity: 'Morbi id ',
    addCountry: 'consectetur adipiscing'
-  }];
+  }*/];
 
   return {
     all: function() {

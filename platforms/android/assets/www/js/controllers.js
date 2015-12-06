@@ -8,38 +8,24 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic','n
 ==== Login ==== 
 Running login Controller when app is launched.
 */
-.controller("LoginCtrl", function($scope, $state, formData, $cordovaOauth, $http) {
+.controller("LoginCtrl", function($scope, $state, formData, $cordovaOauth, $http, ngFB) {
 
    
 
   
   console.log("loading...assets")
- // window.cordovaOauth = $cordovaOauth;
- // window.http = $http;
+  window.cordovaOauth = $cordovaOauth;
+  window.http = $http;
 
   $scope.logoSrc = '/img/mob-logo.png';
   $scope.bgSrc = '/img/mob-background.png';
   $scope.descTxt = "Find the service people";
   $scope.loginTxt = "Facebook Login";
-
   $scope.user = {};
 
-
-/*
- $scope.submitForm = function(user) {
-
-   if (user.firstName) {
-     console.log("Submitting Form", user);
-     formData.updateForm(user);
-     console.log("Retrieving form from service", formData.getForm());
-     $state.go('app.dash');
+ ngFB.init({appId:fb_ID});
 
 
-   } else {
-     alert("Please fill out some information for the user");
-   }
- };
- */
   
 })
 
@@ -86,7 +72,10 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
 })
 
 /* ---- Contact us  controller -- */
-.controller('ContactCtrl', function ($scope, ngFB, $http) {
+.controller('ContactCtrl',  function ($scope, ngFB, $http) {
+
+
+
     ngFB.api({
         path: '/me',
         params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
@@ -101,56 +90,90 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
         });
 
     /* --- */
-    
-
+  
     $scope.refresh = function() {
       $scope.successMsg = false;
       //$scope.user.name = "";
       //$scope.user.email = "";
-      $scope.user.subject = "";
-      $scope.user.comments = "";
+      $scope.user.usersubject = "";
+      $scope.user.usercomments = "";
 
 
     }
 
+  //$scope.url = 'submit.php';
+  //$scope.url = "http://hazzir.com/haz/postapp.php?userName";
+ // $scope.data = {'userName' : $scope.user.username, 'userEmail' : $scope.user.email,"userSubject" : $scope.user.subject, 'userComments' : $scope.user.comments};
+//console.log("sending data../?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.subject+"&userComments="+user.comments);
+      
+ 
+ /*
+
+https://scotch.io/tutorials/submitting-ajax-forms-the-angularjs-way
+http://shabeebk.com/blog/simple-form-submit-in-angularjs-with-php/
+http://blog.ionic.io/handling-cors-issues-in-ionic/
+http://stackoverflow.com/questions/26165879/ionic-app-and-server-post-acces-control-allow-origin
+http://www.raymondcamden.com/2015/09/01/calling-remote-services-from-ionic-serve
+http://www.nikola-breznjak.com/blog/codeproject/posting-data-from-ionic-app-to-php-server/
+http://stackoverflow.com/questions/15707431/http-post-using-angular-js
+  */
     $scope.SendContactMsg = function(user) {
 
-      console.log("sending data../?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.subject+"&userComments="+user.comments);
-      $scope.successMsg = true;
+      var headers = {
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      };
 
-      $http.post("http://hazzir.com/haz/postapp.php?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.subject+"&userComments="+user.comments).success(function(data){
-      $scope.tasks = data;
-      });
-
-      /*
-
-      $scope.data = {'userName' : $scope.user.name, 'userEmail' : $scope.user.email,
-                     "userSubject" : $scope.user.subject, 'userComments' : $scope.user.comments};
-
-      var req = {
-           method: 'POST',
-           url: 'http://hazzir.com/haz/postapp.php',
-           headers: {
-             'Content-Type': "application/json; charset=utf-8"
-           },
-           data: $scope.data
-          }
-
-      function successCallback(response) {
-
-        $scope.SuccessTxt= "Thanks for submitting";     
-      }
-
-      function errorCallback(response) { 
-        $scope.SuccessTxt= "Error, message not sent";
-      }
+    var userData = {};
+    //$scope.userData.subject;
+       $scope.url = "http://hazzir.com/haz/postapp.php";
+       $scope.url1 = "http://hazzir.com/haz/sendmsg.php";
+       $scope.url2 = "http://haz.herokuapp.com/sendmsg.php";
+       var config = {
+        "userName" : $scope.user.name, "userEmail" : $scope.user.email, "userSubject" :  $scope.user.usersubject, 
+         "userComments" : $scope.user.usercomments
+      };
       
-      $http.post(req).then(successCallback, errorCallback);
-      */
+      $scope.successMsg = true
+      /*$http.post(method:'post',$scope.url, config )*/
+      /*console.log(ContactForm.username)*/
+       $http({
+        method  : 'POST',
+        url     : $scope.url1,
+        data    : config, /*JSON.stringify($scope.ContactForm), */ // pass in data as strings
+        headers : {'Access-Control-Allow-Origin':'*'}
+        })
+      .success(function (data, status, config){
 
-     /* $http.post("http://localhost:8100/postdata.php?first="+input.name+"&email="+input.email+"&message="+input.message).success(function(data){
+      //$scope.postCallResult = logResult("POST SUCCESS", data, status, headers, config);
+
+      $scope.result = data; 
+      console.log("SUCCESS : " + data);
+      console.log("sending data../?userName"+user.name+"&userEmail="+user.email+"&userSubject="+user.usersubject+"&userComments="+user.usercomments);
+      
+     /* $scope.successMsg = true;
+
+      $scope.status = status;
+      $scope.data = data;
+      $scope.result = data; 
       $scope.tasks = data;
-      });*/
+      */
+      })
+      .error(function (data, status, config)
+        {
+
+           $scope.result = data; 
+           console.log("Error : " + data);
+           
+         // $scope.postCallResult = logResult("POST ERROR", data, status, headers, config);
+        });
+
+
+
+    
+
 
 
 
@@ -164,6 +187,13 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
       $scope.toggleLeft = function() {
         $ionicSideMenuDelegate.toggleLeft();
       };
+
+$scope.menu1="Introduction";
+$scope.menu2="List";
+$scope.menu3="Settings";
+$scope.menu4="Profile";
+$scope.menu5="Contact";
+$scope.menu6="Logout";
 
 
     })
@@ -201,21 +231,53 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
 
 
 /* ---- dashboard  -- */
-.controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal, $timeout, $state, $ionicSideMenuDelegate, formData) {
+.controller('DashCtrl', function($scope, $stateParams, ngFB, $state, $ionicModal,$http, $timeout, $state, $ionicSideMenuDelegate, formData) {
+ 
  $scope.ContinueTxt = "Continue";
- console.log("loading...Dashboard")
- $scope.user = formData.getForm();
- //console.log("Submitting Form", $scope.user);
-  //$scope.session = Session.get({sessionId: $stateParams.sessionId});
- //$scope.$root.tabsHidden = "tabs-hide";
-/*
- scope.gotoHome = function() {
-   console.log("tab > Home")
-   //$state.go('tab.chats');
-   $state.go('/', {url: 'templates/landing.html'})
+ $scope.aboutHeading ="Introduction";
+ $scope.aboutTxt =  "It is new digital technologies which will reach and convert leads into customers. "
+  +"<strong style='color:white;'>Haz App</strong> service is entering its first year of business as bootstrapping startup.<br><br>"
+  +"The mobile app offers build your own comprehensive database that is both reliable and trustworthy.<br>"
+  +"Connect with network of professionals via mobile app.<br>"
+  +"<br><a class='lnk' target='_blank' href='http://www.hazzir.com'>web : http://www.hazzir.com</a>"
+  +"<br><a class='lnk' target='_blank' href='mailto:support@hazzir.com'>email : support@hazzir.com</a>"
+  +"<br>"
+  +"<h1>Advertise with us</h1>"
+  +"Looking to promote your brand & reach new customers?<br>"
+  +"Advertising on <strong>Haz App</strong> gives you the platform to reach an audience perfect for your business.<br><br>"
+  +"If you are interested in advertising with us please email us at <a target='_blank' class='lnk' style='text-decoration: none' href='mailto:support@hazzir.com'>support@hazzir.com</a>."
   
-  };
-  */
+ console.log("loading...Dashboard")
+ 
+  /*=== Save user Data ====== */
+
+  var config, xName, xEmail ;
+  $scope.url = "http://hazzir.com/haz/savedata.php";
+
+    ngFB.api({
+        path: '/me',
+        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
+    }).then(
+        function (user) {
+            $scope.user = user;
+            console.log("userName : "+ $scope.user.name + ", userEmail : "+ $scope.user.email)
+            $http({
+                method  : 'POST',
+                url     : $scope.url,
+                data    : {'userName' : $scope.user.name, 'userEmail' : $scope.user.email}, 
+                headers : {'Access-Control-Allow-Origin':'*'}
+                }).success(function (data, status, config){console.log("SUCCESS : " + data);})
+                  .error(function (data, status, config){console.log("Error : " + data);});
+            
+        },
+        function (error) {
+            alert('Facebook error: ' + error.error_description);
+        });
+
+      
+       
+
+  /* ============ */
 
 
 
@@ -293,7 +355,7 @@ $scope.toggleProjects = function() {
 /* ---- landing page controller -- */
 .controller('landingCtrl', function($scope, $stateParams, $state, ngFB) {
 
-  
+//var deploy = new Ionic.Deploy();
 // Update app code with new release from Ionic Deploy
   $scope.doUpdate = function() {
     deploy.update().then(function(res) {
@@ -317,7 +379,7 @@ $scope.toggleProjects = function() {
     });
   }
 
-//var deploy = new Ionic.Deploy();
+
 
   $scope.fbLogin = function () {
 

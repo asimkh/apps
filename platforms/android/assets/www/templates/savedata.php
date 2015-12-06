@@ -25,54 +25,45 @@
     $postdata = file_get_contents("php://input");
 	//header('Access-Control-Allow-Origin: *');
 	//require_once('../includes/config.php');
+	require_once('../includes/config.php');
 
 if (isset($postdata)) {
     $request = json_decode($postdata);
     /*$this->response->setHeader('Access-Control-Allow-Origin', '*');*/
     $userName = $request->userName;
     $userEmail = $request->userEmail;
-    $userSubject = $request->userSubject;
-    $userComments = $request->userComments;
-   
     $date = new DateTime();
     $date->setTimezone(date_default_timezone_get('Asia/Muscat'));
-   
-
     $userDate =  $date->format("F j, Y, g:i a e"); 
+    $checkquery = mysql_query("SELECT email FROM newsletter WHERE email = '$userEmail'");
 
-    if ($userName != "") {
+    if (mysql_num_rows($checkquery) == 0) {
 
+    		$result = mysql_query("INSERT INTO `newsletter`(name, email, status, created) VALUES ('$userName', '$userEmail', 1, NOW())");
+    	
 			$email_mail = "support@hazzir.com";
 			$email_name = 'HAZ';
 			$email_from = $email_name.'<'.$email_mail.'>';
 
     	 	$email_to="info@hazzir.com";
-		    $email_subject="HAZ app :: " . $userName." - ".$userSubject . " || " . $userDate;
+		    $email_subject="HAZ app :: Login details :: " . $userName. " || " . $userDate;
 			
 
 			$headers  = "From: ".$email_from."\r\n"."X-Mailer: php\r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-			$headers .= "Cc: ".$userEmail."\r\n";
 			$headers .= "Bcc: hellohazzir@gmail.com\r\n";
 			
 			$email_message = 'Name: ' . $userName  . "\r\n\r\n<br>";
 			$email_message .= 'Email: ' . $userEmail . "\r\n\r\n<br>";
-			$email_message .= 'Comments: ' . $userComments . "\r\n\r\n<br>";
-			
 			$success = mail($email_to, $email_subject, $email_message, $headers);
 
 			echo "<p>Hi " . $userName . ", your message is sent succesfully.\r\n</p>" ;
-			/*
-			echo "Name : ".$userName."\r\n";
-			echo "Email : ".$userEmail."\r\n";
-			echo "Subject : ".$userSubject."\r\n";
-			echo "Message : ".$userComments."\r\n";
-			*/
+			
 			
 		}
 		else {
-			echo "". $userDate ."<br>Empty username parameter!<br>";
+			echo "". $userEmail ." email already exits!";
 			die('Error in query: '. mysql_error());
 		}
 	}

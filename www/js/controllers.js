@@ -8,38 +8,24 @@ angular.module('starter.controllers', ['starter.services', 'ngOpenFB','ionic','n
 ==== Login ==== 
 Running login Controller when app is launched.
 */
-.controller("LoginCtrl", function($scope, $state, formData, $cordovaOauth, $http) {
+.controller("LoginCtrl", function($scope, $state, formData, $cordovaOauth, $http, ngFB) {
 
    
 
   
   console.log("loading...assets")
- // window.cordovaOauth = $cordovaOauth;
- // window.http = $http;
+  window.cordovaOauth = $cordovaOauth;
+  window.http = $http;
 
   $scope.logoSrc = '/img/mob-logo.png';
   $scope.bgSrc = '/img/mob-background.png';
   $scope.descTxt = "Find the service people";
   $scope.loginTxt = "Facebook Login";
-
   $scope.user = {};
 
-
-/*
- $scope.submitForm = function(user) {
-
-   if (user.firstName) {
-     console.log("Submitting Form", user);
-     formData.updateForm(user);
-     console.log("Retrieving form from service", formData.getForm());
-     $state.go('app.dash');
+ ngFB.init({appId:fb_ID});
 
 
-   } else {
-     alert("Please fill out some information for the user");
-   }
- };
- */
   
 })
 
@@ -202,10 +188,10 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
         $ionicSideMenuDelegate.toggleLeft();
       };
 
-$scope.menu1="Introduction";
+$scope.menu1="Home";
 $scope.menu2="List";
-$scope.menu3="Settings";
-$scope.menu4="Profile";
+$scope.menu3="Profile";
+$scope.menu4="About";
 $scope.menu5="Contact";
 $scope.menu6="Logout";
 
@@ -343,7 +329,7 @@ $scope.toggleProjects = function() {
 })
 
 /* ---- List  -- */
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('ChatsCtrl', function($scope, Chats,  $ionicModal) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -351,8 +337,51 @@ $scope.toggleProjects = function() {
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+ var currentStart = 0
+
+ $scope.users = [];
+
+// Create and load the Modal
+  $ionicModal.fromTemplateUrl('templates/new-item.html', function(modal) {
+    $scope.taskModal = modal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+   // Called when the form is submitted
+  $scope.createTask = function(task) {
+    $scope.chats.push({
+    id: 7,
+    name: task.name,
+    face: './img/thumb-m.png'/*,
+    desc: 'adipiscing elit',
+    perH: 'XXXX',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
+    face: './img/thumb-m.png',
+    addTime: '30 mins',
+    addCity: 'Morbi id ',
+   addCountry: 'consectetur adipiscing'
+    */
+    });
+    $scope.taskModal.hide();
+    task.name = "";
+  };
+
+
+   // Open our new task modal
+  $scope.newTask = function() {
+    $scope.taskModal.show();
+  };
+
+  // Close the new task modal
+  $scope.closeNewTask = function() {
+    $scope.taskModal.hide();
+  };
+
   console.log("loading...list")
   $scope.chats = Chats.all();
+  console.log("Users in room = " + $scope.chats.length);
   
   $scope.remove = function(chat) {
     Chats.remove(chat);
@@ -404,7 +433,7 @@ $scope.toggleProjects = function() {
             if (response.status === 'connected') {
                 console.log('Facebook login succeeded');
                 //$scope.closeLogin();
-                 $state.go('app.dash');
+                 $state.go('app.settings'); // set home
             } else {
                 alert('Facebook login failed');
             }
@@ -423,10 +452,40 @@ $scope.gotoState = function() {
 
 
 /* ---- Settings  -- */
-.controller('AccountCtrl', function($scope, $ionicSideMenuDelegate, formData) {
+.controller('AccountCtrl', function($scope, $ionicSideMenuDelegate, $ionicSlideBoxDelegate, formData) {
 
  console.log("loading....settings")
  $scope.user = formData.getForm();
+   $scope.myActiveSlide = 2;
+
+    $scope.nextSlide = function() {
+    $ionicSlideBoxDelegate.next();
+  }
+
+ $scope.img1 = '/img/01-electronics.jpg';
+ $scope.img2 = '/img/02-medicine.jpg';
+ $scope.img3 = '/img/03-business.jpg';
+ $scope.img4 = '/img/04-building.jpg';
+
+
+/*
+  setTimeout(function(){
+      $ionicSlideBoxDelegate.next();
+      console.log("timeout..")
+  },1000);
+*/
+
+  $scope.slideHasChanged = function(index) {
+    //$scope.slideIndex = index;
+     $ionicSlideBoxDelegate.currentIndex();
+     console.log("currentSlide: "+index)
+  };
+
+   $scope.pagerClick  = function(index) {
+    //$ionicSlideBoxDelegate.currentIndex();
+     $ionicSlideBoxDelegate.next();
+    console.log("d")
+  }
    //$state.go('tab.chats');
    //$state.go('tab.dash', {url: 'templates/tab-dash.html'})
   

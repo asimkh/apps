@@ -13,13 +13,32 @@
 
 -->
   <ion-content>
-  
+  <!--
     <ion-list >
     <ion-item>Logged User: {{user.firstName}}</ion-item>
     <ion-toggle  ng-model="settings.enableFriends">
         Enable Friends
     </ion-toggle>
     </ion-list>
-    
+
+    class="bar bar-header bar-calm"
+    -->
+
+    <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="false"  does-continue="true" class="center">
+  <ion-slide>
+    <!--<div class="box blue slide-image"><h1>BLUE</h1> </div>-->
+    <img src="/img/01-slide.jpg"/>
+
+  </ion-slide>
+  <ion-slide>
+    <!--<div class="box yellow"><h1>YELLOW</h1></div>-->
+    <img src="/img/02-slide.jpg"/>
+  </ion-slide>
+  <ion-slide>
+    <!--<div class="box pink"><h1>PINK</h1></div>-->
+    <img src="/img/03-slide.jpg"/>
+  </ion-slide>
+</ion-slide-box>
+
   </ion-content>
 </ion-view>
