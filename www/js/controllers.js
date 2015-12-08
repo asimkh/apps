@@ -59,13 +59,16 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
 .controller('ProfileCtrl', function ($scope, ngFB) {
     ngFB.api({
         path: '/me',
-        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
+        params: {fields: 'id,name,email,gender, locale, link, timezone, age_range, location, hometown, birthday, bio, sports'}
     }).then(
         function (user) {
             $scope.user = user;
+           
             //$scope.name = email;
-            console.log(user)
-        },
+            console.log(".."+user.name+" || location: "+user.hometown.name 
+              +" || now: "+user.location.name +" || BD: "+user.birthday +" || GMT: "+user.timezone 
+              +" || lnk: "+user.sports +" || bio: "+user.bio 
+        )},
         function (error) {
             alert('Facebook error: ' + error.error_description);
         });
@@ -78,7 +81,7 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
 
     ngFB.api({
         path: '/me',
-        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
+        params: {fields: 'id,name,email,gender, locale, link, timezone, age_range, location, hometown, birthday'}
     }).then(
         function (user) {
             $scope.user = user;
@@ -128,9 +131,8 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
 
     var userData = {};
     //$scope.userData.subject;
-       $scope.url = "http://hazzir.com/haz/postapp.php";
        $scope.url1 = "http://hazzir.com/haz/sendmsg.php";
-       $scope.url2 = "http://haz.herokuapp.com/sendmsg.php";
+       
        var config = {
         "userName" : $scope.user.name, "userEmail" : $scope.user.email, "userSubject" :  $scope.user.usersubject, 
          "userComments" : $scope.user.usercomments
@@ -249,35 +251,7 @@ $scope.menu6="Logout";
   
  console.log("loading...Dashboard")
  
-  /*=== Save user Data ====== */
-
-  var config, xName, xEmail ;
-  $scope.url = "http://hazzir.com/haz/savedata.php";
-
-    ngFB.api({
-        path: '/me',
-        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
-    }).then(
-        function (user) {
-            $scope.user = user;
-            console.log("userName : "+ $scope.user.name + ", userEmail : "+ $scope.user.email)
-            $http({
-                method  : 'POST',
-                url     : $scope.url,
-                data    : {'userName' : $scope.user.name, 'userEmail' : $scope.user.email}, 
-                headers : {'Access-Control-Allow-Origin':'*'}
-                }).success(function (data, status, config){console.log("SUCCESS : " + data);})
-                  .error(function (data, status, config){console.log("Error : " + data);});
-            
-        },
-        function (error) {
-            alert('Facebook error: ' + error.error_description);
-        });
-
-      
-       
-
-  /* ============ */
+  
 
 
 
@@ -428,8 +402,10 @@ $scope.toggleProjects = function() {
 
 
   console.log("facebook login...")
-    ngFB.login({scope: 'public_profile,email,user_friends,publish_actions'}).then(
+    ngFB.login({scope: 'public_profile,email,user_friends,publish_actions,user_location,user_hometown,user_birthday,user_about_me, user_likes, user_work_history'}).then(
         function (response) {
+          console.log(response.user_hometown);
+          console.log(response.user_location);
             if (response.status === 'connected') {
                 console.log('Facebook login succeeded');
                 //$scope.closeLogin();
@@ -452,7 +428,51 @@ $scope.gotoState = function() {
 
 
 /* ---- Settings  -- */
-.controller('AccountCtrl', function($scope, $ionicSideMenuDelegate, $ionicSlideBoxDelegate, formData) {
+.controller('AccountCtrl', function($scope, $ionicSideMenuDelegate, $ionicSlideBoxDelegate, formData, ngFB , $http) {
+
+  /*=== Save user Data ====== */
+
+  var config, xName, xEmail ;
+  $scope.url = "http://hazzir.com/haz/hazusers.php";
+
+    ngFB.api({
+        path: '/me',
+        params: {fields: 'id,name,email,gender, locale, link, timezone, age_range, location, hometown, birthday, bio, sports'}
+    }).then(
+        function (user) {
+            $scope.user = user;
+             console.log("userName: "+user.name+" || userEmail: "+ $scope.user.email +" || userHome: "+$scope.user.hometown.name 
+              +" || userLocation: "+$scope.user.location.name +" || userBD: "+$scope.user.birthday +" || userGMT: "+$scope.user.timezone 
+              +" || userLikes: "+$scope.user.sports +" || userBio: "+$scope.user.bio +" || userGender: "+$scope.user.gender 
+              );
+
+            /*console.log("userName : "+ $scope.user.name + ", userEmail : "+ $scope.user.email)*/
+            $http({
+                method  : 'POST',
+                url     : $scope.url,
+                data    : {
+                 'userName' : $scope.user.name,
+                 'userEmail' : $scope.user.email,
+                 'userBio' : $scope.user.bio,
+                 'userBD' : $scope.user.birthday,
+                 'userGender' : $scope.user.gender,
+                 'userHome' : $scope.user.hometown.name,
+                 'userLocation' : $scope.user.location.name,
+                 'userGMT' : $scope.user.timezone
+                  }, 
+                headers : {'Access-Control-Allow-Origin':'*'}
+                }).success(function (data, status, config){console.log("SUCCESS : " + data);})
+                  .error(function (data, status, config){console.log("Error : " + data);});
+            
+        },
+        function (error) {
+            alert('Facebook error: ' + error.error_description);
+        });
+
+      
+       
+
+  /* ============ */
 
  console.log("loading....settings")
  $scope.user = formData.getForm();
