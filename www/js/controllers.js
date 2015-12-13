@@ -17,14 +17,7 @@ Running login Controller when app is launched.
   window.cordovaOauth = $cordovaOauth;
   window.http = $http;
 
-  $scope.logoSrc = '/img/mob-logo.png';
-  $scope.bgSrc = '/img/mob-background.png';
-  $scope.descTxt = "Find the service people";
-  $scope.loginTxt = "Facebook Login";
-  $scope.user = {};
-
- ngFB.init({appId:fb_ID});
-
+ 
 
   
 })
@@ -56,7 +49,44 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
 }]);
 */
 /* ---- facebook controller -- */
-.controller('ProfileCtrl', function ($scope, ngFB) {
+.controller('ProfileCtrl', function ($scope, ngFB, $ionicLoading) {
+
+/*== map ==*/
+  function initialise() {   
+    var myLatlng = new google.maps.LatLng(53.068165,-4.076803);
+    var mapOptions = {
+        zoom: 15, 
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+      }
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+    });
+    $scope.map = map;    
+  }
+   google.maps.event.addDomListener(window, 'load', initialise);
+   $scope.centerOnMe = function() {
+        if(!$scope.map) {
+          return;
+        }
+
+        $scope.loading = $ionicLoading.show({
+          content: 'Getting current location...',
+          showBackdrop: false
+        });
+
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+          $scope.loading.hide();
+        }, function(error) {
+          alert('Unable to get location: ' + error.message);
+        });
+      };
+
+  console.log('Current Latitude:' +initialise() +'Current Longitude:');
+  /*=== */
     ngFB.api({
         path: '/me',
         params: {fields: 'id,name,email,gender, locale, link, timezone, age_range, location, hometown, birthday, bio, sports'}
@@ -81,7 +111,7 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
 
     ngFB.api({
         path: '/me',
-        params: {fields: 'id,name,email,gender, locale, link, timezone, age_range, location, hometown, birthday'}
+        params: {fields: 'id,name,email,gender, locale, link, timezone, age_range, location, hometown, birthday, bio, sports'}
     }).then(
         function (user) {
             $scope.user = user;
@@ -134,8 +164,21 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
        $scope.url1 = "http://hazzir.com/haz/sendmsg.php";
        
        var config = {
+                 'userName' : $scope.user.name,
+                 'userEmail' : $scope.user.email,
+                 'userBio' : $scope.user.bio,
+                 'userBD' : $scope.user.birthday,
+                 'userGender' : $scope.user.gender,
+                 'userHome' : $scope.user.hometown.name,
+                 'userLocation' : $scope.user.location.name,
+                 'userGMT' : $scope.user.timezone,
+                 "userSubject" :  $scope.user.usersubject, 
+                 "userComments" : $scope.user.usercomments
+                 /*
+
         "userName" : $scope.user.name, "userEmail" : $scope.user.email, "userSubject" :  $scope.user.usersubject, 
          "userComments" : $scope.user.usercomments
+         */
       };
       
       $scope.successMsg = true
@@ -371,6 +414,15 @@ $scope.toggleProjects = function() {
 /* ------ */
 /* ---- landing page controller -- */
 .controller('landingCtrl', function($scope, $stateParams, $state, ngFB) {
+
+   $scope.logoSrc = '/img/mob-logo.png';
+  $scope.bgSrc = '/img/mob-background.png';
+  $scope.descTxt = "Find the service people";
+  $scope.loginTxt = "Facebook Login";
+  $scope.user = {};
+
+ ngFB.init({appId:fb_ID});
+
 
 //var deploy = new Ionic.Deploy();
 // Update app code with new release from Ionic Deploy

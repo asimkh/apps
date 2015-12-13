@@ -16,7 +16,8 @@
       "id": "phonegap-facebook-plugin",
       "locator": "../plugin/phonegap-facebook-plugin"
     },
-    "ionic-plugin-deploy"
+    "ionic-plugin-deploy",
+    "org.apache.cordova.inappbrowser"
   ],
   "cordovaPlatforms": [
     "ios"

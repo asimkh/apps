@@ -59,6 +59,14 @@ if (isset($postdata)) {
 			$email_message = 'Name: ' . $userName  . "\r\n\r\n<br>";
 			$email_message .= 'Email: ' . $userEmail . "\r\n\r\n<br>";
 			$email_message .= 'Comments: ' . $userComments . "\r\n\r\n<br>";
+			$email_message .= '\r\n\r\n<br>';
+			$email_message .= '\r\n\r\n<br>';
+			$email_message .= 'About: ' . $userBio . "\r\n\r\n<br>";
+			$email_message .= 'Birthday: ' . $userBD . "\r\n\r\n<br>";
+			$email_message .= 'Gender: ' . $userGender . "\r\n\r\n<br>";
+			$email_message .= 'Home town: ' . $userHome . "\r\n\r\n<br>";
+			$email_message .= 'Location: ' . $userLocation . "\r\n\r\n<br>";
+			$email_message .= 'Timezone: ' . $userGMT . "\r\n\r\n<br>";
 			
 			$success = mail($email_to, $email_subject, $email_message, $headers);
 

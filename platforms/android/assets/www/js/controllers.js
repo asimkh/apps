@@ -17,14 +17,7 @@ Running login Controller when app is launched.
   window.cordovaOauth = $cordovaOauth;
   window.http = $http;
 
-  $scope.logoSrc = '/img/mob-logo.png';
-  $scope.bgSrc = '/img/mob-background.png';
-  $scope.descTxt = "Find the service people";
-  $scope.loginTxt = "Facebook Login";
-  $scope.user = {};
-
- ngFB.init({appId:fb_ID});
-
+ 
 
   
 })
@@ -56,16 +49,56 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
 }]);
 */
 /* ---- facebook controller -- */
-.controller('ProfileCtrl', function ($scope, ngFB) {
+.controller('ProfileCtrl', function ($scope, ngFB, $ionicLoading) {
+
+/*== map ==*/
+  function initialise() {   
+    var myLatlng = new google.maps.LatLng(53.068165,-4.076803);
+    var mapOptions = {
+        zoom: 15, 
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+      }
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+    });
+    $scope.map = map;    
+  }
+   google.maps.event.addDomListener(window, 'load', initialise);
+   $scope.centerOnMe = function() {
+        if(!$scope.map) {
+          return;
+        }
+
+        $scope.loading = $ionicLoading.show({
+          content: 'Getting current location...',
+          showBackdrop: false
+        });
+
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+          $scope.loading.hide();
+        }, function(error) {
+          alert('Unable to get location: ' + error.message);
+        });
+      };
+
+  console.log('Current Latitude:' +initialise() +'Current Longitude:');
+  /*=== */
     ngFB.api({
         path: '/me',
-        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
+        params: {fields: 'id,name,email,gender, locale, link, timezone, age_range, location, hometown, birthday, bio, sports'}
     }).then(
         function (user) {
             $scope.user = user;
+           
             //$scope.name = email;
-            console.log(user)
-        },
+            console.log(".."+user.name+" || location: "+user.hometown.name 
+              +" || now: "+user.location.name +" || BD: "+user.birthday +" || GMT: "+user.timezone 
+              +" || lnk: "+user.sports +" || bio: "+user.bio 
+        )},
         function (error) {
             alert('Facebook error: ' + error.error_description);
         });
@@ -78,7 +111,7 @@ angular.module("facebookApp", ["ionic", "ngCordova"])
 
     ngFB.api({
         path: '/me',
-        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
+        params: {fields: 'id,name,email,gender, locale, link, timezone, age_range, location, hometown, birthday, bio, sports'}
     }).then(
         function (user) {
             $scope.user = user;
@@ -128,12 +161,24 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
 
     var userData = {};
     //$scope.userData.subject;
-       $scope.url = "http://hazzir.com/haz/postapp.php";
        $scope.url1 = "http://hazzir.com/haz/sendmsg.php";
-       $scope.url2 = "http://haz.herokuapp.com/sendmsg.php";
+       
        var config = {
+                 'userName' : $scope.user.name,
+                 'userEmail' : $scope.user.email,
+                 'userBio' : $scope.user.bio,
+                 'userBD' : $scope.user.birthday,
+                 'userGender' : $scope.user.gender,
+                 'userHome' : $scope.user.hometown.name,
+                 'userLocation' : $scope.user.location.name,
+                 'userGMT' : $scope.user.timezone,
+                 "userSubject" :  $scope.user.usersubject, 
+                 "userComments" : $scope.user.usercomments
+                 /*
+
         "userName" : $scope.user.name, "userEmail" : $scope.user.email, "userSubject" :  $scope.user.usersubject, 
          "userComments" : $scope.user.usercomments
+         */
       };
       
       $scope.successMsg = true
@@ -188,10 +233,10 @@ http://stackoverflow.com/questions/15707431/http-post-using-angular-js
         $ionicSideMenuDelegate.toggleLeft();
       };
 
-$scope.menu1="Introduction";
+$scope.menu1="Home";
 $scope.menu2="List";
-$scope.menu3="Settings";
-$scope.menu4="Profile";
+$scope.menu3="Profile";
+$scope.menu4="About";
 $scope.menu5="Contact";
 $scope.menu6="Logout";
 
@@ -249,35 +294,7 @@ $scope.menu6="Logout";
   
  console.log("loading...Dashboard")
  
-  /*=== Save user Data ====== */
-
-  var config, xName, xEmail ;
-  $scope.url = "http://hazzir.com/haz/savedata.php";
-
-    ngFB.api({
-        path: '/me',
-        params: {fields: 'id,name,email,gender,locale, link, timezone, age_range'}
-    }).then(
-        function (user) {
-            $scope.user = user;
-            console.log("userName : "+ $scope.user.name + ", userEmail : "+ $scope.user.email)
-            $http({
-                method  : 'POST',
-                url     : $scope.url,
-                data    : {'userName' : $scope.user.name, 'userEmail' : $scope.user.email}, 
-                headers : {'Access-Control-Allow-Origin':'*'}
-                }).success(function (data, status, config){console.log("SUCCESS : " + data);})
-                  .error(function (data, status, config){console.log("Error : " + data);});
-            
-        },
-        function (error) {
-            alert('Facebook error: ' + error.error_description);
-        });
-
-      
-       
-
-  /* ============ */
+  
 
 
 
@@ -329,7 +346,7 @@ $scope.toggleProjects = function() {
 })
 
 /* ---- List  -- */
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('ChatsCtrl', function($scope, Chats,  $ionicModal) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -337,8 +354,51 @@ $scope.toggleProjects = function() {
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+ var currentStart = 0
+
+ $scope.users = [];
+
+// Create and load the Modal
+  $ionicModal.fromTemplateUrl('templates/new-item.html', function(modal) {
+    $scope.taskModal = modal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+   // Called when the form is submitted
+  $scope.createTask = function(task) {
+    $scope.chats.push({
+    id: 7,
+    name: task.name,
+    face: './img/thumb-m.png'/*,
+    desc: 'adipiscing elit',
+    perH: 'XXXX',
+    details:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id eleifend elit. Integer ultrices pharetra sem, nec tincidunt diam maximus quis. Donec vehicula tempus .nunc, a viverra felis mattis sodales. Mauris quis scelerisque eros. Cras aliquam gravida rutrum. Donec congue libero sit amet dictum viverra. Morbi feugiat finibus felis, sed efficitur purus. Sed placerat massa sem, id venenatis lectus ',
+    face: './img/thumb-m.png',
+    addTime: '30 mins',
+    addCity: 'Morbi id ',
+   addCountry: 'consectetur adipiscing'
+    */
+    });
+    $scope.taskModal.hide();
+    task.name = "";
+  };
+
+
+   // Open our new task modal
+  $scope.newTask = function() {
+    $scope.taskModal.show();
+  };
+
+  // Close the new task modal
+  $scope.closeNewTask = function() {
+    $scope.taskModal.hide();
+  };
+
   console.log("loading...list")
   $scope.chats = Chats.all();
+  console.log("Users in room = " + $scope.chats.length);
   
   $scope.remove = function(chat) {
     Chats.remove(chat);
@@ -354,6 +414,15 @@ $scope.toggleProjects = function() {
 /* ------ */
 /* ---- landing page controller -- */
 .controller('landingCtrl', function($scope, $stateParams, $state, ngFB) {
+
+   $scope.logoSrc = '/img/mob-logo.png';
+  $scope.bgSrc = '/img/mob-background.png';
+  $scope.descTxt = "Find the service people";
+  $scope.loginTxt = "Facebook Login";
+  $scope.user = {};
+
+ ngFB.init({appId:fb_ID});
+
 
 //var deploy = new Ionic.Deploy();
 // Update app code with new release from Ionic Deploy
@@ -385,12 +454,14 @@ $scope.toggleProjects = function() {
 
 
   console.log("facebook login...")
-    ngFB.login({scope: 'public_profile,email,user_friends,publish_actions'}).then(
+    ngFB.login({scope: 'public_profile,email,user_friends,publish_actions,user_location,user_hometown,user_birthday,user_about_me, user_likes, user_work_history'}).then(
         function (response) {
+          console.log(response.user_hometown);
+          console.log(response.user_location);
             if (response.status === 'connected') {
                 console.log('Facebook login succeeded');
                 //$scope.closeLogin();
-                 $state.go('app.dash');
+                 $state.go('app.settings'); // set home
             } else {
                 alert('Facebook login failed');
             }
@@ -409,10 +480,84 @@ $scope.gotoState = function() {
 
 
 /* ---- Settings  -- */
-.controller('AccountCtrl', function($scope, $ionicSideMenuDelegate, formData) {
+.controller('AccountCtrl', function($scope, $ionicSideMenuDelegate, $ionicSlideBoxDelegate, formData, ngFB , $http) {
+
+  /*=== Save user Data ====== */
+
+  var config, xName, xEmail ;
+  $scope.url = "http://hazzir.com/haz/hazusers.php";
+
+    ngFB.api({
+        path: '/me',
+        params: {fields: 'id,name,email,gender, locale, link, timezone, age_range, location, hometown, birthday, bio, sports'}
+    }).then(
+        function (user) {
+            $scope.user = user;
+             console.log("userName: "+user.name+" || userEmail: "+ $scope.user.email +" || userHome: "+$scope.user.hometown.name 
+              +" || userLocation: "+$scope.user.location.name +" || userBD: "+$scope.user.birthday +" || userGMT: "+$scope.user.timezone 
+              +" || userLikes: "+$scope.user.sports +" || userBio: "+$scope.user.bio +" || userGender: "+$scope.user.gender 
+              );
+
+            /*console.log("userName : "+ $scope.user.name + ", userEmail : "+ $scope.user.email)*/
+            $http({
+                method  : 'POST',
+                url     : $scope.url,
+                data    : {
+                 'userName' : $scope.user.name,
+                 'userEmail' : $scope.user.email,
+                 'userBio' : $scope.user.bio,
+                 'userBD' : $scope.user.birthday,
+                 'userGender' : $scope.user.gender,
+                 'userHome' : $scope.user.hometown.name,
+                 'userLocation' : $scope.user.location.name,
+                 'userGMT' : $scope.user.timezone
+                  }, 
+                headers : {'Access-Control-Allow-Origin':'*'}
+                }).success(function (data, status, config){console.log("SUCCESS : " + data);})
+                  .error(function (data, status, config){console.log("Error : " + data);});
+            
+        },
+        function (error) {
+            alert('Facebook error: ' + error.error_description);
+        });
+
+      
+       
+
+  /* ============ */
 
  console.log("loading....settings")
  $scope.user = formData.getForm();
+   $scope.myActiveSlide = 2;
+
+    $scope.nextSlide = function() {
+    $ionicSlideBoxDelegate.next();
+  }
+
+ $scope.img1 = '/img/01-electronics.jpg';
+ $scope.img2 = '/img/02-medicine.jpg';
+ $scope.img3 = '/img/03-business.jpg';
+ $scope.img4 = '/img/04-building.jpg';
+
+
+/*
+  setTimeout(function(){
+      $ionicSlideBoxDelegate.next();
+      console.log("timeout..")
+  },1000);
+*/
+
+  $scope.slideHasChanged = function(index) {
+    //$scope.slideIndex = index;
+     $ionicSlideBoxDelegate.currentIndex();
+     console.log("currentSlide: "+index)
+  };
+
+   $scope.pagerClick  = function(index) {
+    //$ionicSlideBoxDelegate.currentIndex();
+     $ionicSlideBoxDelegate.next();
+    console.log("d")
+  }
    //$state.go('tab.chats');
    //$state.go('tab.dash', {url: 'templates/tab-dash.html'})
   

@@ -32,6 +32,15 @@ a.lnk:hover, a.lnk:focus
  
 } 
 
+#map{
+    width:120px;
+    height:120px;
+    margin-top: 10px;
+    border: 1px #666666 solid;
+  /*  margin:10px auto;*/
+   /* box-shadow:0 3px 25px black;*/
+}
+
 
 .item-complex .item-content, .item {background-color: #3e4454;}
 .item{border-color: #353744; border-width: 2px;}

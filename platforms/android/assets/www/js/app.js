@@ -158,7 +158,7 @@ console.log("ionic"+version);
     })
 
   .state('app.settings', {
-    url: '/settings',
+    url: '/',
     views: {
       'menuContent': {
         templateUrl: 'templates/settings.html',

@@ -1,5 +1,14 @@
 angular.module('starter.services', [])
 
+.directive('map', function() {
+    return {
+        restrict: 'A',
+        link:function(scope, element, attrs){
+            // Code will be here
+        }
+    };
+})
+
 .service('formData', function() {
  return {
    form: {},

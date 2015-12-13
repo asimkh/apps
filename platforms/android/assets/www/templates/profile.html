@@ -18,15 +18,32 @@
             <div class="item item--transparent">
                 <h2>Name: {{user.name}}</h2>
                 <p>Email: {{user.email}}</p>
-                <!--<p>{{user.id}}</p>-->
+                <p>{{user.location.name}}</p>
+                <br>
+                <p>{{user.bio}}</p>
+                
+                <p>BD: {{user.birthday}} {{user.hometown.name}}</p>
+                
+                
+                <!--<p>{{user.devices}}</p>-->
+                
+                <br>
+
+                <!--<p>{{user.gender}}</p>-->
                 <!--
                  <p>Gender: {{user.gender}}</p>
                 <p>Language: {{user.locale}}</p>
                  <p>Age: {{user.age_range}}</p>
            -->
-                <img src="http://graph.facebook.com/{{user.id}}/picture?width=100&height=100"/>
+                <a href="http://facebook.com/profile.php?id='{{user.id}}'" target="_blank"><img src="http://graph.facebook.com/{{user.id}}/picture?width=100&height=100"/></a>
+               
+               <!-- <div id="map">  </div>
+               -->
             </div>
+           
         </div>
+
+       
     
   </ion-content>
 </ion-view>

@@ -1,5 +1,14 @@
 angular.module('starter.services', [])
 
+.directive('map', function() {
+    return {
+        restrict: 'A',
+        link:function(scope, element, attrs){
+            // Code will be here
+        }
+    };
+})
+
 .service('formData', function() {
  return {
    form: {},
@@ -88,7 +97,7 @@ angular.module('starter.services', [])
     addTime: '30 mins',
     addCity: 'Morbi id ',
     addCountry: 'consectetur adipiscing'
-  }, {
+  }/*, {
     id: 4,
     name: 'dolor sit',
     desc: 'adipiscing elit',
@@ -120,7 +129,7 @@ angular.module('starter.services', [])
     addTime: '30 mins',
     addCity: 'Morbi id ',
    addCountry: 'consectetur adipiscing'
-  }];
+  }*/];
 
   return {
     all: function() {
