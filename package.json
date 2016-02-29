@@ -29,6 +29,21 @@
   "version": "1.0.0",
   "repository": "https://github.com/asimkh/apps",
   "logo": "http://hazzir.com/images/hazzir.jpg",
-  "keywords": ["ionic", "asimkh", "haz"],
-  "license": "ISC"
+  "keywords": [
+    "ionic",
+    "asimkh",
+    "haz"
+  ],
+  "license": "ISC",
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": [
+    "android"
+  ]
 }
