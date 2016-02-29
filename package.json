@@ -7,13 +7,28 @@
     "ionicons": "3.0.0-alpha.3",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
-    "zone.js": "0.5.14"
+    "zone.js": "0.5.14",
+    "express": "~4.13.4"
   },
   "devDependencies": {
     "awesome-typescript-loader": "0.15.10",
     "strip-sourcemap-loader": "0.0.1",
     "typescript": "1.7.5"
   },
+  "scripts": {
+    "start": "node serve.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "4.x",
+    "npm": "3.x"
+  },
+  "main": "serve.js",
   "name": "haz",
-  "description": "haz: An Ionic project"
+  "description": "haz: An Ionic project",
+  "version": "1.0.0",
+  "repository": "https://github.com/asimkh/apps",
+  "logo": "http://hazzir.com/images/hazzir.jpg",
+  "keywords": ["ionic", "asimkh", "haz"],
+  "license": "ISC"
 }
