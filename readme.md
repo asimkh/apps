@@ -1,24 +1,8 @@
+## Laravel App
+
 https://laravel.com/docs/5.2/homestead <br />
 https://laracasts.com/series/build-a-laravel-app-from-scratch/episodes/1 <br />
 https://www.vagrantup.com/ <br />
-
-Running Virtual Machine inside homestead <br />
-vagrant@homestead:~$ <br />
-Vagrant up --provision // start your host.<br />
-
-Hosting Server<br />
-cd homestead<br />
-vagrant up<br />
-vagrant ssh<br />
-
-Database<br />
-mysql -uhomestead -p // start mysql<br />
-show databases;<br />
-drop database homestead;<br />
-create database hazdata;<br />
-
-Update with new database<br />
-vagrant@homestead:~/hazzir$ php artisan migrate:install<br />
 
 Composer<br />
 composer update --dev // updating development env<br />
