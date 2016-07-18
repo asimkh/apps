@@ -1,7 +1,4 @@
-/vendor
 /node_modules
-/public
-/storage
 /tests
 /hazzir
 Homestead.yaml

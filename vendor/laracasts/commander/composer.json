@@ -1,0 +1,27 @@
+{
+    "name": "laracasts/commander",
+    "description": "Commands and domain events in Laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeffrey Way",
+            "email": "jeffrey@laracasts.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0",
+        "illuminate/filesystem": "~5.0",
+        "mustache/mustache": "~2.6"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0.0",
+	    "codeception/codeception": "~2.0.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Laracasts\\Commander": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
