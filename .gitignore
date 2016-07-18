@@ -1,6 +1,7 @@
-/node_modules
-/tests
-/hazzir
+/node_modules/
+/tests/
+/hazzir/
+/vendor/
 Homestead.yaml
 Homestead.json
 .env
