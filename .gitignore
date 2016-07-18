@@ -7,6 +7,7 @@
 Homestead.yaml
 Homestead.json
 .env
+.production.env
 .*.env
 .env.*
 .env.*.php
@@ -15,7 +16,7 @@ server.php
 connection.php
 php.ini
 .DS_Store
-demo.md
+demo.*
 Thumb.db
 
 
