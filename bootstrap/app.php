@@ -59,7 +59,7 @@ $env = $app->detectEnvironment(array(
 ));
 */
 
-
+/*
  $app->detectEnvironment(function () use($app) {
 
  		
@@ -67,6 +67,7 @@ $env = $app->detectEnvironment(array(
         $file = ".env.{$env}";
         $app->loadEnvironmentFrom($file);
     });
+    */
 
 
 /*
