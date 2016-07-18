@@ -4,12 +4,6 @@
 
 return [
 
-$url = parse_url(env("DATABASE_URL"));
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
-
     /*
     |--------------------------------------------------------------------------
     | PDO Fetch Style
@@ -77,10 +71,10 @@ $database = substr($url["path"], 1);
         'pgsql' => [
            
             'driver' => 'pgsql',
-            'host'     => $host,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
+            'host'     => env("DATABASE_URL")["Host"],
+            'database' => substr(parse_url(env("DATABASE_URL"))["path"], 1),
+            'username' => env("DATABASE_URL")["User"],
+            'password' => env("DATABASE_URL")["Password"],
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
