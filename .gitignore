@@ -3,6 +3,7 @@
 /public
 /storage
 /test
+/hazzir
 Homestead.yaml
 Homestead.json
 .env
