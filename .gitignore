@@ -2,7 +2,7 @@
 /node_modules
 /public
 /storage
-/test
+/tests
 /hazzir
 Homestead.yaml
 Homestead.json
@@ -16,4 +16,3 @@ php.ini
 .DS_Store
 Thumb.db
 
-tests/_output/*
