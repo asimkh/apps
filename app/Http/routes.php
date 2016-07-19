@@ -107,8 +107,62 @@ Route::get('shout', [
 	]);
 
 Route::post('shout', [
-	'as' => 'give_shout',
-	'uses' => 'ShoutController@store'
+	'as' => 'sendmail',
+	'uses' => 'ShoutController@sendmail'
 	]);
+
+
+/*
+|--------------------------------------------------------------------------
+| mail
+|--------------------------------------------------------------------------
+|
+
+*/
+
+Route::get('mail', function(){
+
+	//dd(Config::get('mail'));
+	//return "Test Mail!";
+
+	
+	Mail::send('pages.mail.test',
+		['user' => 'Tasol'],
+	function($message) 
+		
+	{
+    
+    $message ->from('hazzir.mail@gmail.com', 'Hazzir Mail');
+	$message ->to('hazzir.mail@gmail.com', 'Test User')->subject('Feedback Hazzir ~ Test');
+
+	
+	});
+
+    	return "Send Mail Successfully!";
+
+  
+
+});
+
+
+Route::get('testmail', 'ShoutController@Testmail');
+
+
+/*
+|--------------------------------------------------------------------------
+| Profile
+|--------------------------------------------------------------------------
+|
+
+*/
+
+Route::get('profile', [
+	'as' => 'profile',
+	'uses' => 'profileController@user'
+	]);
+
+
+
+
 
 

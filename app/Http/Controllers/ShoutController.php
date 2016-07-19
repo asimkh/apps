@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
+use App\User;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ShoutFormRequest;
+
 
 class ShoutController extends Controller
 {
@@ -16,23 +18,59 @@ class ShoutController extends Controller
     	return view('pages.contact.shout');
     }
 
-      public function store(ShoutFormRequest $request)
+      public function sendmail(ShoutFormRequest $request)
     {
-
-/*
-    	\Mail::send('pages.contact.sendmail',
-        array(
+       //dd(app::get('mail'));
+       
+        $data = array(
             'name' => $request->get('contactName'),
             'email' => $request->get('contactEmail'),
             'user_message' => $request->get('contactMessage')
-        ), function($message)
-    {
-        $message->from('hazzir.mail@gmail.com');
-        $message->to('hellohazzir@wgmail.com', 'Admin')->subject('Hazzir Feedback');
-    });
-    */
-    
-    	 return \Redirect::home()->with('message', 'Thanks for contacting us!');
+        );
 
+
+
+    	Mail::send('pages.contact.mail',
+            $data , function($message)use($request)
+    {
+    
+    $message->from(
+         $request->get('contactEmail'),
+         $request->get('contactName')
+         );
+    $message->to('hazzir.mail@wgmail.com', 'Admin Hazzir');
+    $message->subject('Hazzir Feedback ~');
+    });
+
+   
+   //return "Send Mail Successfully!";
+   
+    	 return Redirect::home()->with('message', 'Thanks for contacting us!');
+         
+
+    }
+
+
+    public function Testmail()
+    {
+
+        $data = array(
+            'name' => 'mail',
+            'email' => 'your@mail.com',
+            'user_message' => 'Hey There'
+        );
+        Mail::send('pages.contact.mail',
+         $data,
+    function($message) 
+        
+    {
+    
+    $message ->from('hazzir.mail@gmail.com', 'Hazzir Mail');
+    $message ->to('hazzir.mail@gmail.com', 'Test User')->subject('Feedback Hazzir ~ Test Mail');
+
+    
+    });
+
+        return "Send Mail Successfully!";
     }
 }

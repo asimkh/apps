@@ -14,21 +14,12 @@ We are always excited to talk to new people. Feel free to give us a shout.
 
 
 
-@if($errors->any())
-    <div class="alert alert-danger">
-     <h3>Uh Oh!</h3>
-      <ul>
-    @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-    @endforeach
-</ul>
-    </div>
-@endif
+ @include('layouts.errors')
 
 
 
 
-{{ Form::open(array('route' => 'give_shout', 'class' => 'form')) }}
+{{ Form::open(array('route' => 'sendmail', 'class' => 'form')) }}
 
 <div class="form-group">
 {{ Form::label('contactName','Name:') }}

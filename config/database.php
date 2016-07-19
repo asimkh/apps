@@ -46,7 +46,10 @@ return [
     |
     */
 
+    
+
     'connections' => [
+
 
         'sqlite' => [
             'driver' => 'sqlite',
@@ -69,12 +72,12 @@ return [
         ],
 
         'pgsql' => [
-           
             'driver' => 'pgsql',
-            'host'     => env("DATABASE_URL")["Host"],
-            'database' => substr(parse_url(env("DATABASE_URL"))["path"], 1),
-            'username' => env("DATABASE_URL")["User"],
-            'password' => env("DATABASE_URL")["Password"],
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',

@@ -6,16 +6,7 @@
 <h1>Login</h1>
 
 
-@if($errors->any())
-    <div class="alert alert-danger">
-    <h3>Uh Oh!</h3>
-      <ul>
-    @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-    @endforeach
-</ul>
-    </div>
-@endif
+ @include('layouts.errors')
 
 {{ Form::open([ 'route' => 'user_login' ]) }}
 
