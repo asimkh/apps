@@ -9,6 +9,7 @@ Homestead.json
 .*.env
 .env.local
 .env.production
+.env.heroku
 .env.*.php
 config.php
 server.php
