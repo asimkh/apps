@@ -183,6 +183,14 @@ Route::get('db', function () {
 
 
 
+Route::get('1038170566278633', [
+	'as' => 'fb_hazzir',
+	'uses' => 'FBController@home'
+	]);
+
+
+
+
 
 
 
