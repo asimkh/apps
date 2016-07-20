@@ -19,5 +19,3 @@
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
 
-
-suPHP_ConfigPath /home/hazzirco/hazzir/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/
