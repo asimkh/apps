@@ -223,6 +223,30 @@ Route::match(['get', 'post'], '/facebook/canvas', function(SammyK\LaravelFaceboo
         );
     }
 
+    if (! $token->isLongLived()) {
+        // OAuth 2.0 client handler
+        $oauth_client = $fb->getOAuth2Client();
+
+        // Extend the access token.
+        try {
+            $token = $oauth_client->getLongLivedAccessToken($token);
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+            dd($e->getMessage());
+        }
+    }
+
+    $fb->setDefaultAccessToken($token);
+
+    // Save for later
+    Session::put('fb_user_access_token', (string) $token);
+
+    // Get basic info on the user from Facebook.
+    try {
+        $response = $fb->get('/me?fields=id,name,email');
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        dd($e->getMessage());
+    }
+
 return redirect('/')->with('message', 'Successfully logged in with Facebook Canvas');
 
 });
