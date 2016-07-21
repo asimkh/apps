@@ -165,6 +165,7 @@ return [
 
         /* https://packagist.org/packages/greggilbert/recaptcha */
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
 
 
 
@@ -228,6 +229,7 @@ return [
       'Form' => Collective\Html\FormFacade::class,
       'Html' => Collective\Html\HtmlFacade::class,
       'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+      'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class,
        // ...
 
 

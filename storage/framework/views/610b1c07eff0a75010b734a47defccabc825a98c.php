@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo e(elixir('css/app.css')); ?>">
 
-
+    <?php echo $__env->make('layouts.fbscripts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     </head>
     
     <body>
