@@ -23,4 +23,4 @@ Name: <?php echo e($name); ?>
 
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.mail', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
