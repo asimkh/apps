@@ -25,6 +25,7 @@ class ShoutController extends Controller
         $data = array(
             'name' => $request->get('contactName'),
             'email' => $request->get('contactEmail'),
+            'phone' => $request->get('contactPhone'),
             'user_message' => $request->get('contactMessage')
         );
 
@@ -36,6 +37,7 @@ class ShoutController extends Controller
     
     $message->from(
          $request->get('contactEmail'),
+         $request->get('contactPhone'),
          $request->get('contactName')
          );
     $message->to('hazzir.mail@gmail.com', 'Admin Hazzir');

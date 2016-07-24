@@ -46,7 +46,7 @@
      <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-     @include('layouts.footer')
+     <!--@include('layouts.footer')-->
       
    
     </body>

@@ -182,6 +182,25 @@ Route::get('db', function () {
 });
 
 
+
+/*
+|--------------------------------------------------------------------------
+| POSTS
+|--------------------------------------------------------------------------
+|
+
+*/
+
+
+Route::get('posts', [
+	'as' => 'posts',
+	'uses' => 'PostsController@index'
+	]);
+
+Route::get('posts/{post}', [
+	'as' => 'post',
+	'uses' => 'PostsController@show'
+	]);
 /*
 |--------------------------------------------------------------------------
 | Faceboook
@@ -194,6 +213,17 @@ Route::get('db', function () {
 Route::get('1038170566278633', [
 	'as' => 'fb_hazzir',
 	'uses' => 'FBController@home'
+	]);
+/*
+Route::get('/facebook/login', [
+	'as' => 'fb_login',
+	'uses' => 'FBController@login'
+	]);
+	*/
+
+Route::get('/facebook/callback', [
+	'as' => 'fb_callback',
+	'uses' => 'FBController@callback'
 	]);
 
 
@@ -251,17 +281,17 @@ return redirect('/')->with('message', 'Successfully logged in with Facebook Canv
 
 });
 
-Route::get('/facebook/login', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+// Generate a login URL
 
-	$login_link = $fb->getLoginUrl();
-	/*
-    $login_link = $fb
-            ->getRedirectLoginHelper()
-            ->getLoginUrl('http://localhost.com:8000/facebook/callback', ['email', 'user_events']);
-            */
+Route::get('/facebook/login', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb)
+{
+    // Send an array of permissions to request
+    $login_url = $fb->getLoginUrl(['email']);
 
-    echo '<a href="' . $login_link . '">Log in with Facebook</a>';
+    // Obviously you'd do this in blade :)
+    echo '<a href="' . $login_url . '">Login with Facebook</a>';
 });
+
 
 /*
 Route::get('/facebook/login', [
@@ -323,17 +353,20 @@ Route::get('/facebook/callback', function(SammyK\LaravelFacebookSdk\LaravelFaceb
     }
 
     // Convert the response to a `Facebook/GraphNodes/GraphUser` collection
-    //$facebook_user = $response->getGraphUser();
+    $facebook_user = $response->getGraphUser();
 
     // Create the user if it does not exist or update the existing entry.
     // This will only work if you've added the SyncableGraphNodeTrait to your User model.
-    //$user = App\User::createOrUpdateGraphNode($facebook_user);
+    $user = App\User::createOrUpdateGraphNode($facebook_user);
 
     // Log the user into Laravel
-    //Auth::login($user);
+    Auth::login($user);
 
     return redirect('/')->with('message', 'Successfully logged in with Facebook');
 });
+
+
+
 
 
 

@@ -31,10 +31,16 @@
 
 {{ Form::close() }}
 
-
- 
-
+<br><br>
+<p>
+<!--
+OR
+</p>
+{{ link_to_route('user_login','facebook login', null, ['class' => 'btn btn-primary']) }}
+-->
 </div>
+
+
 </div>
 
 @stop

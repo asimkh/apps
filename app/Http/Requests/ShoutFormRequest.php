@@ -26,6 +26,7 @@ class ShoutFormRequest extends Request
     {
         return [
             'contactName' => 'required',
+            'contactPhone' => 'required|numeric',
             'contactEmail' => 'required|email',
             'contactMessage' => 'required',
            // 'recaptcha_response_field' => 'required|recaptcha',

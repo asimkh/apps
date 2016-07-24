@@ -37,10 +37,17 @@
 <?php echo e(Form::close()); ?>
 
 
+<br><br>
+<p>
+<!--
+OR
+</p>
+<?php echo e(link_to_route('user_login','facebook login', null, ['class' => 'btn btn-primary'])); ?>
 
- 
-
+-->
 </div>
+
+
 </div>
 
 <?php $__env->stopSection(); ?>
