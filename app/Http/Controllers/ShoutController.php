@@ -21,23 +21,30 @@ class ShoutController extends Controller
       public function sendmail(ShoutFormRequest $request)
     {
        //dd(app::get('mail'));
+
+
        
         $data = array(
+            'OrganziationSupport' => ('Asim Khan'),
+            'OrganziationName' => ('Hazzir'),
+            'OrganziationWebsite' => ('http://www.hazzir.com'),
             'name' => $request->get('contactName'),
             'email' => $request->get('contactEmail'),
             'phone' => $request->get('contactPhone'),
             'user_message' => $request->get('contactMessage')
         );
 
-
+        
 
     	Mail::send('pages.contact.mail',
             $data , function($message)use($request)
     {
     
+    $subject ='Thank you for visiting Hazzir website and contacting us.';
     $message->from('postmaster@hazzir.com', 'Hazzir - Contact Form');
-    $message->to('hazzir.mail@gmail.com', 'Admin Hazzir');
-    $message->subject('Hazzir Feedback ~');
+    $message->bcc('hazzir.mail@gmail.com', 'Admin Hazzir');
+    $message->to($request->get('contactEmail'), $request->get('contactName'));
+    $message->subject($subject);
     });
 
    

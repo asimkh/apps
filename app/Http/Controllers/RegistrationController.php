@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -63,6 +64,30 @@ private $registrationForm;
     		Input::only('username','email','password')
 
     		);
+
+
+       
+        $data = array(
+            'OrganziationSupport' => ('Asim Khan'),
+            'OrganziationName' => ('Hazzir'),
+            'OrganziationWebsite' => ('http://www.hazzir.com'),
+            'name' => $request->get('username'),
+            'email' => $request->get('email')
+          );
+
+        
+
+        Mail::send('pages.user.signupmail',
+            $data , function($message)use($request)
+    {
+    
+    $subject ='Thank you for SignUp at Hazzir!';
+    $message->from('postmaster@hazzir.com', 'Hazzir - Contact Form');
+    $message->bcc('hazzir.mail@gmail.com', 'Admin Hazzir');
+    $message->to($request->get('contactEmail'), $request->get('contactName'));
+    $message->subject($subject);
+    });
+
     		
 
     	//return \Redirect::home();
