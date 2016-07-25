@@ -13,6 +13,10 @@ Name: {{ $name }}
 </p>
 
 <p>
+{{ $phone }}
+</p>
+
+<p>
 {{ $user_message }}
 </p>
 </div>
