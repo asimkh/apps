@@ -49,8 +49,11 @@ Name: {{ $name }}
 Best regards,<br>
 {{ $OrganziationSupport }}<br>
 {{ $OrganziationName }}<br>
-{{ $OrganziationWebsite }}
+{{ $OrganziationWebsite }}<br>
 
+Follow Us<br>
+{{ $OrganziationFacebook }}<br>
+{{ $OrganziationTwitter }}<br>
 </p>
 </div>
 

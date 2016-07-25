@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use Mail;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-
+use Illuminate\Support\Facades\Redirect;
 use App\User;
 use Illuminate\Support\Facades\Input;
 
 use Forms\RegistrationForm;
 
 use App\Http\Requests\UserRegisterRequest;
+
+
+
+
+
 
 class RegistrationController extends Controller
 {
@@ -68,6 +73,8 @@ private $registrationForm;
 
        
         $data = array(
+            'OrganziationTwitter' => ('http://www.facebook.com/hellohazzir'),
+            'OrganziationFacebook' => ('http://twitter.com/hellohazzir'),
             'OrganziationSupport' => ('Asim Khan'),
             'OrganziationName' => ('Hazzir'),
             'OrganziationWebsite' => ('http://www.hazzir.com'),
@@ -84,7 +91,7 @@ private $registrationForm;
     $subject ='Thank you for SignUp at Hazzir!';
     $message->from('postmaster@hazzir.com', 'Hazzir - Contact Form');
     $message->bcc('hazzir.mail@gmail.com', 'Admin Hazzir');
-    $message->to($request->get('contactEmail'), $request->get('contactName'));
+    $message->to($request->get('email'), $request->get('username'));
     $message->subject($subject);
     });
 

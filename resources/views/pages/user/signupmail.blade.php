@@ -12,7 +12,7 @@ Dear {{ $name }},
 <p>
 Thank you for signup at {{ $OrganziationName }}. <br>
 
-Find below message copy submitted to us.
+Find below details are submitted to us.
 <br>
 ========================================
 <br>
@@ -35,7 +35,11 @@ Email: {{ $email }}
 Best regards,<br>
 {{ $OrganziationSupport }}<br>
 {{ $OrganziationName }}<br>
-{{ $OrganziationWebsite }}
+{{ $OrganziationWebsite }}<br>
+
+Follow Us<br>
+{{ $OrganziationFacebook }}<br>
+{{ $OrganziationTwitter }}<br>
 
 </p>
 </div>
