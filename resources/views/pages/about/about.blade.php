@@ -32,12 +32,12 @@
 
           <p>Our distinctive client-focused approach and insightful strategic thinking separate us from others in the traditional list management service industry. This allows us to build long-standing client partnerships that continue to grow based on evolving customer needs, a proven reputation of trust, innovation, experience, and bottom line results.</p>
 
-          Join us in the journey by <mark><a href="/register">SignUp Now!</a></mark>
+          <mark><a href="/register">SignUp Now!</a></mark> in our journey.
 
           <blockquote>The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
 
 
-
+          <u><a href="/privacy">Privacy Policy</a></u> | <u><a href="/terms">Terms and Conditions.</a></u>
 
             </div>
         </div>
@@ -57,7 +57,7 @@
 
 </div>
 
-    <hr>
+  
 @stop
 
 

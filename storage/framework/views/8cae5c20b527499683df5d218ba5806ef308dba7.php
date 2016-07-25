@@ -1,3 +1,21 @@
+<?php $__env->startSection('header'); ?>
+ <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/terms-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h2>Terms</h2>
+                        <!--<hr class="small">-->
+                        <span class="subheading">Applicable responsibility and regulations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <?php $__env->stopSection(); ?>
     
 <?php $__env->startSection('content'); ?>
 
@@ -5,11 +23,11 @@
 <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-<div class="col-md-6">
-<h1>Terms</h1>
+ <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
 <p>
 
-General Terms and Conditions applicable to "حـاضــر" or "Hazzir" for a Web Site and App.
+General Terms and Conditions.
 </p>
 
 
@@ -59,4 +77,4 @@ General Terms and Conditions applicable to "حـاضــر" or "Hazzir" for a We
 
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.theme', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

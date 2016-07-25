@@ -1,4 +1,25 @@
-@extends('layouts.default')
+@extends('layouts.theme')
+
+
+@section('header')
+ <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/privacy-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h2>Privacy</h2>
+                        <!--<hr class="small">-->
+                        <span class="subheading">
+It is critically important.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    @stop
     
 @section('content')
 
@@ -7,13 +28,12 @@
       <!-- Example row of columns -->
       <div class="row">
 
-<div class="col-md-6">
+ <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-  <h1>Privacy</h1>
+
 
 <p>
 
-Your privacy is critically important to us.
 We collect different types of information about our users for few reasons:
 
 
