@@ -35,10 +35,7 @@ class ShoutController extends Controller
             $data , function($message)use($request)
     {
     
-    $message->from(
-         $request->get('contactEmail'),
-         $request->get('contactName')
-         );
+    $message->from('postmaster@hazzir.com', 'Hazzir - Contact Form');
     $message->to('hazzir.mail@gmail.com', 'Admin Hazzir');
     $message->subject('Hazzir Feedback ~');
     });
