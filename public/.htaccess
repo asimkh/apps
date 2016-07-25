@@ -13,6 +13,7 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+    RewriteRule ^ laravel.php [L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
