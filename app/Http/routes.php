@@ -214,12 +214,12 @@ Route::get('1038170566278633', [
 	'as' => 'fb_hazzir',
 	'uses' => 'FBController@home'
 	]);
-/*
+
 Route::get('/facebook/login', [
 	'as' => 'fb_login',
 	'uses' => 'FBController@login'
 	]);
-	*/
+	
 
 Route::get('/facebook/callback', [
 	'as' => 'fb_callback',
@@ -282,6 +282,12 @@ return redirect('/')->with('message', 'Successfully logged in with Facebook Canv
 });
 
 // Generate a login URL
+
+Route::get('fblogin', [
+    'as' => 'fblogin',
+    'uses' => 'FBController@login'
+    ]);
+
 
 Route::get('/facebook/login', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb)
 {
