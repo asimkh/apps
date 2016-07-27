@@ -21,15 +21,28 @@
                     <li>
                         <a href="<?php echo e(url('about')); ?>">About</a>
                     </li>
+                    <?php if(Auth::guest()): ?>
                     <li>
                         <a href="<?php echo e(url('register')); ?>">SignUp</a>
                     </li>
                     <li>
                         <a href="<?php echo e(url('login')); ?>">Login</a>
                     </li>
+                     <?php endif; ?>
+                   
+
                     <li>
                        <a href="<?php echo e(url('shout')); ?>">Shout</a>
                     </li>
+
+                      <?php if(Auth::guest()): ?>
+                      <?php else: ?>
+                    <li class="dropdown">
+                            
+                                <li><a href="<?php echo e(url('/logout')); ?>"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                           
+                      
+                    <?php endif; ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -37,4 +50,4 @@
         <!-- /.container -->
     </nav>
 
-
+ 

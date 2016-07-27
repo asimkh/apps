@@ -20,21 +20,29 @@
     
 
 <?php $__env->startSection('content'); ?>
-<div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/register')); ?>">
+     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                   
+                     <?php echo e(Form::open([ url('register') ])); ?>
+
+
                         <?php echo e(csrf_field()); ?>
 
 
-                        <div class="form-group<?php echo e($errors->has('name') ? ' has-error' : ''); ?>">
-                            <label for="name" class="col-md-4 control-label">Name</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="<?php echo e(old('name')); ?>">
+                         <div class="row control-group">
+       <div class="form-group col-xs-12 floating-label-form-group controls <?php echo e($errors->has('name') ? ' has-error' : ''); ?>">
+      <?php echo e(Form::label('name','Name:')); ?>
+
+      <?php echo e(Form::text('name', null,  array( 
+                    'class'=>'form-control', 
+                    'placeholder'=>'Your Name',
+              'value'=>'{ old("name")}'
+              ))); ?>
+
+
+
+
 
                                 <?php if($errors->has('name')): ?>
                                     <span class="help-block">
@@ -44,12 +52,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>">
+                         <div class="row control-group">
+       <div class="form-group col-xs-12 floating-label-form-group controls <?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
+      <?php echo e(Form::label('email','Email:')); ?>
 
+      <?php echo e(Form::text('email', null,  array( 
+                    'class'=>'form-control', 
+                    'placeholder'=>'Email address',
+              'value'=>'{ old("email")}'))); ?>
+
+
+
+
+                        
                                 <?php if($errors->has('email')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('email')); ?></strong>
@@ -58,11 +74,23 @@
                             </div>
                         </div>
 
-                        <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
-                            <label for="password" class="col-md-4 control-label">Password</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
+
+
+
+       <div class="row control-group">
+       <div class="form-group col-xs-12 floating-label-form-group controls <?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
+      <?php echo e(Form::label('password','Password:')); ?>
+
+      <?php echo e(Form::password ('password', array( 
+                    'class'=>'form-control', 
+                    'placeholder'=>'Your password'))); ?>
+
+
+
+
+
+                       
 
                                 <?php if($errors->has('password')): ?>
                                     <span class="help-block">
@@ -72,11 +100,19 @@
                             </div>
                         </div>
 
-                        <div class="form-group<?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                         <div class="row control-group">
+       <div class="form-group col-xs-12 floating-label-form-group controls <?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
+      <?php echo e(Form::label('password_confirmation','Password Confirmation:')); ?>
+
+      <?php echo e(Form::password ('password_confirmation', array( 
+                    'class'=>'form-control', 
+                    'placeholder'=>'Re-type password'))); ?>
+
+
+
+
+                        
 
                                 <?php if($errors->has('password_confirmation')): ?>
                                     <span class="help-block">
@@ -86,19 +122,23 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i> Register
-                                </button>
-                            </div>
-                        </div>
+
+                        <br>
+     <div id="success"></div>
+      <div class="row control-group">
+<div class="form-group col-xs-12">
+      <?php echo e(Form::submit('Register', ['class' => 'btn btn-default' ])); ?>
+
+      </div>
+      </div>
+
+
+
+                      
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.theme', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

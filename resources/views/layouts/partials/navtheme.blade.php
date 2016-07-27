@@ -21,15 +21,28 @@
                     <li>
                         <a href="{{ url('about') }}">About</a>
                     </li>
+                    @if (Auth::guest())
                     <li>
                         <a href="{{ url('register') }}">SignUp</a>
                     </li>
                     <li>
                         <a href="{{ url('login') }}">Login</a>
                     </li>
+                     @endif
+                   
+
                     <li>
                        <a href="{{ url('shout') }}">Shout</a>
                     </li>
+
+                      @if (Auth::guest())
+                      @else
+                    <li class="dropdown">
+                            
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                           
+                      
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -37,4 +50,4 @@
         <!-- /.container -->
     </nav>
 
-
+ 

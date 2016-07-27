@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             
             $table->bigInteger('facebook_user_id')->nullable()->unsigned()->index();
-            $table->string('access_token')->nullable();
-            
+            $table->string('remember_token', 100)->nullable();
+
             $table->timestamps();
         });
     }
