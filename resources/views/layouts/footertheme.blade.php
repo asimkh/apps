@@ -52,5 +52,5 @@
 
   
     <!-- Theme JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+    <script src="{{ url('/js/clean-blog.min.js') }}"></script>
 

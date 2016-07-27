@@ -52,9 +52,11 @@ Name: <?php echo e($name); ?>
 Best regards,<br>
 <?php echo e($OrganziationSupport); ?><br>
 <?php echo e($OrganziationName); ?><br>
-<?php echo e($OrganziationWebsite); ?>
+<?php echo e($OrganziationWebsite); ?><br>
 
-
+Follow Us<br>
+<?php echo e($OrganziationFacebook); ?><br>
+<?php echo e($OrganziationTwitter); ?><br>
 </p>
 </div>
 

@@ -28,6 +28,9 @@ class ShoutController extends Controller
             'OrganziationSupport' => ('Asim Khan'),
             'OrganziationName' => ('Hazzir'),
             'OrganziationWebsite' => ('http://www.hazzir.com'),
+            'OrganziationFacebook' => ('http://www.facebook.com/hellohazzir'),
+            'OrganziationTwitter' => ('http://www.twitter.com/hellohazzir.com'),
+            
             'name' => $request->get('contactName'),
             'email' => $request->get('contactEmail'),
             'phone' => $request->get('contactPhone'),

@@ -17,7 +17,7 @@
 
   
     <!-- Theme CSS -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
+    <link href="<?php echo e(url('/css/clean-blog.min.css')); ?>" rel="stylesheet">
 
     
 

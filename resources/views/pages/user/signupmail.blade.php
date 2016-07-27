@@ -36,12 +36,13 @@ Best regards,<br>
 {{ $OrganziationSupport }}<br>
 {{ $OrganziationName }}<br>
 {{ $OrganziationWebsite }}<br>
-
+</p>
+<p>
 Follow Us<br>
 {{ $OrganziationFacebook }}<br>
 {{ $OrganziationTwitter }}<br>
-
 </p>
+
 </div>
 
 

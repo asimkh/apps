@@ -16,19 +16,19 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/">Home</a>
+                        <a href="{{ url('/') }}">Home</a>
                     </li>
                     <li>
-                        <a href="about">About</a>
+                        <a href="{{ url('about') }}">About</a>
                     </li>
                     <li>
-                        <a href="register">SignUp</a>
+                        <a href="{{ url('register') }}">SignUp</a>
                     </li>
                     <li>
-                        <a href="login">Login</a>
+                        <a href="{{ url('login') }}">Login</a>
                     </li>
                     <li>
-                       <a href="shout">Shout</a>
+                       <a href="{{ url('shout') }}">Shout</a>
                     </li>
                 </ul>
             </div>

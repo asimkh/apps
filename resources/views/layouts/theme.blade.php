@@ -17,7 +17,7 @@
 
   
     <!-- Theme CSS -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
+    <link href="{{ url('/css/clean-blog.min.css') }}" rel="stylesheet">
 
     
 

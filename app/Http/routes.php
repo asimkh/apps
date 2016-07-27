@@ -36,7 +36,7 @@ Route::get('/', [
 |
 
 */
-
+/*
 Route::get('register', [
 	'as' => 'register_path',
 	'uses' => 'RegistrationController@signup'
@@ -46,6 +46,8 @@ Route::post('register', [
 	'as' => 'register_path',
 	'uses' => 'RegistrationController@store'
 	]);
+
+    */
 
 
 
@@ -376,3 +378,7 @@ Route::get('/facebook/callback', function(SammyK\LaravelFacebookSdk\LaravelFaceb
 
 
 
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
