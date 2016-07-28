@@ -17,9 +17,9 @@ class CreateUsersTable extends Migration
             $table->string('username')->nullable()->unique();
 
 
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('photo')->nullable();
-            $table->string('password', 60);
+            $table->string('password', 60)->nullable();
             
             $table->bigInteger('facebook_user_id')->nullable()->unsigned()->index();
             $table->string('remember_token', 100)->nullable();

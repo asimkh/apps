@@ -285,8 +285,8 @@ return redirect('/')->with('message', 'Successfully logged in with Facebook Canv
 
 // Generate a login URL
 
-Route::get('fblogin', [
-    'as' => 'fblogin',
+Route::get('facebook', [
+    'as' => 'facebook',
     'uses' => 'FBController@login'
     ]);
 
@@ -308,7 +308,7 @@ Route::get('/facebook/login', [
 	]);
 	*/
 // Endpoint that is redirected to after an authentication attempt
-Route::get('/facebook/callback', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb)
+Route::get('facebook/callback', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb)
 {
     // Obtain an access token.
     try {
@@ -380,5 +380,7 @@ Route::get('/facebook/callback', function(SammyK\LaravelFacebookSdk\LaravelFaceb
 
 
 Route::auth();
-
 Route::get('/home', 'HomeController@index');
+
+Route::get('/redirect', 'Auth\AuthController@redirectToProvider');
+Route::get('/callback', 'Auth\AuthController@handleProviderCallback');

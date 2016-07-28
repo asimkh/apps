@@ -7,6 +7,12 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use SammyK\LaravelFacebookSdk\LaravelFacebookSdk;
+use Socialite;
+use Auth;
+
+
+
 
 class AuthController extends Controller
 {
@@ -38,8 +44,15 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct()
+
     {
+       
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+
+        
+
+   
+
     }
 
     /**
@@ -71,4 +84,64 @@ class AuthController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function handleProviderCallback()
+    {
+        try {
+            $user = Socialite::driver('facebook')->user();
+        } catch (Exception $e) {
+            return redirect('facebook');
+        }
+ 
+        $authUser = $this->findOrCreateUser($user);
+        
+
+        // stroing data to our use table and logging them in
+    $data = [
+        'name' => $user->getName()
+
+
+    ];
+    
+    
+        
+        Auth::login($authUser, true);
+
+    
+        return redirect()->route('home')->with('message',  'Welcom ' . Auth::user()->username . ',  you logged successfully');
+    }
+
+
+    /**
+     * Return user if exists; create and return if doesn't
+     *
+     * @param $facebookUser
+     * @return User
+     */
+    private function findOrCreateUser($facebookUser)
+    {
+        $authUser = User::where('facebook_user_id', $facebookUser->id)->first();
+ 
+        if ($authUser){
+            return $authUser;
+        }
+ 
+        return User::create([
+            'username' => $facebookUser->name,
+            'email' => $facebookUser->email,
+            'facebook_user_id' => $facebookUser->id,
+            'photo' => $facebookUser->avatar
+        ]);
+    }
+
+
+
+    
+
+
 }

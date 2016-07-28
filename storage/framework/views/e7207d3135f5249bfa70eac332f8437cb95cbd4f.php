@@ -39,7 +39,7 @@
                       <?php else: ?>
                     <li class="dropdown">
                             
-                                <li><a href="<?php echo e(url('/logout')); ?>"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="<?php echo e(url('/logout')); ?>"><?php echo e(Auth::user()->username); ?> <i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                            
                       
                     <?php endif; ?>

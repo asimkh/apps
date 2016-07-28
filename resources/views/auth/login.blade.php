@@ -24,6 +24,24 @@
      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
 
+ <div class="row control-group">
+ <div class="form-group col-xs-12">
+
+
+
+
+                                <a class="btn btn-default" href="{{ url('redirect') }}">Facebook Login</a>
+
+
+                                <p>
+
+                                OR
+
+                                </p>
+                               
+                            </div>
+                        </div>
+
 
  
 

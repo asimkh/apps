@@ -39,7 +39,7 @@
                       @else
                     <li class="dropdown">
                             
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/logout') }}">{{ Auth::user()->username }} <i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                            
                       
                     @endif

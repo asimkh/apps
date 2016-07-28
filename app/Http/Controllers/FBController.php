@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers;
 use SammyK\LaravelFacebookSdk\LaravelFacebookSdk;
+use App\Http\Controllers\Controller;
 
 class FBController extends Controller
 {
@@ -17,22 +18,15 @@ class FBController extends Controller
 
     public function login (LaravelFacebookSdk $fb)
     {
-
-    $login_url = $fb->getLoginUrl(['email']);
-    echo '<a href="' . $login_url . '">Login with Facebook</a>';
+    
+    $fb->getLoginUrl(['email']);
+    return view('facebook.callback')->with('message', 'Facebook logging....');
+   
+    
 
     }
 
-     public function redirect()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
-
-    public function callback()
-    {
-        // when facebook call us a with token
-    }
-
+    
 
 
     

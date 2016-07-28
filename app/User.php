@@ -13,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password',
+        'username', 'email', 'password','facebook_user_id', 'photo',
     ];
 
     /**
@@ -24,4 +24,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
