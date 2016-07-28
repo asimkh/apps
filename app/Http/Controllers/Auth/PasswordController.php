@@ -2,8 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Mail;
+use Illuminate\Mail\Message;
+
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+
+use Password;
+use Auth;
+
+
 
 class PasswordController extends Controller
 {
@@ -20,6 +29,8 @@ class PasswordController extends Controller
 
     use ResetsPasswords;
 
+   
+
     /**
      * Create a new password controller instance.
      *
@@ -27,6 +38,35 @@ class PasswordController extends Controller
      */
     public function __construct()
     {
+       
         $this->middleware($this->guestMiddleware());
     }
+
+
+
+
+    public function sendResetLinkEmail(Request $request)
+    {
+    
+    $this->validate($request, ['email' => 'required|email']);
+
+       $response = Password::sendResetLink($request->only('email'), function (Message $message) {
+           $message->subject('Your Account Password');
+
+       });
+
+       switch ($response) {
+           case Password::RESET_LINK_SENT:
+               return redirect()->back()->with('status', trans($response));
+
+           case Password::INVALID_USER:
+               return redirect()->back()->withErrors(['email' => trans($response)]);
+       }
+    }
+
+
+
+    
+   
+
 }

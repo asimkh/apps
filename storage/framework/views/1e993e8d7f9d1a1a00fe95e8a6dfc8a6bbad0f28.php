@@ -108,18 +108,18 @@
                             
                             </div>
                         </div>
-<!--
+
                          <div class="row control-group">
-  <div class="col-md-6 col-md-offset-2">
+ <div class="form-group col-xs-12">
 
 
 
 
-                                <a class="btn btn-link" href="<?php echo e(url('password/reset')); ?>">Forgot Your Password?</a>
+                                <a class="btn btn-default" href="<?php echo e(url('password/reset')); ?>">Forgot Your Password?</a>
                                
                             </div>
                         </div>
-                         -->
+                       
 
 <?php echo e(Form::close()); ?>
 
