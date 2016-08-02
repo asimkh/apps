@@ -9,7 +9,7 @@ use App\User;
 use App\Http\Requests;
 //use Illuminate\Database\Eloquent\Model;
 
-class profileController extends Controller
+class ProfileController extends Controller
 {
     //
     public function home($firstname)
