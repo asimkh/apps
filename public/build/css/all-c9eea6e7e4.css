@@ -26,7 +26,9 @@
   color: #cbd684; }
 
 .dropdown-menu {
-  text-align: right; }
+  text-align: center;
+  padding: 0px;
+  min-width: 120px; }
 
 /*# sourceMappingURL=app.css.map */
 
