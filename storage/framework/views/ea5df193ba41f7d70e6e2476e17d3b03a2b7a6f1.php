@@ -31,22 +31,45 @@
 
 
                          <div class="row control-group">
-       <div class="form-group col-xs-12 floating-label-form-group controls <?php echo e($errors->has('name') ? ' has-error' : ''); ?>">
-      <?php echo e(Form::label('name','Name:')); ?>
 
-      <?php echo e(Form::text('name', null,  array( 
+       <div class="form-group col-xs-12 floating-label-form-group controls <?php echo e($errors->has('firstname') ? ' has-error' : ''); ?>">
+      <?php echo e(Form::label('firstname','First Name:')); ?>
+
+      <?php echo e(Form::text('firstname', null,  array( 
                     'class'=>'form-control', 
-                    'placeholder'=>'Your Name',
-              'value'=>'{ old("name")}'
+                    'placeholder'=>'First Name',
+              'value'=>'{ old("First Name")}'
               ))); ?>
 
 
 
 
 
-                                <?php if($errors->has('name')): ?>
+                                <?php if($errors->has('firstname')): ?>
                                     <span class="help-block">
-                                        <strong><?php echo e($errors->first('name')); ?></strong>
+                                        <strong><?php echo e($errors->first('firstname')); ?></strong>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+ <div class="row control-group">
+                         <div class="form-group col-xs-12 floating-label-form-group controls <?php echo e($errors->has('lastname') ? ' has-error' : ''); ?>">
+      <?php echo e(Form::label('lastname','Last Name:')); ?>
+
+      <?php echo e(Form::text('lastname', null,  array( 
+                    'class'=>'form-control', 
+                    'placeholder'=>'Last Name',
+              'value'=>'{ old("lastname")}'
+              ))); ?>
+
+
+
+
+
+                                <?php if($errors->has('lastname')): ?>
+                                    <span class="help-block">
+                                        <strong><?php echo e($errors->first('lastname')); ?></strong>
                                     </span>
                                 <?php endif; ?>
                             </div>

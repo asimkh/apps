@@ -14,11 +14,6 @@
 
         <!-- Bootstrap Core CSS -->
    <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css')}}">
-
-  
-    <!-- Theme CSS -->
-    <link href="{{ url('/css/clean-blog.min.css') }}" rel="stylesheet">
-
     
 
     <!-- Custom Fonts -->

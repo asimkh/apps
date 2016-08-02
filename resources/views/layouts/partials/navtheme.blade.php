@@ -38,8 +38,25 @@
                       @if (Auth::guest())
                       @else
                     <li class="dropdown">
+<!--
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/{profile}') }}">Profile</a></li>
+                                <li><a href="{{ url('/logout') }}">Logout</a></li>
+                            </ul>
+
                             
-                                <li><a href="{{ url('/logout') }}">{{ Auth::user()->username }} <i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/logout') }}">{{ Auth::user()->firstname }} <i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                -->
+
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->firstname }} <span class="caret"></span></a>
+
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li> {!! Html::link(url('/'.Auth::user()->firstname), Lang::get('titles.profile'), array('class' => '')) !!}</li>
+                            <li>{!! Html::link(url('/logout'), Lang::get('titles.logout'), array('class' => '')) !!}</li>
+                        </ul>
                            
                       
                     @endif

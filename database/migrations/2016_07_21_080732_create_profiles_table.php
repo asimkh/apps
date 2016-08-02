@@ -13,13 +13,27 @@ class CreateProfilesTable extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
+            
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('username');
-            $table->biginteger('uid')->unsigned();
-            $table->string('access_token');
-            $table->string('access_token_secret');
+            
+            $table->text('bio')->nullable();
+            $table->string('about')->nullable();
+
+            $table->string('birthday')->nullable();
+            $table->string('religion')->nullable();
+            $table->string('website')->nullable();
+            $table->string('work')->nullable();
+            $table->string('relationship_status')->nullable();
+            $table->string('home_town')->nullable();
+            $table->string('location')->nullable();
+            $table->string('timezone')->nullable();
+
+            $table->string('twitter_id')->nullable();
+            $table->string('google_id')->nullable();
+           
             $table->timestamps();
+
         });
     }
 

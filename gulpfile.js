@@ -23,7 +23,8 @@ var paths = {
  	'jquery': '../jquery/',
  	'bootstrap': '../bootstrap/dist/',
     'fontawesome': '../font-awesome/',
-    'theme':'../theme/'
+    'theme':'../theme/',
+    'public':''
     
 }
 
@@ -31,24 +32,32 @@ var paths = {
 
 elixir(function(mix) {
 
-     mix.sass('app.scss')
+    // mix.sass('app.scss')
+
+      mix.sass([
+        'app.scss'
+        ], 'resources/assets/css');
 
 
      mix.copy('resources/assets/font-awesome/fonts/', 'public/build/fonts')
      
      .styles([
     
-     	    // "../../../public/css/app.css",
+
      	     paths.fontawesome + "/css/font-awesome.min.css",
-     		 paths.bootstrap + "css/bootstrap.min.css"
-     		 //paths.theme + "css/clean-blog.min.css"
+     		 paths.bootstrap + "css/bootstrap.min.css",
+            
+             paths.public + "clean-blog.min.css",
+             paths.public + "app.css"
+     		 
         ])
 
      .scripts([
 	
 	    paths.jquery + 'jquery.min.js',
-	    paths.bootstrap + 'js/bootstrap.min.js'
-	    //paths.theme + 'js/clean-blog.min.js'
+	    paths.bootstrap + 'js/bootstrap.min.js',
+        paths.public + "clean-blog.min.js"
+
 		
 		]);
 

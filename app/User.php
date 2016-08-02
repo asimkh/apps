@@ -12,8 +12,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+
     protected $fillable = [
-        'username', 'email', 'password','facebook_user_id', 'photo',
+        'firstname', 'lastname','gender','email', 'password','facebook_user_id', 'photo',
     ];
 
     /**
@@ -28,5 +30,10 @@ class User extends Authenticatable
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+      public function profile()
+    {
+        return $this->hasOne('Profile');
     }
 }

@@ -30,5 +30,15 @@ class PagesController extends Controller
     {
         return view('pages.about.terms');
     }
+
+     public function admin()
+    {
+        return view('pages.admin.home');
+    }
+
+     public function profile()
+    {
+        return view('pages.user.profile');
+    }
     
 }

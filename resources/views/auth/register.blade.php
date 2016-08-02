@@ -30,20 +30,41 @@
 
 
                          <div class="row control-group">
-       <div class="form-group col-xs-12 floating-label-form-group controls {{ $errors->has('name') ? ' has-error' : '' }}">
-      {{ Form::label('name','Name:') }}
-      {{ Form::text('name', null,  array( 
+
+       <div class="form-group col-xs-12 floating-label-form-group controls {{ $errors->has('firstname') ? ' has-error' : '' }}">
+      {{ Form::label('firstname','First Name:') }}
+      {{ Form::text('firstname', null,  array( 
                     'class'=>'form-control', 
-                    'placeholder'=>'Your Name',
-              'value'=>'{ old("name")}'
+                    'placeholder'=>'First Name',
+              'value'=>'{ old("First Name")}'
               ))}}
 
 
 
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('firstname'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('firstname') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+ <div class="row control-group">
+                         <div class="form-group col-xs-12 floating-label-form-group controls {{ $errors->has('lastname') ? ' has-error' : '' }}">
+      {{ Form::label('lastname','Last Name:') }}
+      {{ Form::text('lastname', null,  array( 
+                    'class'=>'form-control', 
+                    'placeholder'=>'Last Name',
+              'value'=>'{ old("lastname")}'
+              ))}}
+
+
+
+
+                                @if ($errors->has('lastname'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('lastname') }}</strong>
                                     </span>
                                 @endif
                             </div>

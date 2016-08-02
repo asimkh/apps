@@ -50,7 +50,4 @@
 
    
 
-  
-    <!-- Theme JavaScript -->
-    <script src="{{ url('/js/clean-blog.min.js') }}"></script>
 

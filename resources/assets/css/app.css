@@ -1,0 +1,16 @@
+.navbar-default .navbar-nav .open .dropdown-menu > li > a, .navbar-default .navbar-nav .open .dropdown-menu {
+  background-color: transparent;
+  color: #ffffff; }
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+  background-color: transparent;
+  color: #5c90c3; }
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+  background-color: transparent;
+  color: #cbd684; }
+
+.dropdown-menu {
+  text-align: right; }
+
+/*# sourceMappingURL=app.css.map */

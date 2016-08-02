@@ -38,8 +38,25 @@
                       <?php if(Auth::guest()): ?>
                       <?php else: ?>
                     <li class="dropdown">
+<!--
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo e(Auth::user()->firstname . ' ' . Auth::user()->lastname); ?> <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="<?php echo e(url('/{profile}')); ?>">Profile</a></li>
+                                <li><a href="<?php echo e(url('/logout')); ?>">Logout</a></li>
+                            </ul>
+
                             
-                                <li><a href="<?php echo e(url('/logout')); ?>"><?php echo e(Auth::user()->username); ?> <i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="<?php echo e(url('/logout')); ?>"><?php echo e(Auth::user()->firstname); ?> <i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                -->
+
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo e(Auth::user()->firstname); ?> <span class="caret"></span></a>
+
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li> <?php echo Html::link(url('/'.Auth::user()->firstname), Lang::get('titles.profile'), array('class' => '')); ?></li>
+                            <li><?php echo Html::link(url('/logout'), Lang::get('titles.logout'), array('class' => '')); ?></li>
+                        </ul>
                            
                       
                     <?php endif; ?>

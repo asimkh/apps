@@ -41,14 +41,9 @@ We collect different types of information about our users for few reasons:
 </ul>
 
 
-For more information contact us at <mark><a href="mailto:hello@hazzir.com" role="button">hello@hazzir.com</a></mark>
+For more information contact us at <mark><a href="<?php echo e(url('/shout')); ?>" role="button">hello@hazzir.com</a></mark>
 </p>
-<!--
-<?php echo e(link_to_route('register_path','Sign Up!', null, ['class' => 'btn btn-lg btn-primary'])); ?>
 
-
-  <a class="btn btn-primary btn-lg" href="#" role="button">Sign U p!</a>
--->
 </div>
 
 

@@ -1,11 +1,23 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-body { padding-top: 70px; }
+ .navbar-default .navbar-nav .open .dropdown-menu>li>a, .navbar-default .navbar-nav .open .dropdown-menu {
+    background-color: transparent;
+    color:#ffffff;
+  }
 
-footer.footer {
-   background-color: #ffffff;
-}
+  .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+  background-color: transparent;
+  color:#5c90c3;
+  }
 
-.container h1:first-of-type {
-  margin-top:0;
+  .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+  background-color: transparent;
+  color:#cbd684;
+
+  }
+
+  .dropdown-menu {
+ 
+  text-align: right;
+
 }

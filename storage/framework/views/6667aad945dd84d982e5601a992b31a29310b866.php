@@ -14,11 +14,6 @@
 
         <!-- Bootstrap Core CSS -->
    <link rel="stylesheet" type="text/css" href="<?php echo e(elixir('css/all.css')); ?>">
-
-  
-    <!-- Theme CSS -->
-    <link href="<?php echo e(url('/css/clean-blog.min.css')); ?>" rel="stylesheet">
-
     
 
     <!-- Custom Fonts -->

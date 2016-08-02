@@ -64,7 +64,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'firstname' => 'required|max:255',
+            'lastname' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -79,41 +80,68 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'username' => $data['name'],
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    /**
+     * Redirect the user to the  authentication page.
+     *
+     */
 
     public function redirectToProvider()
     {
         return Socialite::driver('facebook')->redirect();
     }
 
+
+    /**
+     * Obtain the user information from network.
+     *
+     */
+
     public function handleProviderCallback()
     {
+
+
+        /*
+
+        dd($user = Socialite::driver('facebook')->fields([
+            'first_name', 'last_name', 'email', 'gender', 'birthday'])->user());
+
+        */
         try {
-            $user = Socialite::driver('facebook')->user();
+
+            $user = Socialite::driver('facebook')->fields([
+            'first_name', 'last_name', 'email', 'gender', 'birthday','about','bio','hometown','languages','locale','location','religion','relationship_status','timezone','website','work'])->user();
+
+           //dd($user->user['first_name']);
+           //dd($user);
+
         } catch (Exception $e) {
+
             return redirect('facebook');
         }
- 
-        $authUser = $this->findOrCreateUser($user);
+
         
-
-        // stroing data to our use table and logging them in
-    $data = [
-        'name' => $user->getName()
-
-
-    ];
-    
-    
+        //$user->user['first_name']
+       
+        $authUser = $this->findOrCreateUser($user);
         
         Auth::login($authUser, true);
 
-    
-        return redirect()->route('home')->with('message',  'Welcom ' . Auth::user()->username . ',  you logged successfully');
+      
+        
+      
+        return redirect()->route('home')->with('message',  'Welcome '
+         . Auth::user()->firstname . ', 
+          you logged successfully');
+        
+        
+        
     }
 
 
@@ -132,8 +160,10 @@ class AuthController extends Controller
         }
  
         return User::create([
-            'username' => $facebookUser->name,
-            'email' => $facebookUser->email,
+            'firstname' => $facebookUser->user['first_name'],
+            'lastname' => $facebookUser->user['last_name'],
+            'email' => $facebookUser->user['email'],
+            'gender' => $facebookUser->user['gender'],
             'facebook_user_id' => $facebookUser->id,
             'photo' => $facebookUser->avatar
         ]);
