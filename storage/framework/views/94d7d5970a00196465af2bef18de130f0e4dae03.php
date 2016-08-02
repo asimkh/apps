@@ -43,7 +43,7 @@
 
 <tbody class="text-warning">
 	<tr>
-	<th><?php echo e(Auth::user()->firstname); ?>
+	<th><?php echo e(Auth::user()->firstname); ?> <?php echo e(Auth::user()->lastname); ?>
 
 <br>
 

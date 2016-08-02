@@ -1,6 +1,5 @@
 .navbar-default .navbar-nav .open .dropdown-menu > li > a, .navbar-default .navbar-nav .open .dropdown-menu {
-  background-color: transparent;
-  color: #ffffff; }
+  background-color: transparent; }
 
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
   background-color: transparent;

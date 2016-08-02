@@ -44,7 +44,7 @@
 
 <tbody class="text-warning">
 	<tr>
-	<th>{{Auth::user()->firstname}}
+	<th>{{Auth::user()->firstname}} {{Auth::user()->lastname}}
 <br>
 
 {{Auth::user()->about}}</th>
