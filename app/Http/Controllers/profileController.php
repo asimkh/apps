@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+//use App\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\User;
+use Illuminate\Database\Eloquent\Model;
 //use App\Models\User;
 use App\Http\Requests;
 //use Illuminate\Database\Eloquent\Model;
+
+
+
 
 class ProfileController extends Controller
 {
@@ -15,10 +21,10 @@ class ProfileController extends Controller
     public function home($firstname)
     {
 
-/*
+
 	try{
-		$user = User::with('profile')->where($firstname)->firstOrFail();
-		dd($user->toArray());
+		$user = User::wherefirstname($firstname)->firstOrFail();
+		//dd($user->Profile->toArray());
 	}
 
 	catch(ModelNotFoundException $e)
@@ -27,7 +33,7 @@ class ProfileController extends Controller
 		  return \Redirect::home()->with('message', 'User Not Found!');
 	}
 
-	*/
+
     	
     	return view('pages.user.profile');
     }
