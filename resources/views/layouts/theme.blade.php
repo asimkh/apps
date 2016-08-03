@@ -13,8 +13,12 @@
     <title>حـاضــر | HAZZIR </title>
 
         <!-- Bootstrap Core CSS -->
-   <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css')}}">
+   <!--<link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css')}}">-->
+
+
     
+{{ Html::style('css/all.css', array(), true) }}
+
 
     <!-- Custom Fonts -->
    
@@ -44,7 +48,10 @@
     
 
      <!-- Loading JS Scrips -->
-     <script src="{{ asset('/js/all.js') }}"></script>
+     <!--<script src="{{ asset('/js/all.js') }}"></script>-->
+
+{{ Html::script('/js/all.js', array(), true) }}
+
      
      @include('layouts.footertheme')
       
