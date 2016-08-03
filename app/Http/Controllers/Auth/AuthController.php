@@ -105,7 +105,7 @@ class AuthController extends Controller
      
     $helper = $fb->getRedirectLoginHelper();
     $permissions = ['email', 'user_likes']; // optional
-    $loginUrl = $helper->getLoginUrl('http://localhost:8000/recall/', $permissions);
+    $loginUrl = $helper->getLoginUrl(env('FACEBOOK_RECALL_URL'), $permissions);
     
     return \Redirect::to($loginUrl);
 

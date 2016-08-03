@@ -43,6 +43,7 @@ return [
     'client_id' => env('FACEBOOK_APP_ID'),
     'client_secret' =>env('FACEBOOK_SECRET'),
     'redirect' => env('FACEBOOK_CALLBACK_URL'),
+    'recall' => env('FACEBOOK_RECALL_URL'),
     ],
 
 
