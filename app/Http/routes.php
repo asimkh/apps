@@ -202,9 +202,9 @@ Route::get('posts/{post}', [
 
 Route::auth();
 Route::get('/home', 'HomeController@index');
-Route::get('/redirect', 'Auth\AuthController@redirectToProvider');
-Route::get('/callback', 'Auth\AuthController@handleProviderCallback');
-
+Route::get('/redirect', 'Auth\AuthController@FBLogin');
+Route::get('/callback', 'Auth\AuthController@FBcallback');
+Route::match(['get', 'post'], '/canvas', 'Auth\AuthController@FBcanvas');
 
 /*
 
@@ -224,7 +224,7 @@ get('protected', ['middleware' => ['auth', 'admin'], function() {
 
 */
 
-Route::get('{profile}','ProfileController@home');
+Route::get('{profile}','ProfilesController@home');
 
 
 
@@ -232,4 +232,5 @@ Route::get('admin', [
     'as' => 'admin',
     'uses' => 'PagesController@admin'
     ]);
+
 

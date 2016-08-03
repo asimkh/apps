@@ -29,7 +29,71 @@
 @endif
 
 
+  <div class="row">
+   <div class="col-lg-8 col-lg-offset-3 col-md-10">
+    
+      <div class=" panel ">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 text-center">
+              <img src="{{ Auth::user()->photo}}" alt="" class="center-block  img-thumbnail img-responsive">
+              
+            </div>
+            <!--/col--> 
+            <div class="col-xs-12 col-sm-8">
+              <h2>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h2>
+              <p>
+               
+                <small>Email:  </small>{{Auth::user()->email}} <br>
 
+             
+              
+
+               
+                <small>{{ link_to('http://facebook.com/'. Auth::user()->facebook_user_id, 'Follow on Facebook',['target' => '_blank'])}}</small> <br>
+              
+
+              </p>
+             
+
+
+
+              
+            </div>
+            <!--/col-->          
+            <!--<div class="clearfix"></div>
+            <div class="col-xs-12 col-sm-4">
+              <h2><strong> 20,7K </strong></h2>
+              <p><small>Followers</small></p>
+              <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
+            </div>-->
+            <!--/col-->
+            <!--<div class="col-xs-12 col-sm-4">
+              <h2><strong>245</strong></h2>
+              <p><small>Following</small></p>
+              <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>
+            </div>-->
+            <!--/col-->
+            <!--<div class="col-xs-12 col-sm-4">
+              <h2><strong>43</strong></h2>
+              <p><small>Snippets</small></p>
+              <button type="button" class="btn btn-primary btn-block"><span class="fa fa-gear"></span> Options </button>  
+            </div>-->
+            <!--/col-->
+          </div>
+          <!--/row-->
+        </div>
+        <!--/panel-body-->
+      </div>
+      <!--/panel-->
+    </div>
+    <!--/col--> 
+  </div>
+  <!--/row--> 
+
+<!--/container-->
+
+<!--
 <div class="row">
 <table class="table table-bordered">
 <caption class="text-success"><strong>User Login Data</strong></caption>
@@ -58,7 +122,7 @@
 
 </table>
 </div>
-
+-->
 
 
 

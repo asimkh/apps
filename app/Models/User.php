@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Auth;
+use App\Models\Profile;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -34,6 +36,6 @@ class User extends Authenticatable
 
       public function profile()
     {
-        return $this->hasOne('Profile');
+        return $this->hasOne('App\Models\Profile');
     }
 }

@@ -21,7 +21,8 @@
         "components/font-awesome": "^4.6",
         "components/jquery": "2.2.*",
         "twbs/bootstrap": "^3.3",
-        "components/bootstrap": "^3.3"
+        "components/bootstrap": "^3.3",
+        "facebook/php-sdk-v4": "^5.2"
     
     },
     "require-dev": {
