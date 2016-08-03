@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>حـاضــر | HAZZIR </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.10.1/bootstrap-social.css" rel="stylesheet" >
-
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css')}}">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     
 
     <!-- fb -->
@@ -24,10 +21,6 @@
     <!-- fb -->
 
 
-    <!--<link rel="icon" href="../../favicon.ico">-->
-  <!--  <link rel="stylesheet" href="{{ asset("css/all.css") }}>
--->
-
 
     @include('layouts.fbscripts')
     </head>
@@ -40,9 +33,8 @@
     	@yield('content')
     </div>
     
-     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+   <script src="{{ asset('/js/all.js') }}"></script>
+   
      <!--@include('layouts.footer')-->
       
    

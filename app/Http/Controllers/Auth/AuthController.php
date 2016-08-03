@@ -103,12 +103,20 @@ class AuthController extends Controller
     public function FBcanvas(LaravelFacebookSdk $fb)
     {
      
-     try {
-        $token = $fb->getCanvasHelper()->getAccessToken();
-    } catch (Facebook\Exceptions\FacebookSDKException $e) {
-        // Failed to obtain access token
-        dd($e->getMessage());
+    $helper = $fb->getRedirectLoginHelper();
+    $permissions = ['email', 'user_likes']; // optional
+    $loginUrl = $helper->getLoginUrl('http://localhost:8000/recall/', $permissions);
+    
+    return \Redirect::to($loginUrl);
+
+       //return view('pages.facebook.canvas');
+
     }
+
+
+     public function FBrecall(LaravelFacebookSdk $fb)
+    {
+     
 
 
        return view('pages.facebook.canvas');

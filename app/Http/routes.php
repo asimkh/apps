@@ -205,6 +205,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/redirect', 'Auth\AuthController@FBLogin');
 Route::get('/callback', 'Auth\AuthController@FBcallback');
 Route::match(['get', 'post'], '/canvas', 'Auth\AuthController@FBcanvas');
+Route::get('/recall', 'Auth\AuthController@FBrecall');
 
 /*
 
