@@ -12,15 +12,14 @@ class User extends Authenticatable
     use SyncableGraphNodeTrait;
     
     protected static $graph_node_date_time_to_string_format = 'c'; # ISO 8601 date
-    protected static $graph_node_fillable_fields = ['firstname', 'lastname','gender','email', 'password','facebook_user_id', 'photo',];
+    protected static $graph_node_fillable_fields = ['firstname', 'lastname','email', 'password','facebook_user_id',];
 
     protected static $graph_node_field_aliases = [
         'id' => 'facebook_user_id',
         'first_name' => 'firstname',
         'last_name' => 'lastname',
         'email' => 'email',
-        'gender' => 'gender',
-        'picture.url' => 'photo',
+
     ];
 
     protected $table ='users';
@@ -32,7 +31,7 @@ class User extends Authenticatable
 
 
     protected $fillable = [
-        'firstname', 'lastname','gender','email', 'password','facebook_user_id', 'photo',
+        'firstname', 'lastname','email', 'password','facebook_user_id',
     ];
 
 

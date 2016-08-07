@@ -202,13 +202,14 @@ class AuthController extends Controller
 
     // Get basic info on the user from Facebook.
     try {
-        $response = $fb->get('/me?fields=id,email,first_name,last_name,gender,birthday,about,bio,picture.type(large),hometown,location,timezone,religion,website,work,relationship_status');
+        $response = $fb->get('/me?fields=email,first_name,last_name,gender,birthday,about,bio,picture.type(large),hometown,location,timezone,religion,website,work,relationship_status');
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
         dd($e->getMessage());
     }
 
     // Convert the response to a `Facebook/GraphNodes/GraphUser` collection
     $facebook_user = $response->getGraphUser();
+    //dd($facebook_user);
     $user = User::createOrUpdateGraphNode($facebook_user);
 
     //dd( $user);
@@ -217,16 +218,18 @@ class AuthController extends Controller
     // This will only work if you've added the SyncableGraphNodeTrait to your User model.
     
     // try {
-    //     $response = $fb->get('/me?fields=about,hometown,location,timezone');
+    //     $response = $fb->get('/me?fields=about,hometown,location,timezone,id,email,first_name,last_name,gender,birthday,about,bio,picture.type(large),hometown,location,timezone,religion,website,work,relationship_status');
     // } catch (Facebook\Exceptions\FacebookSDKException $e) {
     //     dd($e->getMessage());
     // }
     // $facebook_profile= $response->getGraphUser();
     // $userProfile = Profile::with('user')->whereuser_id($user->id)->createOrUpdateGraphNode($facebook_profile);
-
+    //dd($user->id);
     $profile = Profile::with('user')->whereuser_id($user->id)->first();
-    //dd( $user->id);
-    //dd($profile);
+     //$profile = Profile::with('user')->whereuser_id($user->id)->createOrUpdateGraphNode($facebook_user);
+
+    
+    
 
     if (empty($profile)) {
 
@@ -239,8 +242,10 @@ class AuthController extends Controller
         $user->save();
 */
         $profile = new Profile();
-
+        
         $profile->user_id = $user->id;
+        $profile->photo = $facebook_user['picture']['url'];
+        $profile->gender = $facebook_user['gender'];
         $profile->about = $facebook_user['about'];
         $profile->birthday = $facebook_user['birthday'];
         $profile->home_town = $facebook_user['hometown']['name'];
@@ -250,8 +255,11 @@ class AuthController extends Controller
     }
     else{
 
-        $profile->user_id = $user->id;
+        
+        $profile->photo = $facebook_user['picture']['url'];
+        $profile->gender = $facebook_user['gender'];
         $profile->about = $facebook_user['about'];
+        $profile->birthday = $facebook_user['birthday'];
         $profile->home_town = $facebook_user['hometown']['name'];
         $profile->location = $facebook_user['location']['name'];
         $profile->timezone = $facebook_user['timezone'];

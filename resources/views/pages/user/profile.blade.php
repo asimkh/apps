@@ -36,7 +36,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-xs-12 col-sm-4 text-center">
-              <img src="{{ Auth::user()->photo}}" alt="" class="center-block  img-thumbnail img-responsive">
+              <img src="{{ Auth::user()->profile['photo']}}" alt="" class="center-block  img-thumbnail img-responsive">
               
             </div>
             <!--/col--> 
