@@ -7,7 +7,7 @@
         <a href="https://www.twitter.com/hellohazzir" target="_blank" class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter"></i></a>
        
     </div>
-        <p class="pull-right"><a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a></p>
+        <p class="pull-right"><a href="{{ url('/privacy') }}">Privacy</a> &middot; <a href="{{ url('/terms') }}">Terms</a></p>
        
         <p class="text-muted">&copy; Hazzir.  All rights reserved. 
         </p>
