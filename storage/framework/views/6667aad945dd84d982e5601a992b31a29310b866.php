@@ -13,11 +13,10 @@
     <title>حـاضــر | HAZZIR </title>
 
         <!-- Bootstrap Core CSS -->
-   <!--<link rel="stylesheet" type="text/css" href="<?php echo e(elixir('css/all.css')); ?>">-->
+  <link rel="stylesheet" type="text/css" href="<?php echo e(elixir('css/all.css')); ?>"
 
 
     
-<?php echo e(Html::style('css/all.css', array(), true)); ?>
 
 
 
@@ -49,9 +48,8 @@
     
 
      <!-- Loading JS Scrips -->
-     <!--<script src="<?php echo e(asset('/js/all.js')); ?>"></script>-->
+   <script src="<?php echo e(asset('/js/all.js')); ?>"></script>
 
-<?php echo e(Html::script('/js/all.js', array(), true)); ?>
 
 
      

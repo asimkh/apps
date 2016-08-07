@@ -41,16 +41,19 @@
             </div>
             <!--/col--> 
             <div class="col-xs-12 col-sm-8">
-              <h2>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h2>
+              <h2>{{ link_to('http://facebook.com/'. Auth::user()->facebook_user_id, Auth::user()->firstname .' '.Auth::user()->lastname,['target' => '_blank'])}}</h2>
               <p>
                
-                <small>Email:  </small>{{Auth::user()->email}} <br>
+                
+                <small>{{Auth::user()->profile['about']}} </small><br>
+                <small>{{Auth::user()->profile['location']}} </small><br>
+                <small>{{Auth::user()->email}} </small><br>
 
              
               
 
                
-                <small>{{ link_to('http://facebook.com/'. Auth::user()->facebook_user_id, 'Follow on Facebook',['target' => '_blank'])}}</small> <br>
+                <small></small> <br>
               
 
               </p>

@@ -26,8 +26,8 @@ class ProfilesController extends Controller
 
     
 	try{
-		$user = User::wherefirstname($userDetails)->firstOrFail();
-		//$user = User::with('profile')->wherefirstname($userDetails)->firstOrFail();
+		//$user = User::wherefirstname($userDetails)->firstOrFail();
+		$user = User::with('profile')->wherefirstname($userDetails)->firstOrFail();
 		//dd($user->toArray());
 	}
 

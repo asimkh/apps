@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 use Hash;
 //use App\User;
 use App\Models\User;
+use App\Models\Profile;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -94,11 +95,7 @@ class AuthController extends Controller
      *
      */
 
-    public function redirectToProvider()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
-
+    /* FB canvas*/
 
     public function FBcanvas(LaravelFacebookSdk $fb)
     {
@@ -117,17 +114,38 @@ class AuthController extends Controller
      public function FBrecall(LaravelFacebookSdk $fb)
     {
      
-
-
        return view('pages.facebook.canvas');
 
     }
 
 
+    /* FB Login User*/
+
+
     public function FBLogin(LaravelFacebookSdk $fb)
     {
      
-        $permissions = ['email', 'user_likes']; // optional
+        $permissions = [
+        'public_profile',
+        'email',
+        'user_likes',
+        'user_relationships',
+        'user_photos',
+        'publish_actions',
+        'read_custom_friendlists',
+        'user_actions.video',
+        'user_posts',
+        'user_about_me',
+        'user_birthday',
+        'user_website',
+        'user_hometown',
+        'user_likes',
+        'user_work_history',
+        'user_religion_politics',
+        'user_location',
+        'user_education_history',
+        'user_status'
+        ]; // optional
        return \Redirect::to($fb->getLoginUrl($permissions));
 
     }
@@ -184,138 +202,79 @@ class AuthController extends Controller
 
     // Get basic info on the user from Facebook.
     try {
-        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,gender,birthday,about,bio,picture.type(large)');
+        $response = $fb->get('/me?fields=id,email,first_name,last_name,gender,birthday,about,bio,picture.type(large),hometown,location,timezone,religion,website,work,relationship_status');
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
         dd($e->getMessage());
     }
 
     // Convert the response to a `Facebook/GraphNodes/GraphUser` collection
     $facebook_user = $response->getGraphUser();
-    //dd($facebook_user['picture']['url']);
+    $user = User::createOrUpdateGraphNode($facebook_user);
+
+    //dd( $user);
+
     // Create the user if it does not exist or update the existing entry.
     // This will only work if you've added the SyncableGraphNodeTrait to your User model.
-    //$user = User::createOrUpdateGraphNode($facebook_user);
-     $user = $this->createOrUpdateGraphNode($facebook_user);
     
+    // try {
+    //     $response = $fb->get('/me?fields=about,hometown,location,timezone');
+    // } catch (Facebook\Exceptions\FacebookSDKException $e) {
+    //     dd($e->getMessage());
+    // }
+    // $facebook_profile= $response->getGraphUser();
+    // $userProfile = Profile::with('user')->whereuser_id($user->id)->createOrUpdateGraphNode($facebook_profile);
+
+    $profile = Profile::with('user')->whereuser_id($user->id)->firstOrFail();
+    //dd( $user->id);
+
+    if (empty($profile)) {
+
+/*
+        $user = new User;
+        $user->name = $me['first_name'].' '.$me['last_name'];
+        $user->email = $me['email'];
+        $user->photo = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
+
+        $user->save();
+*/
+        $profile = new Profile();
+
+        $profile->user_id = $user->id;
+        $profile->about = $facebook_user['about'];
+        $profile->birthday = $facebook_user['birthday'];
+        $profile->home_town = $facebook_user['hometown']['name'];
+        $profile->location = $facebook_user['location']['name'];
+        $profile->timezone = $facebook_user['timezone'];
+        $profile->save();
+    }
+    else{
+
+        $profile->user_id = $user->id;
+        $profile->about = $facebook_user['about'];
+        $profile->home_town = $facebook_user['hometown']['name'];
+        $profile->location = $facebook_user['location']['name'];
+        $profile->timezone = $facebook_user['timezone'];
+        $profile->save();
+
+    }
+
+    //dd($user->profile->toArray());
     // Log the user into Laravel
     Auth::login($user);
 
 
-     return redirect()->route('home')->with('message', 'Successfully logged in with Facebook');
+     return redirect()->route('home')->with('message', ' Successfully logged in with Facebook');
 
    
 
     }
-    /**
-     * Obtain the user information from network.
-     *
-     */
-
-    public function handleProviderCallback()
-    {
-
-
-        /*
-
-        dd($user = Socialite::driver('facebook')->fields([
-            'first_name', 'last_name', 'email', 'gender', 'birthday'])->user());
-
-        */
-        try {
-
-            $user = Socialite::driver('facebook')->fields([
-            'username','first_name', 'last_name', 'email', 'gender', 'birthday','about','bio','hometown','languages','locale','location','religion','relationship_status','timezone','website','work'])->user();
-
-           //dd($user->user['first_name']);
-           //dd($user);
-
-        } catch (Exception $e) {
-
-            return redirect('facebook');
-        }
-
-        
-        //$user->user['first_name']
-       
-        $authUser = $this->findOrCreateUser($user);
-        
-        Auth::login($authUser, true);
-
-      
-        
-      
-        return redirect()->route('home')->with('message',  'Welcome '
-         . Auth::user()->firstname . ', 
-          you logged successfully');
-        
-        
-        
-    }
-
-
-    /**
-     * Return user if exists; create and return if doesn't
-     *
-     * @param $facebookUser
-     * @return User
-     */
-    private function findOrCreateUser($facebookUser)
-    {
-        $authUser = User::where('facebook_user_id', $facebookUser->id)->first();
- 
-        if ($authUser){
-            return $authUser;
-        }
- 
-        return User::create([
-            'firstname' => $facebookUser->user['first_name'],
-            'lastname' => $facebookUser->user['last_name'],
-            'email' => $facebookUser->user['email'],
-            'gender' => $facebookUser->user['gender'],
-            'facebook_user_id' => $facebookUser->id,
-            'photo' => $facebookUser->avatar
-
-        ]);
-    }
-
-
-    private function createOrUpdateGraphNode($facebookUser)
-    {
-        $authUser = User::where('facebook_user_id', $facebookUser['id'])->first();
- 
-        if ($authUser){
-            $authUser->touch();
-
-/*
-            $authUser = User::where('facebook_user_id', '>', $facebookUser['id'])->update(array(
-
-            'firstname' => $facebookUser['first_name'],
-            'lastname' => $facebookUser['last_name'],
-            'email' => $facebookUser['email'],
-            'gender' => $facebookUser['gender'],
-            'facebook_user_id' => $facebookUser['id'],
-            'photo' => $facebookUser['picture']['url']
-
-                ));
-            
-            */
-                return $authUser;
-        }
- 
-        return User::create([
-            'firstname' => $facebookUser['first_name'],
-            'lastname' => $facebookUser['last_name'],
-            'email' => $facebookUser['email'],
-            'gender' => $facebookUser['gender'],
-            'facebook_user_id' => $facebookUser['id'],
-            'photo' => $facebookUser['picture']['url']
-            
-        ]);
-    }
-
+    
 
 
     
 
 
 }
+
+///
+

@@ -1,7 +1,10 @@
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
+        Header set Access-Control-Allow-Origin "*"
         Options -MultiViews
     </IfModule>
+
+
 
     RewriteEngine On
 

@@ -40,16 +40,19 @@
             </div>
             <!--/col--> 
             <div class="col-xs-12 col-sm-8">
-              <h2><?php echo e(Auth::user()->firstname); ?> <?php echo e(Auth::user()->lastname); ?></h2>
+              <h2><?php echo e(link_to('http://facebook.com/'. Auth::user()->facebook_user_id, Auth::user()->firstname .' '.Auth::user()->lastname,['target' => '_blank'])); ?></h2>
               <p>
                
-                <small>Email:  </small><?php echo e(Auth::user()->email); ?> <br>
+                
+                <small><?php echo e(Auth::user()->profile['about']); ?> </small><br>
+                <small><?php echo e(Auth::user()->profile['location']); ?> </small><br>
+                <small><?php echo e(Auth::user()->email); ?> </small><br>
 
              
               
 
                
-                <small><?php echo e(link_to('http://facebook.com/'. Auth::user()->facebook_user_id, 'Follow on Facebook',['target' => '_blank'])); ?></small> <br>
+                <small></small> <br>
               
 
               </p>
