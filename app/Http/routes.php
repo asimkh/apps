@@ -189,23 +189,17 @@ Route::get('posts/{post}', [
 	'as' => 'post',
 	'uses' => 'PostsController@show'
 	]);
-/*
-|--------------------------------------------------------------------------
-| Faceboook
-|--------------------------------------------------------------------------
-|
-
-*/
-
-
-
 
 Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/redirect', 'Auth\AuthController@FBLogin');
 Route::get('/callback', 'Auth\AuthController@FBcallback');
+
+
 Route::match(['get', 'post'], '/canvas', 'Auth\AuthController@FBcanvas');
 Route::get('/recall', 'Auth\AuthController@FBrecall');
+
+Route::get('{profile}','ProfilesController@home');
 
 /*
 
@@ -217,15 +211,6 @@ get('protected', ['middleware' => ['auth', 'admin'], function() {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| Profile
-|--------------------------------------------------------------------------
-|
-
-*/
-
-Route::get('{profile}','ProfilesController@home');
 
 
 

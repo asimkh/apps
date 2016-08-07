@@ -104,9 +104,9 @@ class AuthController extends Controller
     $permissions = ['email', 'user_likes']; // optional
     $loginUrl = $helper->getLoginUrl(env('FACEBOOK_RECALL_URL'), $permissions);
     
-    return \Redirect::to($loginUrl);
+    //return \Redirect::to($loginUrl);
 
-       //return view('pages.facebook.canvas');
+       return view('pages.facebook.canvas');
 
     }
 
@@ -224,8 +224,9 @@ class AuthController extends Controller
     // $facebook_profile= $response->getGraphUser();
     // $userProfile = Profile::with('user')->whereuser_id($user->id)->createOrUpdateGraphNode($facebook_profile);
 
-    $profile = Profile::with('user')->whereuser_id($user->id)->firstOrFail();
+    $profile = Profile::with('user')->whereuser_id($user->id)->first();
     //dd( $user->id);
+    //dd($profile);
 
     if (empty($profile)) {
 
