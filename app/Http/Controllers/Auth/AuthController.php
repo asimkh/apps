@@ -102,12 +102,20 @@ class AuthController extends Controller
      
     $helper = $fb->getRedirectLoginHelper();
     $permissions = ['email', 'user_likes']; // optional
-    $loginUrl = $helper->getLoginUrl(env('FACEBOOK_RECALL_URL'), $permissions);
+    $loginUrl = $helper->getLoginUrl(env('FACEBOOK_CALLBACK_URL'), $permissions);
     
-    //return \Redirect::to($loginUrl);
-    //eturn \Redirect::secure("/canvas", 307);
-        //return view('pages.facebook.canvas');
-    return "FB connect";
+    return \Redirect::to($loginUrl);
+    // //eturn \Redirect::secure("/canvas", 307);
+    //     //return view('pages.facebook.canvas');
+
+    //  if(env('APP_ENV') !== 'local')
+    //     {
+    //         $url->forceSchema('https');
+    //         return view('pages.facebook.canvas');
+    //     }
+
+    // //return "FB connect";
+    // return view('pages.facebook.canvas');
 
     }
 
@@ -115,7 +123,117 @@ class AuthController extends Controller
      public function FBrecall(LaravelFacebookSdk $fb)
     {
      
-       return view('pages.facebook.canvas');
+      
+    try {
+        $token = $fb->getAccessTokenFromRedirect();
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        dd($e->getMessage());
+    }
+
+     // Access token will be null if the user denied the request
+    // or if someone just hit this URL outside of the OAuth flow.
+    if (! $token) {
+        // Get the redirect helper
+        $helper = $fb->getRedirectLoginHelper();
+
+        if (! $helper->getError()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // User denied the request
+        dd(
+            $helper->getError(),
+            $helper->getErrorCode(),
+            $helper->getErrorReason(),
+            $helper->getErrorDescription()
+        );
+    }
+
+
+
+
+
+    if (! $token->isLongLived()) {
+        // OAuth 2.0 client handler
+        $oauth_client = $fb->getOAuth2Client();
+
+        // Extend the access token.
+        try {
+            $token = $oauth_client->getLongLivedAccessToken($token);
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+            dd($e->getMessage());
+        }
+    }
+
+    $fb->setDefaultAccessToken($token);
+
+    // Save for later
+    Session::put('remember_token', (string) $token);
+
+    // Get basic info on the user from Facebook.
+    try {
+        $response = $fb->get('/me?fields=email,first_name,last_name,gender,birthday,about,bio,picture.type(large),hometown,location,timezone,religion,website,work,relationship_status');
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        dd($e->getMessage());
+    }
+
+    // Convert the response to a `Facebook/GraphNodes/GraphUser` collection
+    $facebook_user = $response->getGraphUser();
+    //dd($facebook_user);
+    $user = User::createOrUpdateGraphNode($facebook_user);
+
+    
+    $profile = Profile::with('user')->whereuser_id($user->id)->first();
+    
+
+    if (empty($profile)) {
+
+/*
+        $user = new User;
+        $user->name = $me['first_name'].' '.$me['last_name'];
+        $user->email = $me['email'];
+        $user->photo = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
+
+        $user->save();
+*/
+        $profile = new Profile();
+        
+        $profile->user_id = $user->id;
+        $profile->photo = $facebook_user['picture']['url'];
+        $profile->gender = $facebook_user['gender'];
+        $profile->about = $facebook_user['about'];
+        $profile->birthday = $facebook_user['birthday'];
+        $profile->home_town = $facebook_user['hometown']['name'];
+        $profile->location = $facebook_user['location']['name'];
+        $profile->timezone = $facebook_user['timezone'];
+        $profile->save();
+    }
+    else{
+
+        
+        $profile->photo = $facebook_user['picture']['url'];
+        $profile->gender = $facebook_user['gender'];
+        $profile->about = $facebook_user['about'];
+        $profile->birthday = $facebook_user['birthday'];
+        $profile->home_town = $facebook_user['hometown']['name'];
+        $profile->location = $facebook_user['location']['name'];
+        $profile->timezone = $facebook_user['timezone'];
+        $profile->save();
+
+    }
+
+    //dd($user->profile->toArray());
+    // Log the user into Laravel
+    Auth::login($user);
+
+
+     return redirect()->route('about')->with('message', ' Successfully logged in with Facebook');
+
+   
+
+ 
+    
+
 
     }
 
