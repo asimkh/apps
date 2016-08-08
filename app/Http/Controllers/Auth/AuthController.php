@@ -106,7 +106,7 @@ class AuthController extends Controller
     
     //return \Redirect::to($loginUrl);
 
-       return view('pages.facebook.canvas');
+        return view('pages.facebook.canvas');
 
     }
 
