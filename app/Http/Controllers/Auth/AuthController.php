@@ -49,7 +49,7 @@ class AuthController extends Controller
     public function __construct()
 
     {
-       
+        //$this->beforeFilter('force.ssl');
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
 
         

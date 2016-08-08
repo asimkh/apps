@@ -6,7 +6,7 @@
 
     <title>حـاضــر | HAZZIR </title>
    
-   <?php echo e(Html::style('css/all.css', array(), true)); ?>
+   <?php echo e(Html::style('css/all.css', array(), false)); ?>
 
 
 
@@ -29,7 +29,7 @@
     	<?php echo $__env->yieldContent('content'); ?>
     </div>
     
-   <?php echo e(Html::script('/js/all.js', array(), true)); ?>
+   <?php echo e(Html::script('/js/all.js', array(), false)); ?>
 
 
     
