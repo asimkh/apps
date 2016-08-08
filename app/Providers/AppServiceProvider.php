@@ -13,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Request HTTPS for all route
+        //$this->app['request']->server->set('HTTPS', true);
+
+        //SSL only on production
+        $this->app['request']->server->set('HTTPS', $this->app->environment() != 'local');
     }
 
 
