@@ -105,8 +105,9 @@ class AuthController extends Controller
     $loginUrl = $helper->getLoginUrl(env('FACEBOOK_RECALL_URL'), $permissions);
     
     //return \Redirect::to($loginUrl);
-
-        return view('pages.facebook.canvas');
+    //eturn \Redirect::secure("/canvas", 307);
+        //return view('pages.facebook.canvas');
+    return "FB connect";
 
     }
 
