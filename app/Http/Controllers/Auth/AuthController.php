@@ -102,7 +102,7 @@ class AuthController extends Controller
      
     $helper = $fb->getRedirectLoginHelper();
     $permissions = ['email', 'user_likes']; // optional
-    $loginUrl = $helper->getLoginUrl(env('FACEBOOK_CALLBACK_URL'), $permissions);
+    $loginUrl = $helper->getLoginUrl(env('FACEBOOK_RECALL_URL'), $permissions);
     
     return \Redirect::to($loginUrl);
     // //eturn \Redirect::secure("/canvas", 307);
@@ -124,48 +124,41 @@ class AuthController extends Controller
     {
      
       
+
+       try {
+        $token = $fb->getCanvasHelper()->getAccessToken();
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        // Failed to obtain access token
+        dd($e->getMessage());
+    }
+
+    /*
     try {
         $token = $fb->getAccessTokenFromRedirect();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
         dd($e->getMessage());
     }
+    */
 
-     // Access token will be null if the user denied the request
+    //  Access token will be null if the user denied the request
     // or if someone just hit this URL outside of the OAuth flow.
-    if (! $token) {
+     if (! $token) {
         // Get the redirect helper
-        $helper = $fb->getRedirectLoginHelper();
-
-        if (! $helper->getError()) {
-            abort(403, 'Unauthorized action.');
-        }
-
-        // User denied the request
-        dd(
-            $helper->getError(),
-            $helper->getErrorCode(),
-            $helper->getErrorReason(),
-            $helper->getErrorDescription()
-        );
+        echo 'No OAuth data could be obtained from the signed request. 
+        User has not authorized your app yet.';
+        exit;
     }
 
 
 
+echo '<h3>Signed Request</h3>';
+var_dump($helper->getSignedRequest());
 
+echo '<h3>Access Token</h3>';
+var_dump($accessToken->getValue());
 
-    if (! $token->isLongLived()) {
-        // OAuth 2.0 client handler
-        $oauth_client = $fb->getOAuth2Client();
-
-        // Extend the access token.
-        try {
-            $token = $oauth_client->getLongLivedAccessToken($token);
-        } catch (Facebook\Exceptions\FacebookSDKException $e) {
-            dd($e->getMessage());
-        }
-    }
-
-    $fb->setDefaultAccessToken($token);
+    
+    
 
     // Save for later
     Session::put('remember_token', (string) $token);
