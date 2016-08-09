@@ -102,11 +102,13 @@ class AuthController extends Controller
      
     $helper = $fb->getRedirectLoginHelper();
     $permissions = ['email', 'user_likes']; // optional
+    $FBloginUrl = $helper->getLoginUrl(env('FACEBOOK_RECALL_URL'), $permissions);
     
-    //$loginUrl = $helper->getLoginUrl(env('FACEBOOK_RECALL_URL'), $permissions);
-     $loginUrl = $helper->getLoginUrl('https://apps.facebook.com/hazzir-app', $permissions);
+
+
+     //$FBloginUrl = $helper->getLoginUrl('https://apps.facebook.com/hazzir-app', $permissions);
     
-    return \Redirect::to($loginUrl);
+    //return \Redirect::to(env('FACEBOOK_RECALL_URL'));
     // //eturn \Redirect::secure("/canvas", 307);
     //     //return view('pages.facebook.canvas');
 
@@ -118,6 +120,28 @@ class AuthController extends Controller
 
     // //return "FB connect";
     // return view('pages.facebook.canvas');
+
+     try {
+        $token = $fb->getCanvasHelper()->getAccessToken();
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        // Failed to obtain access token
+        dd($e->getMessage());
+    }
+
+    // $token will be null if the user hasn't authenticated your app yet
+    if($token == null){
+        //return redirect('/shout');
+        return \Redirect::to($FBloginUrl);
+    }else{
+
+        $fb->setDefaultAccessToken($token);
+        $response = $fb->get('/me');
+        $me = $response->getGraphUser();
+        return redirect('/shout');
+        // echo 'Logged in as ' . $me->getName();
+        // echo '<br>hello home';
+        // echo '<br><a href="'.URL('/').'">about</a>';                
+    }
 
     }
 
@@ -135,7 +159,7 @@ class AuthController extends Controller
 
     // $token will be null if the user hasn't authenticated your app yet
     if($token == null){
-        return redirect('https://apps.facebook.com/hazzir-app');
+        return redirect('/recall');
         //return \Redirect::to($loginUrl);
     }else{
 
@@ -144,7 +168,7 @@ class AuthController extends Controller
         $me = $response->getGraphUser();
         echo 'Logged in as ' . $me->getName();
         echo '<br>hello home';
-        echo '<br><a href="'.URL('/').'">Home</a>';                
+        echo '<br><a href="'.URL('/').'">about</a>';                
     }
 
      

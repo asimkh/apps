@@ -198,7 +198,6 @@ Route::get('/callback', 'Auth\AuthController@FBcallback');
 ////Route::get(['get', 'post'], '/canvas', array('https', 'Auth\AuthController@FBcanvas'));
 Route::match(['get', 'post'], '/canvas/', 'Auth\AuthController@FBcanvas');
 Route::get('/recall/', 'Auth\AuthController@FBrecall');
-
 Route::get('{profile}','ProfilesController@home');
 
 /*
