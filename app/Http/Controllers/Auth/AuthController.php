@@ -135,7 +135,7 @@ class AuthController extends Controller
 
     // $token will be null if the user hasn't authenticated your app yet
     if($token == null){
-        //return redirect('/facebook/login');
+        return redirect('https://apps.facebook.com/hazzir-app');
         //return \Redirect::to($loginUrl);
     }else{
 
