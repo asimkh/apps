@@ -18,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
 
         //SSL only on production
         $this->app['request']->server->set('HTTPS', $this->app->environment() != 'local');
+     
+        if (!\App::environment('local')) {
+          \URL::forceSchema('https');
+        }
+
     }
 
 

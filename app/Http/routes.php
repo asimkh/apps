@@ -201,6 +201,7 @@ Route::get('/connect', 'FBController@home');
 ////Route::get(['get', 'post'], '/canvas', array('https', 'Auth\AuthController@FBcanvas'));
 //Route::when('/canvas', 'force.ssl');
 Route::match(['get', 'post'], '/canvas', [
+	//'before' => 'force.ssl',
 	'uses' => 'Auth\AuthController@FBcanvas',
 	'https' => true]);
 
