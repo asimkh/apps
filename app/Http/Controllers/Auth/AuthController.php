@@ -100,7 +100,7 @@ class AuthController extends Controller
     public function FBcanvas(LaravelFacebookSdk $fb)
     {
 
-      
+
 
     //          $login_link = $fb
     //         ->getRedirectLoginHelper()
@@ -136,106 +136,25 @@ class AuthController extends Controller
     {
 
 
-    // try {
-    //     $token = $fb->getAccessTokenFromRedirect();
-    // } catch (Facebook\Exceptions\FacebookSDKException $e) {
-    //     dd($e->getMessage());
-    // }
-
-    // try {
-    //     $token = $fb
-    //         ->getAccessTokenFromRedirect()
-    //         ->getAccessToken();
-    // } catch (Facebook\Exceptions\FacebookSDKException $e) {
-    //     // Failed to obtain access token
-    //     dd($e->getMessage());
-    // }
-
 
     try {
         $token = $fb->getCanvasHelper()->getAccessToken();
-        dd($token);
+       
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
         // Failed to obtain access token
         dd($e->getMessage());
     }
 
 
-dd($token);
-
-    //   if (! $token->isLongLived()) {
-    //     // OAuth 2.0 client handler
-    //     $oauth_client = $fb->getOAuth2Client();
-
-    //     // Extend the access token.
-    //     try {
-    //         $token = $oauth_client->getLongLivedAccessToken($token);
-    //     } catch (Facebook\Exceptions\FacebookSDKException $e) {
-    //         dd($e->getMessage());
-    //     }
-    // }
-
 
     if (! $token) {
         // . . .
-        return view('Token Null');
+        return "User hasn't authenticated your app yet"  ;
         //return view('greeting', ['name' => 'James']);
     }
 
-    $fb->setDefaultAccessToken($token);
+    return "Token Working";
 
-    // Save for later
-    Session::put('remember_token', (string) $token);
-
-    // $token will be null if the user hasn't authenticated your app yet
-    if($token == null){
-        return redirect('/canvas');
-        //return \Redirect::to($loginUrl);
-    }else{
-
-        $fb->setDefaultAccessToken($token);
-        $response = $fb->get('/me');
-        $me = $response->getGraphUser();
-        echo 'Logged in as ' . $me->getName();
-        echo '<br>hello home';
-        echo '<br><a href="'.URL('/').'">about</a>';                
-    }
-
-     
-      
-  
-
-//        try {
-//         $token = $fb->getCanvasHelper()->getAccessToken();
-//     } catch (Facebook\Exceptions\FacebookSDKException $e) {
-//         // Failed to obtain access token
-//         dd($e->getMessage());
-//     }
-
-    
-
-//     //  Access token will be null if the user denied the request
-//     // or if someone just hit this URL outside of the OAuth flow.
-//      if (! $token) {
-//         return \Redirect::to($loginUrl);
-//         // Get the redirect helper
-//         // echo 'No OAuth data could be obtained from the signed request. 
-//         // User has not authorized your app yet.';
-//         // exit;
-//     }
-
-
-
-// echo '<h3>Signed Request</h3>';
-// var_dump($helper->getSignedRequest());
-
-// echo '<h3>Access Token</h3>';
-// var_dump($accessToken->getValue());
-
-    
-  
- 
-    
 
 
     }
