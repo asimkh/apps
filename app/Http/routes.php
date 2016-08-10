@@ -190,14 +190,20 @@ Route::get('posts/{post}', [
 	'uses' => 'PostsController@show'
 	]);
 
+
 Route::auth();
 Route::get('/home', 'HomeController@index');
+
 Route::get('/redirect', 'Auth\AuthController@FBLogin');
 Route::get('/callback', 'Auth\AuthController@FBcallback');
 Route::get('/connect', 'FBController@home');
 
 ////Route::get(['get', 'post'], '/canvas', array('https', 'Auth\AuthController@FBcanvas'));
-Route::match(['get', 'post'], '/canvas', 'Auth\AuthController@FBcanvas');
+//Route::when('/canvas', 'force.ssl');
+Route::match(['get', 'post'], '/canvas', [
+	'uses' => 'Auth\AuthController@FBcanvas',
+	'https' => true]);
+
 Route::get('/recall/', 'Auth\AuthController@FBrecall');
 Route::get('{profile}','ProfilesController@home');
 
