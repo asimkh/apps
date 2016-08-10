@@ -6,7 +6,7 @@
 
     <title>حـاضــر | HAZZIR </title>
    
-   {{ Html::style('css/all.css', array(), true) }}
+   {{ Html::style('css/all.css', array(), false ) }}
 
 
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -28,7 +28,7 @@
     	@yield('content')
     </div>
     
-   {{ Html::script('/js/all.js', array(), true) }}
+   {{ Html::script('/js/all.js', array(), false) }}
 
     
       

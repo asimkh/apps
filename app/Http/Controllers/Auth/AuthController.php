@@ -99,18 +99,22 @@ class AuthController extends Controller
 
     public function FBcanvas(LaravelFacebookSdk $fb)
     {
+
+      
+
+    //          $login_link = $fb
+    //         ->getRedirectLoginHelper()
+    //         ->getLoginUrl('https://exmaple.com/facebook/callback', ['email', 'user_events']);
+
+    // echo '<a href="' . $login_link . '">Log in with Facebook</a>';
      
     $helper = $fb->getRedirectLoginHelper();
     $permissions = ['email', 'user_likes']; // optional
     $FBloginUrl = $helper->getLoginUrl(env('FACEBOOK_RECALL_URL'), $permissions);
+    //$FBloginUrl = $helper->getLoginUrl('https://apps.facebook.com/hazzir-app/',  $permissions);
+    echo '<a href="' . $FBloginUrl . '">Log in with Facebook</a>';
+    //return \Redirect::to($FBloginUrl);
     
-
-
-     //$FBloginUrl = $helper->getLoginUrl('https://apps.facebook.com/hazzir-app', $permissions);
-    
-    //return \Redirect::to(env('FACEBOOK_RECALL_URL'));
-    // //eturn \Redirect::secure("/canvas", 307);
-    //     //return view('pages.facebook.canvas');
 
     //  if(env('APP_ENV') !== 'local')
     //     {
@@ -118,48 +122,74 @@ class AuthController extends Controller
     //         return view('pages.facebook.canvas');
     //     }
 
-    // //return "FB connect";
-    // return view('pages.facebook.canvas');
 
-     try {
-        $token = $fb->getCanvasHelper()->getAccessToken();
-    } catch (Facebook\Exceptions\FacebookSDKException $e) {
-        // Failed to obtain access token
-        dd($e->getMessage());
-    }
-
-    // $token will be null if the user hasn't authenticated your app yet
-    if($token == null){
-        //return redirect('/shout');
-        return \Redirect::to($FBloginUrl);
-    }else{
-
-        $fb->setDefaultAccessToken($token);
-        $response = $fb->get('/me');
-        $me = $response->getGraphUser();
-        return redirect('/shout');
-        // echo 'Logged in as ' . $me->getName();
-        // echo '<br>hello home';
-        // echo '<br><a href="'.URL('/').'">about</a>';                
-    }
 
     }
 
+
+ // public function home()
+ //    {
+ //        return view('pages.fb.home');
+ //    }
 
      public function FBrecall(LaravelFacebookSdk $fb)
     {
 
 
+    // try {
+    //     $token = $fb->getAccessTokenFromRedirect();
+    // } catch (Facebook\Exceptions\FacebookSDKException $e) {
+    //     dd($e->getMessage());
+    // }
+
+    // try {
+    //     $token = $fb
+    //         ->getAccessTokenFromRedirect()
+    //         ->getAccessToken();
+    // } catch (Facebook\Exceptions\FacebookSDKException $e) {
+    //     // Failed to obtain access token
+    //     dd($e->getMessage());
+    // }
+
+
     try {
         $token = $fb->getCanvasHelper()->getAccessToken();
+        dd($token);
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
         // Failed to obtain access token
         dd($e->getMessage());
     }
 
+
+dd($token);
+
+    //   if (! $token->isLongLived()) {
+    //     // OAuth 2.0 client handler
+    //     $oauth_client = $fb->getOAuth2Client();
+
+    //     // Extend the access token.
+    //     try {
+    //         $token = $oauth_client->getLongLivedAccessToken($token);
+    //     } catch (Facebook\Exceptions\FacebookSDKException $e) {
+    //         dd($e->getMessage());
+    //     }
+    // }
+
+
+    if (! $token) {
+        // . . .
+        return view('Token Null');
+        //return view('greeting', ['name' => 'James']);
+    }
+
+    $fb->setDefaultAccessToken($token);
+
+    // Save for later
+    Session::put('remember_token', (string) $token);
+
     // $token will be null if the user hasn't authenticated your app yet
     if($token == null){
-        return redirect('/recall');
+        return redirect('/canvas');
         //return \Redirect::to($loginUrl);
     }else{
 

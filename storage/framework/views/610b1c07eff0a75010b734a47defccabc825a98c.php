@@ -6,7 +6,7 @@
 
     <title>حـاضــر | HAZZIR </title>
    
-   <?php echo e(Html::style('css/all.css', array(), false)); ?>
+   <?php echo e(Html::style('css/all.css', array(), false )); ?>
 
 
 
