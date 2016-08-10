@@ -100,7 +100,19 @@ class AuthController extends Controller
     public function FBcanvas(LaravelFacebookSdk $fb)
     {
 
+try {
+        $token = $fb->getCanvasHelper()->getAccessToken();
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        // Failed to obtain access token
+        dd($e->getMessage());
+    }
 
+    // $token will be null if the user hasn't authenticated your app yet
+    if (! $token) {
+        // . . .
+        return "There is no token";
+    }
+    return view('pages.fb.home');
 
     //          $login_link = $fb
     //         ->getRedirectLoginHelper()
@@ -108,12 +120,12 @@ class AuthController extends Controller
 
     // echo '<a href="' . $login_link . '">Log in with Facebook</a>';
      
-    $helper = $fb->getRedirectLoginHelper();
-    $permissions = ['email', 'user_likes']; // optional
-    $FBloginUrl = $helper->getLoginUrl(env('FACEBOOK_CALLBACK_URL'), $permissions);
-    //$FBloginUrl = $helper->getLoginUrl('https://apps.facebook.com/hazzir-app/',  $permissions);
-    echo '<a href="' . $FBloginUrl . '">Log in with Facebook</a>';
-    //return \Redirect::to($FBloginUrl);
+    // $helper = $fb->getRedirectLoginHelper();
+    // $permissions = ['email', 'user_likes']; // optional
+    // $FBloginUrl = $helper->getLoginUrl(env('FACEBOOK_CALLBACK_URL'), $permissions);
+    // //$FBloginUrl = $helper->getLoginUrl('https://apps.facebook.com/hazzir-app/',  $permissions);
+    // echo '<a href="' . $FBloginUrl . '">Log in with Facebook</a>';
+    // //return \Redirect::to($FBloginUrl);
     
 
     //  if(env('APP_ENV') !== 'local')
@@ -132,38 +144,38 @@ class AuthController extends Controller
  //        return view('pages.fb.home');
  //    }
 
-     public function FBrecall(LaravelFacebookSdk $fb)
-    {
+ //     public function FBrecall(LaravelFacebookSdk $fb)
+ //    {
 
 
- try {
-        $token = $fb->getAccessTokenFromRedirect();
-    } catch (Facebook\Exceptions\FacebookSDKException $e) {
-        dd($e->getMessage());
-    }
+ // try {
+ //        $token = $fb->getAccessTokenFromRedirect();
+ //    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+ //        dd($e->getMessage());
+ //    }
 
 
-    try {
-        $token = $fb->getCanvasHelper()->getAccessToken();
+ //    try {
+ //        $token = $fb->getCanvasHelper()->getAccessToken();
        
-    } catch (Facebook\Exceptions\FacebookSDKException $e) {
-        // Failed to obtain access token
-        dd($e->getMessage());
-    }
+ //    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+ //        // Failed to obtain access token
+ //        dd($e->getMessage());
+ //    }
 
 
 
-    if (! $token) {
-        // . . .
-        return "User hasn't authenticated your app yet"  ;
-        //return view('greeting', ['name' => 'James']);
-    }
+ //    if (! $token) {
+ //        // . . .
+ //        return "User hasn't authenticated your app yet"  ;
+ //        //return view('greeting', ['name' => 'James']);
+ //    }
 
-    return "Token Working";
+ //    return "Token Working";
 
 
 
-    }
+ //    }
 
 
     /* FB Login User*/
@@ -207,6 +219,8 @@ class AuthController extends Controller
         dd($e->getMessage());
     }
 
+
+
      // Access token will be null if the user denied the request
     // or if someone just hit this URL outside of the OAuth flow.
     if (! $token) {
@@ -230,6 +244,8 @@ class AuthController extends Controller
 
 
 
+
+
     if (! $token->isLongLived()) {
         // OAuth 2.0 client handler
         $oauth_client = $fb->getOAuth2Client();
@@ -242,10 +258,30 @@ class AuthController extends Controller
         }
     }
 
+
+
     $fb->setDefaultAccessToken($token);
 
     // Save for later
     Session::put('remember_token', (string) $token);
+
+
+    //    try {
+    //     $token = $fb->getCanvasHelper()->getAccessToken();
+       
+    // } catch (Facebook\Exceptions\FacebookSDKException $e) {
+    //     // Failed to obtain access token
+    //     dd($e->getMessage());
+    // }
+
+
+
+    // if (! $token) {
+    //     // . . .
+    //     return "UXXXX"  ;
+        
+    //     //return view('greeting', ['name' => 'James']);
+    // }
 
     // Get basic info on the user from Facebook.
     try {
@@ -258,6 +294,9 @@ class AuthController extends Controller
     $facebook_user = $response->getGraphUser();
     //dd($facebook_user);
     $user = User::createOrUpdateGraphNode($facebook_user);
+
+
+
 
     //dd( $user);
 
@@ -319,25 +358,7 @@ class AuthController extends Controller
     Auth::login($user);
 
 
-    try {
-        $token = $fb->getCanvasHelper()->getAccessToken();
-       
-    } catch (Facebook\Exceptions\FacebookSDKException $e) {
-        // Failed to obtain access token
-        dd($e->getMessage());
-    }
 
-
-
-    if (! $token) {
-        // . . .
-        return "UXXXX"  ;
-        //return view('greeting', ['name' => 'James']);
-    }
-else{
-
-    return "Token Working";
-}
     
 
 

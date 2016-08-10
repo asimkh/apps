@@ -205,7 +205,7 @@ Route::match(['get', 'post'], '/canvas', [
 	'uses' => 'Auth\AuthController@FBcanvas',
 	'https' => true]);
 
-Route::get('/recall/', 'Auth\AuthController@FBrecall');
+//Route::get('/recall/', 'Auth\AuthController@FBrecall');
 Route::get('{profile}','ProfilesController@home');
 
 /*
