@@ -110,7 +110,7 @@ class AuthController extends Controller
      
     $helper = $fb->getRedirectLoginHelper();
     $permissions = ['email', 'user_likes']; // optional
-    $FBloginUrl = $helper->getLoginUrl(env('FACEBOOK_RECALL_URL'), $permissions);
+    $FBloginUrl = $helper->getLoginUrl(env('FACEBOOK_CALLBACK_URL'), $permissions);
     //$FBloginUrl = $helper->getLoginUrl('https://apps.facebook.com/hazzir-app/',  $permissions);
     echo '<a href="' . $FBloginUrl . '">Log in with Facebook</a>';
     //return \Redirect::to($FBloginUrl);
@@ -135,6 +135,12 @@ class AuthController extends Controller
      public function FBrecall(LaravelFacebookSdk $fb)
     {
 
+
+ try {
+        $token = $fb->getAccessTokenFromRedirect();
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        dd($e->getMessage());
+    }
 
 
     try {
@@ -311,6 +317,28 @@ class AuthController extends Controller
     //dd($user->profile->toArray());
     // Log the user into Laravel
     Auth::login($user);
+
+
+    try {
+        $token = $fb->getCanvasHelper()->getAccessToken();
+       
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        // Failed to obtain access token
+        dd($e->getMessage());
+    }
+
+
+
+    if (! $token) {
+        // . . .
+        return "UXXXX"  ;
+        //return view('greeting', ['name' => 'James']);
+    }
+else{
+
+    return "Token Working";
+}
+    
 
 
      return redirect()->route('home')->with('message', ' Successfully logged in with Facebook');
